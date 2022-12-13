@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.User;
+import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserRepository;
+import fr.solutec.repository.UserSportRepository;
 
 @RestController
 @CrossOrigin("*")
@@ -22,6 +24,8 @@ public class UserRest {
 
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private SportRepository sportRepo;
 
 	@GetMapping("user")
 	public Iterable<User> getAllUser() {
@@ -71,7 +75,7 @@ public class UserRest {
 		return userRepo.save(u);
 	}
 	
-	@GetMapping("coach")  
+	@GetMapping("coach")//Cherche les coachs
     public List<User> searchCoachs(Long id) { 
      return userRepo.getCoachsById(id);
      } 
@@ -82,8 +86,13 @@ public class UserRest {
 	 public List<User> searchByname(@PathVariable String lastname,@PathVariable String firstname){
 	    return userRepo.searchUserByname(lastname, firstname);
 	    }
+	 
+	@GetMapping("coach/{nameSport}")
+	public List<User> searchCoachBySport(@PathVariable String nameSport){
+		return sportRepo.findUserByNameSport(nameSport);
+	}
+	 
 	
-	
-	
+
 
 }
