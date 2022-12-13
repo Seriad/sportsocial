@@ -43,15 +43,15 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
 		Image i1 = new Image(null, "lien image"); //Utilisateur
-		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1870-03-25"),"jeanval","123",false,a1,i1);
+		User u1 = new User(null, "Valjean", "Jean","jean1",Date.valueOf("1870-03-25"),"jeanval","123",false,a1,i1);
 		
 		Address a2 = new Address(null, "17 avenue des salades","75007","Paris");
 		Image i2 = new Image(null, "lien image2");//Utilisateur
-		User u2 = new User(null, "Joline", "Cujoh",Date.valueOf("1870-03-25"),"joline","cujoh",false,a2,i2);
+		User u2 = new User(null, "Joline", "Cujoh","Cujoh1",Date.valueOf("1870-03-25"),"joline","cujoh",false,a2,i2);
 		
 		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i3 = new Image(null, "lien image3");//Utilisateur
-		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3);
+		User u3 = new User(null, "Josuke", "Higashikata","josuke1",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3);
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
