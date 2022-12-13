@@ -15,43 +15,44 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.solutec.entities.User;
 import fr.solutec.repository.UserRepository;
 
-@RestController @CrossOrigin("*")
+@RestController
+@CrossOrigin("*")
 public class UserRest {
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@GetMapping("user")
-	public Iterable<User> getAllUser(){
+	public Iterable<User> getAllUser() {
 		return userRepo.findAll();
 	}
-	
+
 	@PostMapping("user")
-	public User saveUser(@RequestBody User u){
+	public User saveUser(@RequestBody User u) {
 		return userRepo.save(u);
 	}
-	
+
 	@GetMapping("user/{id}")
-	public Optional<User> getOneUser(@PathVariable Long id){
+	public Optional<User> getOneUser(@PathVariable Long id) {
 		return userRepo.findById(id);
 	}
-	
+
 	@DeleteMapping("user/{id}")
-	public boolean deleteOneUser(@PathVariable Long id){
+	public boolean deleteOneUser(@PathVariable Long id) {
 		Optional<User> u = userRepo.findById(id);
-		
+
 		if (u.isPresent()) {
 			userRepo.deleteById(id);
 			return true;
-		}else {
-			return false;	
-		}	
+		} else {
+			return false;
+		}
 	}
-	
+
 	@PutMapping("user/{id}")
 	public User ModifyUser(@RequestBody User u, @PathVariable Long id) {
 		u.setIdUser(id);
 		return userRepo.save(u);
-		}
+	}
 
 }
