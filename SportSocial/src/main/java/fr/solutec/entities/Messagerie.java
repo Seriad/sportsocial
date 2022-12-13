@@ -16,7 +16,7 @@ public class Messagerie {
 
 	
 	@Id @ManyToOne
-	private User userFK;
+	private User userFK; // Destinataire
 	@Id @ManyToOne
-	private Message messageFK;
+	private Message messageFK; 
 }

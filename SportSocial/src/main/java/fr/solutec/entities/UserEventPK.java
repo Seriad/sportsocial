@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 
 public class UserEventPK implements Serializable{
 
-	private User userFK;
-	private Event eventFK;
+	private Long userFK;
+	private Long eventFK;
 }

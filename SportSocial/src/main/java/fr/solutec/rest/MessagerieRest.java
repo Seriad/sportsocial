@@ -31,17 +31,20 @@ public class MessagerieRest {
 	// Envoi de message
 	
 
-	@PostMapping("message/envoyer/{expediteur}")
-	public Messagerie sendMessage(@PathVariable String expediteur, @RequestBody Messagerie messagerie) {
+	@PostMapping("message/envoyer")
+	public Messagerie sendMessage( @RequestBody Messagerie messagerie) {
 		
-		String contenu= messagerie.getMessageFK().getContentMessage();
-		Optional<User>uexp=userRepo.findByLoginUser(expediteur);
+		String contenu= messagerie.getMessageFK().getContentMessage(); 
+		Optional<User>uexp=userRepo.findByLoginUser(messagerie.getMessageFK().getExpediteurMessage().getLoginUser());
 		Message m = new Message(null, null, contenu,uexp.get());
-		String destinataire=messagerie.getUserFK().getLoginUser();
-		Optional<User>udest=userRepo.findByLoginUser(destinataire);
-		Messagerie um= new Messagerie(udest.get(),m);
+		
+		Message msave = messageRepo.save(m);
+		
+		String destinataire=messagerie.getUserFK().getLoginUser(); // récupération login du destinataire
+		Optional<User>udest=userRepo.findByLoginUser(destinataire); // récupération du user
+		Messagerie um= new Messagerie(udest.get(),msave);
 		
 		return messagerieRepo.save(um);
 		
-	}
+	} 
 }
