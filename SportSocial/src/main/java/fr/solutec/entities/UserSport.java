@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Entity @Data @IdClass(UserSportPK.class)
 public class UserSport {
 	
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private User userFK;
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private Sport sportFK;
 
 }

@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Entity @Data @IdClass(UserSessionPK.class)
 public class CoachTrainingSession {
 
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private User userFK;
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private Session sessionFK;
 	
 }

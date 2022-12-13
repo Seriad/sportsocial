@@ -20,6 +20,9 @@ public class Message {
 	private Long idMessage;
 	private Date dateSendMessage;
 	private String contentMessage;
+	@ManyToOne
+	private User expediteurMessage;
+	
 	
 	
 
