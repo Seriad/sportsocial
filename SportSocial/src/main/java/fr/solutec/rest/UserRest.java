@@ -59,5 +59,6 @@ public class UserRest {
 		u_new.setIdUser(id);
 		return userRepo.save(u_new);
 	}
+	//ajout com
 
 }
