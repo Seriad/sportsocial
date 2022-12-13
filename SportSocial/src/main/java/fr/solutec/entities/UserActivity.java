@@ -1,7 +1,6 @@
 package fr.solutec.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;
@@ -11,13 +10,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Data @IdClass(UserSportPK.class)
-public class UserSport {
+@Entity @Data @IdClass(UserActivityPK.class)
+public class UserActivity {
 	
 	@Id @ManyToOne
 	private User userFK;
 	@Id @ManyToOne
-
-	private Sport sportFK;
-
+	private Activity activityFK;
 }
