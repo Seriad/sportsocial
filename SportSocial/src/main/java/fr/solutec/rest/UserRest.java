@@ -49,6 +49,8 @@ public class UserRest {
 		}
 	}
 
+	
+	//modification user
 	@PutMapping("user/{id}")
 	public User ModifyUser(@RequestBody User u_new, @PathVariable Long id) {
 		
@@ -59,6 +61,16 @@ public class UserRest {
 		u_new.setIdUser(id);
 		return userRepo.save(u_new);
 	}
-	//ajout com
+	
+	//Modification pwd
+	@PutMapping("user/password/{id}")
+	public User ModifyPwd(@RequestBody User user, @PathVariable Long id) {
+		User u = userRepo.findById(id).get();
+		u.setPasswordUser(user.getPasswordUser());
+		return userRepo.save(u);
+	}
+	
+	
+	
 
 }
