@@ -71,7 +71,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",0,a4,i5,s1);
 		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",0,a5,i6,s2);
-		
+		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",20,a5,i6,s3);
 		
 		
 		addressRepo.save(a1);
@@ -100,6 +100,12 @@ public class SportSocialApplication implements CommandLineRunner{
 		sportRepo.save(s1);
 		sportRepo.save(s2);
 		sportRepo.save(s3);
+		
+		eventRepo.save(e1);
+		eventRepo.save(e2);
+		eventRepo.save(e3);
+		
+		
 	}
 
 }
