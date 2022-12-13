@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 public class Messagerie {
 
 	
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private User userFK;
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private Message messageFK;
 }

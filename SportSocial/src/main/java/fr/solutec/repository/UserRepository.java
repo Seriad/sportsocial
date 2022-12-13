@@ -15,9 +15,13 @@ public interface UserRepository extends CrudRepository<User, Long>{
 
     @Query ("SELECT u FROM User u WHERE u.lastNameUser = ?1 AND u.firstNameUser = ?2")
     public List<User> searchUserByname(String lastname, String firstname);
-    
-    @Query("SELECT c FROM User c WHERE coachUser = true")
+
+
+	public Optional<User> findByLoginUser(String login);
+	
+	@Query("SELECT c FROM User c WHERE coachUser = true")
     List<User> getCoachsById(Long id);
+
  
 	
 	
