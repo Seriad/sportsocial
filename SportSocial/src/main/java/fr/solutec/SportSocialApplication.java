@@ -2,6 +2,7 @@ package fr.solutec;
 
 import java.sql.Date;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -9,11 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Address;
 import fr.solutec.entities.Event;
+import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
+import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserRepository;
@@ -31,6 +34,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private SportRepository sportRepo;
 	@Autowired
 	private EventRepository eventRepo;
+	@Autowired
+	private FriendRepository friendRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -73,6 +78,11 @@ public class SportSocialApplication implements CommandLineRunner{
 		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",0,a5,i6,s2);
 		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",20,a5,i6,s3);
 		
+		Friend f1 = new Friend(null,u1,u2,false);
+	    Friend f2 = new Friend(null,u1,u3,false);
+	    Friend f3 = new Friend(null,u2,u3,true);
+	    
+		
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -105,6 +115,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		eventRepo.save(e2);
 		eventRepo.save(e3);
 		
+		friendRepo.save(f1);
+	    friendRepo.save(f2);
+	    friendRepo.save(f3);
 		
 	}
 
