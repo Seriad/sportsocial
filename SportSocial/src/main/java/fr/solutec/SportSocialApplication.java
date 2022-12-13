@@ -15,7 +15,6 @@ public class SportSocialApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Lancement en cours");
-		// TODO Auto-generated method stub
 		
 	}
 
