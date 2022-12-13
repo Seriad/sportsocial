@@ -7,7 +7,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UserActivityPK implements  Serializable{
 	
-	private User userFK;
-	private Activity activityFK;
+	private Long userFK;
+	private Long activityFK;
 	
 }
