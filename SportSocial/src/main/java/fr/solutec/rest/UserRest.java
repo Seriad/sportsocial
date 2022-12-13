@@ -50,9 +50,14 @@ public class UserRest {
 	}
 
 	@PutMapping("user/{id}")
-	public User ModifyUser(@RequestBody User u, @PathVariable Long id) {
-		u.setIdUser(id);
-		return userRepo.save(u);
+	public User ModifyUser(@RequestBody User u_new, @PathVariable Long id) {
+		
+		//Securite pour empecher la modification du mot de passe avec ce mapping
+		User u_old = userRepo.findById(id).get();
+		u_new.setPasswordUser(u_old.getPasswordUser());
+		
+		u_new.setIdUser(id);
+		return userRepo.save(u_new);
 	}
 
 }
