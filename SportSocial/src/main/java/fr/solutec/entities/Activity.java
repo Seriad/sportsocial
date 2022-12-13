@@ -24,6 +24,8 @@ public class Activity {
 	private Address addressActivity;
 	@ManyToOne
 	private Sport sportActivity;
+	@ManyToOne
+	private Schedule scheduleActivity;
 	
 
 }

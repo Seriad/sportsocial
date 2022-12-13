@@ -20,8 +20,7 @@ public class Message {
 	private Long idMessage;
 	private Date dateSendMessage;
 	private String contentMessage;
-	//@OneToOne
-	//private User createurMessage;
+	
 	
 
 
