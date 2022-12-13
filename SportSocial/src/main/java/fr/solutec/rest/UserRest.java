@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +70,18 @@ public class UserRest {
 		u.setPasswordUser(user.getPasswordUser());
 		return userRepo.save(u);
 	}
+	
+	@GetMapping("coach")  
+    public List<User> searchCoachs(Long id) { 
+     return userRepo.getCoachsById(id);
+     } 
+
+	  
+
+	 @GetMapping("search/{lastname}/{firstname}") //Rechercher une personne avec son nom et prénom
+	 public List<User> searchByname(@PathVariable String lastname,@PathVariable String firstname){
+	    return userRepo.searchUserByname(lastname, firstname);
+	    }
 	
 	
 	
