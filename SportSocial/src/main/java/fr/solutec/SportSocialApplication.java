@@ -37,9 +37,25 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i1 = new Image(null, "lien image");
 		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1870-03-25"),"jeanval","123",false,a1,i1);
 		
+		Address a2 = new Address(null, "17 avenue des salades","75007","Paris");
+		Image i2 = new Image(null, "lien image2");
+		User u2 = new User(null, "Joline", "Cujoh",Date.valueOf("1870-03-25"),"joline","cujoh",false,a2,i2);
+		
+		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
+		Image i3 = new Image(null, "lien image3");
+		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3);
+		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
 		userRepo.save(u1);
+		
+		addressRepo.save(a2);
+		imageRepo.save(i2);
+		userRepo.save(u2);
+		
+		addressRepo.save(a3);
+		imageRepo.save(i3);
+		userRepo.save(u3);
 	}
 
 }
