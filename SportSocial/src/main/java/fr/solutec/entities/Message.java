@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +20,12 @@ public class Message {
 	
 	@Id @GeneratedValue
 	private Long idMessage;
+	@CreationTimestamp
 	private Date dateSendMessage;
 	private String contentMessage;
+	@ManyToOne
+	private User expediteurMessage;
+	
 	
 	
 
