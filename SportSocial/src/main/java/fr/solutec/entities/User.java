@@ -19,7 +19,6 @@ public class User {
 	private Long idUser;
 	private String lastNameUser;
 	private String firstNameUser;
-	private String username;
 	private Date birthDateUser;
 	@Column(unique=true)
 	private String loginUser;

@@ -12,18 +12,11 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	
 	public Optional<User> findByLoginUserAndPasswordUser(String login, String password);
 
-    @Query ("SELECT u FROM User u WHERE u.username = ?1")
-    public List<User> searchUserByusername(String username);
-
- 
-
 
     @Query ("SELECT u FROM User u WHERE u.lastNameUser = ?1 AND u.firstNameUser = ?2")
     public List<User> searchUserByname(String lastname, String firstname);
 
  
-
-    public User findByUsername(String username);
 	
 	
 
