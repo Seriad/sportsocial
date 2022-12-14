@@ -18,6 +18,9 @@ public interface UserRepository extends CrudRepository<User, Long>{
 
 
 	public Optional<User> findByLoginUser(String login);
+	
+	@Query("SELECT c FROM User c WHERE coachUser = true")
+    List<User> getCoachsById(Long id);
 
  
 	

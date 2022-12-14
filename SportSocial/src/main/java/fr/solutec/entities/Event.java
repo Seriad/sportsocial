@@ -1,7 +1,7 @@
 package fr.solutec.entities;
 
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +19,8 @@ public class Event {
 	private Long idEvent;
 	private String titleEvent;
 	private String descriptionEvent;
+	private Timestamp dateStart;
+	private Timestamp dateEnd;
 	private float priceEvent;	
 	@ManyToOne
 	private Address addressEvent;
@@ -27,6 +29,4 @@ public class Event {
 	@ManyToOne
 	private Sport sportEvent;
 	
-
-
 }

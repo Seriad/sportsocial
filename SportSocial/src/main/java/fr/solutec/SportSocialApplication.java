@@ -1,7 +1,7 @@
 package fr.solutec;
 
 import java.sql.Date;
-
+import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,16 +14,20 @@ import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
+import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserSport;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
+import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserRepository;
+import fr.solutec.repository.UserSportRepository;
 
 @SpringBootApplication
 public class SportSocialApplication implements CommandLineRunner{
@@ -44,6 +48,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	private MessagerieRepository messagerieRepo;
 	@Autowired
 	private FriendRepository friendRepo;
+	@Autowired
+	private UserSportRepository userSportRepo;
+	@Autowired
+	private ProduitRepository produitRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -66,6 +74,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i3 = new Image(null, "lien image3");//Utilisateur
 		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3);
 		
+		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
+		Image i10 = new Image(null, "lien image10");//Utilisateur
+		User u4 = new User(null, "Nekosuke", "PLAITON",Date.valueOf("1980-03-25"),"suke","jsuiscoach",true,a10,i10);
+		
+		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
+		Image i11 = new Image(null, "lien image11");//Utilisateur
+		User u5 = new User(null, "Heirosuke", "PLATINI",Date.valueOf("1970-03-25"),"Bolo","jsuiscoachaussi",true,a11,i11);
+		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
 		Address a6 = new Address(null, "3 Avenue du Général Leclerc","92200","Neuilly-Sur-Seine");
@@ -82,13 +98,23 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s2 = new Sport(null,"Escalade",i5);
 		Sport s3 = new Sport(null,"Piscine",i6);
 		
-		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",0,a4,i5,s1);
-		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",0,a5,i6,s2);
-		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",20,a5,i6,s3);
+		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
+		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
+		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
 		
 		Friend f1 = new Friend(null,u1,u2,false);
 	    Friend f2 = new Friend(null,u1,u3,false);
 	    Friend f3 = new Friend(null,u2,u3,true);
+	    
+	    UserSport us1 = new UserSport(u1,s1);
+	    UserSport us2 = new UserSport(u4,s3);
+	    UserSport us3 = new UserSport(u5,s2);
+	    
+	    Produit p1 = new Produit(null,"Avatar tête de chat",9.99,i7);
+	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
+	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
+		
+
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -101,6 +127,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		addressRepo.save(a3);
 		imageRepo.save(i3);
 		userRepo.save(u3);
+		
+		addressRepo.save(a10);
+		imageRepo.save(i10);
+		userRepo.save(u4);
+		
+		addressRepo.save(a11);
+		imageRepo.save(i11);
+		userRepo.save(u5);
 		
 		addressRepo.save(a4);
 		addressRepo.save(a5);
@@ -124,6 +158,16 @@ public class SportSocialApplication implements CommandLineRunner{
 		friendRepo.save(f1);
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
+	    
+	    userSportRepo.save(us1);
+	    userSportRepo.save(us2);
+	    userSportRepo.save(us3);
+	    
+	    produitRepo.save(p1);
+	    produitRepo.save(p2);
+	    produitRepo.save(p3);
+	    
+	    
 		
 		
 	}

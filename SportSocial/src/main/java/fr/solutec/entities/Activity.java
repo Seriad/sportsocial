@@ -1,6 +1,6 @@
 package fr.solutec.entities;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +19,8 @@ public class Activity {
 	private Long idActivity;
 	
 	private float distance;
-	
+	private Timestamp dateStart;
+	private Timestamp dateEnd;
 	@ManyToOne	
 	private Address addressActivity;
 	@ManyToOne
