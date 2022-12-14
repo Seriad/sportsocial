@@ -1,10 +1,14 @@
 package fr.solutec.rest;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
+
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,17 +38,44 @@ public class MessagerieRest {
 	@PostMapping("message/envoyer")
 	public Messagerie sendMessage( @RequestBody Messagerie messagerie) {
 		
-		String contenu= messagerie.getMessageFK().getContentMessage(); 
-		Optional<User>uexp=userRepo.findByLoginUser(messagerie.getMessageFK().getExpediteurMessage().getLoginUser());
+		String contenu= messagerie.getMessage().getContentMessage(); 
+		Optional<User>uexp=userRepo.findByLoginUser(messagerie.getMessage().getExpediteurMessage().getLoginUser());
 		Message m = new Message(null, null, contenu,uexp.get());
 		
 		Message msave = messageRepo.save(m);
-		
-		String destinataire=messagerie.getUserFK().getLoginUser(); // récupération login du destinataire
+		messageRepo.save(m);
+		String destinataire=messagerie.getDestinataire().getLoginUser(); // récupération login du destinataire
 		Optional<User>udest=userRepo.findByLoginUser(destinataire); // récupération du user
 		Messagerie um= new Messagerie(udest.get(),msave);
 		
 		return messagerieRepo.save(um);
 		
 	} 
+	
+	// Voir les messages 
+	
+	@GetMapping("message/moi/{id}")
+	 List<Messagerie> getMyMessage (@PathVariable Long id){
+		return messagerieRepo.findByDestinataireIdUser(id);
+		//return messagerieRepo.findAll();
+	}
+	
+	
+	
+	
+	
+	
+	
+	/*
+	// Voir les messages qu'on a envoyé
+	
+	@GetMapping("message/ecris")
+	List<Messagerie> getMessageSend(@RequestBody Message message){
+		User expediteur=message.getExpediteurMessage();
+		return messageRepo.findByExpediteurMessage(expediteur);
+		
+	}
+*/
 }
+
+	

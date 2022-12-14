@@ -114,6 +114,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
 		
+
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);

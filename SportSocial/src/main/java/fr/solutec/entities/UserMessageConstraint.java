@@ -5,9 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class UserMessagePK implements Serializable{
+public class UserMessageConstraint implements Serializable{
 
-	private Long userFK;
-	private Long messageFK;
+	private Long destinataire;
+	private Long message;
 	
 }
