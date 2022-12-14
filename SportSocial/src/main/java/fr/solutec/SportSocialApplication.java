@@ -123,7 +123,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
 		
 
-	    Message m1 = new Message(null,null,"I love the pain",u1);
+	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
 	    Message m2 = new Message(null,null,"Me too it's trop bon",u2);
@@ -139,8 +139,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	    
 
-	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
-	    Messagerie msg1= new Messagerie(u2,m1); // Message envoyé à joline
+
 
 		
 		addressRepo.save(a1);
