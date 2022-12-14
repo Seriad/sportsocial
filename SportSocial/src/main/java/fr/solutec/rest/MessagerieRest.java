@@ -54,28 +54,22 @@ public class MessagerieRest {
 	
 	// Voir les messages 
 	
-	@GetMapping("message/moi/{id}")
+	@GetMapping("message/me/{id}")
 	 List<Messagerie> getMyMessage (@PathVariable Long id){
 		return messagerieRepo.findByDestinataireIdUser(id);
 		//return messagerieRepo.findAll();
 	}
 	
 	
-	
-	
-	
-	
-	
-	/*
 	// Voir les messages qu'on a envoyé
 	
-	@GetMapping("message/ecris")
-	List<Messagerie> getMessageSend(@RequestBody Message message){
-		User expediteur=message.getExpediteurMessage();
-		return messageRepo.findByExpediteurMessage(expediteur);
+	@GetMapping("message/wrote/{id}")
+	List<Messagerie> getMessageSend(@PathVariable Long id){
+
+		return messagerieRepo.findByMessageExpediteurMessageIdUser(id);
 		
 	}
-*/
+
 }
 
 	
