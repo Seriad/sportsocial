@@ -106,15 +106,22 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Friend f2 = new Friend(null,u1,u3,false);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    
-	    UserSport us1 = new UserSport(u1,s1);
-	    UserSport us2 = new UserSport(u4,s3);
-	    UserSport us3 = new UserSport(u5,s2);
+	    UserSport us1 = new UserSport(u1,s1,100);
+	    UserSport us2 = new UserSport(u4,s3,200);
+	    UserSport us3 = new UserSport(u5,s2,300);
+	    UserSport us4 = new UserSport(u1,s3,100);
+	    UserSport us5 = new UserSport(u4,s2,200);
+	    UserSport us6 = new UserSport(u5,s1,300);
+	    UserSport us7 = new UserSport(u1,s2,100);
+	    UserSport us8 = new UserSport(u2,s1,200);
+	    UserSport us9 = new UserSport(u3,s3,300);
 	    
 	    Produit p1 = new Produit(null,"Avatar tête de chat",9.99,i7);
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
 		
-
+	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
+	    Messagerie msg1= new Messagerie(u2,m1); // Message associé à joline
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -162,12 +169,19 @@ public class SportSocialApplication implements CommandLineRunner{
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
 	    userSportRepo.save(us3);
+	    userSportRepo.save(us4);
+	    userSportRepo.save(us5);
+	    userSportRepo.save(us6);
+	    userSportRepo.save(us7);
+	    userSportRepo.save(us8);
+	    userSportRepo.save(us9);
 	    
 	    produitRepo.save(p1);
 	    produitRepo.save(p2);
 	    produitRepo.save(p3);
 	    
-	    
+	    messageRepo.save(m1);
+	    messagerieRepo.save(msg1);
 		
 		
 	}

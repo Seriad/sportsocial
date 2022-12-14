@@ -55,8 +55,6 @@ public class FriendRest {
 	        }
 	    }
 
-	 
-
 
 	    @GetMapping("friend/receiver/{idReceiver}") //Voir ces amis acceptés
 	    private List<User> MyFriendship(@PathVariable Long idReceiver){

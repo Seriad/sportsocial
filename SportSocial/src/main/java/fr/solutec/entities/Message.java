@@ -1,6 +1,7 @@
 package fr.solutec.entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Message {
 	@Id @GeneratedValue
 	private Long idMessage;
 	@CreationTimestamp
-	private Date dateSendMessage;
+	private Timestamp dateSendMessage;
 	private String contentMessage;
 	@ManyToOne
 	private User expediteurMessage;
