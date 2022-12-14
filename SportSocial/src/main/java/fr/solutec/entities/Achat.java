@@ -18,6 +18,7 @@ public class Achat {
 	private User userFK;
 	@Id @ManyToOne
 	private Produit produitFK;
+	private boolean validation;
 
 
 }
