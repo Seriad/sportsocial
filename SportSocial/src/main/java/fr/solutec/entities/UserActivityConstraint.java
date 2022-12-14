@@ -5,9 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class UserSportPK implements  Serializable{
-
-	private Long userFK;
-	private Long sportFK;
+public class UserActivityConstraint implements  Serializable{
+	
+	private Long user;
+	private Long activity;
 	
 }

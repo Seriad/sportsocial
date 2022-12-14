@@ -96,8 +96,8 @@ public class UserRest {
 	    }
 	 
 	@GetMapping("coach/{nameSport}") //Chercher les coachs en filtrant par le sport
-	public List<UserSport> searchCoachBySport(@PathVariable String nameSport){
-	return userSportRepo.searchUserBySport(nameSport);
+	public List<UserSport> searchCoachesBySport(@PathVariable String nameSport){
+	return userSportRepo.searchCoachBySport(nameSport);
 	}
 	
 

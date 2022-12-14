@@ -11,12 +11,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Data @IdClass(UserSessionPK.class)
+@Entity @Data @IdClass(UserSessionConstraint.class)
 public class CoachTrainingSession {
 
 	@Id @ManyToOne
-	private User userFK;
+	private User user;
 	@Id @ManyToOne
-	private Session sessionFK;
+	private Session session;
 	
 }

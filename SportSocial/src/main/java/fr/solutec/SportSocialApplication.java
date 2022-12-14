@@ -64,23 +64,23 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
 		Image i1 = new Image(null, "lien image"); //Utilisateur
-		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1870-03-25"),"jeanval","123",false,a1,i1,0.);
+		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1870-03-25"),"jeanval","123",false,a1,i1,0);
 		
 		Address a2 = new Address(null, "17 avenue des salades","75007","Paris");
 		Image i2 = new Image(null, "lien image2");//Utilisateur
-		User u2 = new User(null, "Joline", "Cujoh",Date.valueOf("1870-03-25"),"joline","cujoh",false,a2,i2,0.);
+		User u2 = new User(null, "Joline", "Cujoh",Date.valueOf("1870-03-25"),"joline","cujoh",false,a2,i2,0);
 		
 		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i3 = new Image(null, "lien image3");//Utilisateur
-		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3,0.);
+		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3,0);
 		
 		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i10 = new Image(null, "lien image10");//Utilisateur
-		User u4 = new User(null, "Nekosuke", "PLAITON",Date.valueOf("1980-03-25"),"suke","jsuiscoach",true,a10,i10,0.);
+		User u4 = new User(null, "Nekosuke", "PLAITON",Date.valueOf("1980-03-25"),"suke","jsuiscoach",true,a10,i10,0);
 		
 		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
 		Image i11 = new Image(null, "lien image11");//Utilisateur
-		User u5 = new User(null, "Heirosuke", "PLATINI",Date.valueOf("1970-03-25"),"Bolo","jsuiscoachaussi",true,a11,i11,0.);
+		User u5 = new User(null, "Heirosuke", "PLATINI",Date.valueOf("1970-03-25"),"Bolo","jsuiscoachaussi",true,a11,i11,0);
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
@@ -94,9 +94,10 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i8 = new Image(null, "lien image8");//Event
 		Image i9 = new Image(null, "lien image9");//Event
 		
-		Sport s1 = new Sport(null,"Course à pied",i4);
-		Sport s2 = new Sport(null,"Escalade",i5);
-		Sport s3 = new Sport(null,"Piscine",i6);
+		Sport s1 = new Sport(null,"Running",i4);
+		Sport s2 = new Sport(null,"Swimming",i5);
+		Sport s3 = new Sport(null,"Football",i8);
+		Sport s4 = new Sport(null,"Basketball",i6);
 		
 		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
 		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
@@ -106,14 +107,22 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Friend f2 = new Friend(null,u1,u3,false);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    
-	    UserSport us1 = new UserSport(u1,s1);
-	    UserSport us2 = new UserSport(u4,s3);
-	    UserSport us3 = new UserSport(u5,s2);
-	    
-	    Produit p1 = new Produit(null,"Avatar tête de chat",9.99,i7);
-	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
-	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
+	    UserSport us1 = new UserSport(u1,s1,100);
+	    UserSport us2 = new UserSport(u4,s3,200);
+	    UserSport us3 = new UserSport(u5,s2,300);
+	    UserSport us4 = new UserSport(u1,s3,100);
+	    UserSport us5 = new UserSport(u4,s2,200);
+	    UserSport us6 = new UserSport(u5,s1,300);
+	    UserSport us7 = new UserSport(u1,s2,100);
+	    UserSport us8 = new UserSport(u2,s1,200);
+	    UserSport us9 = new UserSport(u3,s3,300);
+	   
+
+	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i7);
+	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i8);
+	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
 		
+
 	    Message m1 = new Message(null,null,"I love the pain",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
@@ -129,6 +138,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Message m5 = new Message(null,null,"Hello",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	    
+
+	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
+	    Messagerie msg1= new Messagerie(u2,m1); // Message envoyé à joline
+
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -176,6 +189,12 @@ public class SportSocialApplication implements CommandLineRunner{
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
 	    userSportRepo.save(us3);
+	    userSportRepo.save(us4);
+	    userSportRepo.save(us5);
+	    userSportRepo.save(us6);
+	    userSportRepo.save(us7);
+	    userSportRepo.save(us8);
+	    userSportRepo.save(us9);
 	    
 	    produitRepo.save(p1);
 	    produitRepo.save(p2);

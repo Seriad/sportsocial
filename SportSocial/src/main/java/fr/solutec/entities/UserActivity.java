@@ -10,11 +10,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Data @IdClass(UserActivityPK.class)
+@Entity @Data @IdClass(UserActivityConstraint.class)
 public class UserActivity {
 	
 	@Id @ManyToOne
-	private User userFK;
+	private User user;
 	@Id @ManyToOne
-	private Activity activityFK;
+	private Activity activity;
 }

@@ -36,15 +36,16 @@ public class MessagerieRest {
 	
 
 	@PostMapping("message/envoyer")
-	public Messagerie sendMessage( @RequestBody Messagerie messagerie) {
-		
-		String contenu= messagerie.getMessage().getContentMessage(); 
+	public Messagerie sendMessage( @RequestBody Messagerie messagerie) { 
+
+		String contenu= messagerie.getMessage().getContentMessage();
+		System.out.println("contenu "+ contenu);
 		Optional<User>uexp=userRepo.findByLoginUser(messagerie.getMessage().getExpediteurMessage().getLoginUser());
 		Message m = new Message(null, null, contenu,uexp.get());
-		
+	
 		Message msave = messageRepo.save(m);
-		messageRepo.save(m);
-		String destinataire=messagerie.getDestinataire().getLoginUser(); // récupération login du destinataire
+		
+		String destinataire=messagerie.getDestinataire().getLoginUser(); // récupération login du destinataire 
 		Optional<User>udest=userRepo.findByLoginUser(destinataire); // récupération du user
 		Messagerie um= new Messagerie(udest.get(),msave);
 		
