@@ -28,6 +28,7 @@ public class User {
 	private Address addressUser;
 	@ManyToOne
 	private Image imageUser;
+	private double token;
 	
 	
 	
