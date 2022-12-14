@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 public class ActivityRest {
 	
-	//Voir toutes les activités d'un user (par son id)
+	//Voir toutes les activités d'un user (par son id) + test commit
 
 }
