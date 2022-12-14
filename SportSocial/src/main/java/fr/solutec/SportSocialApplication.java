@@ -106,9 +106,15 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Friend f2 = new Friend(null,u1,u3,false);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    
-	    UserSport us1 = new UserSport(u1,s1);
-	    UserSport us2 = new UserSport(u4,s3);
-	    UserSport us3 = new UserSport(u5,s2);
+	    UserSport us1 = new UserSport(u1,s1,100);
+	    UserSport us2 = new UserSport(u4,s3,200);
+	    UserSport us3 = new UserSport(u5,s2,300);
+	    UserSport us4 = new UserSport(u1,s3,100);
+	    UserSport us5 = new UserSport(u4,s2,200);
+	    UserSport us6 = new UserSport(u5,s1,300);
+	    UserSport us7 = new UserSport(u1,s2,100);
+	    UserSport us8 = new UserSport(u2,s1,200);
+	    UserSport us9 = new UserSport(u3,s3,300);
 	    
 	    Produit p1 = new Produit(null,"Avatar tête de chat",9.99,i7);
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
