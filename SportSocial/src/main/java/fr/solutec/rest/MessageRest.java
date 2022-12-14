@@ -1,6 +1,7 @@
 package fr.solutec.rest;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ private UserRepository userRepo;
 //Création de message
 
 @PostMapping("message/créer/{expediteur}")
-public Message createMessage(@PathVariable String expediteur,@RequestBody Date dateSend, @RequestBody String contenu) {
+public Message createMessage(@PathVariable String expediteur,@RequestBody Timestamp dateSend, @RequestBody String contenu) {
 	
 	Optional<User>uexp= userRepo.findByLoginUser(expediteur);
 	Message m = new Message(null, dateSend, contenu,uexp.get());
