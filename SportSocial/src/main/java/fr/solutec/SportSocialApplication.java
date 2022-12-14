@@ -12,12 +12,16 @@ import fr.solutec.entities.Address;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
+import fr.solutec.entities.Message;
+import fr.solutec.entities.Messagerie;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
+import fr.solutec.repository.MessageRepository;
+import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -34,6 +38,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	private SportRepository sportRepo;
 	@Autowired
 	private EventRepository eventRepo;
+	@Autowired
+	private MessageRepository messageRepo;
+	@Autowired
+	private MessagerieRepository messagerieRepo;
 	@Autowired
 	private FriendRepository friendRepo;
 
@@ -119,6 +127,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
 		
+		
 	}
 
 }
+

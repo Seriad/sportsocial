@@ -16,8 +16,8 @@ import lombok.NoArgsConstructor;
 @Entity @Data @IdClass(UserEventPK.class)
 public class UserEvent{
 
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private User userFK;
-	@Id @GeneratedValue @ManyToOne
+	@Id @ManyToOne
 	private Event eventFK;
 }

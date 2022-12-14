@@ -7,7 +7,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UserMessagePK implements Serializable{
 
-	private User userFK;
-	private Message messageFK;
+	private Long userFK;
+	private Long messageFK;
 	
 }

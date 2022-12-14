@@ -16,7 +16,8 @@ public class UserSport {
 	
 	@Id @ManyToOne
 	private User userFK;
-	@Id  @ManyToOne
+	@Id @ManyToOne
+
 	private Sport sportFK;
 
 }

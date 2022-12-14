@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.User;
+
 import fr.solutec.repository.UserRepository;
+import fr.solutec.repository.UserSportRepository;
+
 
 @RestController
 @CrossOrigin("*")
@@ -21,6 +25,9 @@ public class UserRest {
 
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private UserSportRepository userSportRepo;
+
 
 	@GetMapping("user")
 	public Iterable<User> getAllUser() {
@@ -28,6 +35,12 @@ public class UserRest {
 	}
 
 	@PostMapping("user")
+	public Optional<User> postByLoginAndPassword(@RequestBody User u) {
+		return userRepo.findByLoginUserAndPasswordUser(u.getLoginUser(), u.getPasswordUser() );
+	}
+	
+	
+	@PostMapping("user/save")
 	public User saveUser(@RequestBody User u) {
 		return userRepo.save(u);
 	}
@@ -70,7 +83,23 @@ public class UserRest {
 		return userRepo.save(u);
 	}
 	
+	@GetMapping("coach")//Cherche les coachs
+    public List<User> searchCoachs(Long id) { 
+     return userRepo.getCoachsById(id);
+     } 
+
+	  
+
+	 @GetMapping("search/{lastname}/{firstname}") //Rechercher une personne avec son nom et prénom
+	 public List<User> searchByname(@PathVariable String lastname,@PathVariable String firstname){
+	    return userRepo.searchUserByname(lastname, firstname);
+	    }
+	 
+	@GetMapping("coach/{idSport}")
+	public List<User> searchCoachBySport(@PathVariable Long idSport){
+	return userSportRepo.searchUserBySport(idSport);
+	}
 	
-	
+
 
 }

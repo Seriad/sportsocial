@@ -10,6 +10,6 @@ import javax.persistence.Embeddable;
 public class UserSessionPK implements Serializable{
 
 	
-	private User userFK;
-	private Session sessionFK;
+	private Long userFK;
+	private Long sessionFK;
 }
