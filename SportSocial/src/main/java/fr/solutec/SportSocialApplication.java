@@ -16,6 +16,7 @@ import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserSport;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
@@ -24,6 +25,7 @@ import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserRepository;
+import fr.solutec.repository.UserSportRepository;
 
 @SpringBootApplication
 public class SportSocialApplication implements CommandLineRunner{
@@ -44,6 +46,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private MessagerieRepository messagerieRepo;
 	@Autowired
 	private FriendRepository friendRepo;
+	@Autowired
+	private UserSportRepository userSportRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -65,6 +69,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i3 = new Image(null, "lien image3");//Utilisateur
 		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3);
+		
+		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
+		Image i10 = new Image(null, "lien image10");//Utilisateur
+		User u4 = new User(null, "Nekosuke", "PLAITON",Date.valueOf("1980-03-25"),"suke","jsuiscoach",true,a10,i10);
+		
+		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
+		Image i11 = new Image(null, "lien image11");//Utilisateur
+		User u5 = new User(null, "Heirosuke", "PLATINI",Date.valueOf("1970-03-25"),"Bolo","jsuiscoachaussi",true,a11,i11);
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
@@ -90,6 +102,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Friend f2 = new Friend(null,u1,u3,false);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    
+	    UserSport us1 = new UserSport(u1,s1);
+	    UserSport us2 = new UserSport(u4,s3);
+	    UserSport us3 = new UserSport(u5,s2);
 		
 		
 		addressRepo.save(a1);
@@ -103,6 +118,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		addressRepo.save(a3);
 		imageRepo.save(i3);
 		userRepo.save(u3);
+		
+		addressRepo.save(a10);
+		imageRepo.save(i10);
+		userRepo.save(u4);
+		
+		addressRepo.save(a11);
+		imageRepo.save(i11);
+		userRepo.save(u5);
 		
 		addressRepo.save(a4);
 		addressRepo.save(a5);
@@ -126,6 +149,12 @@ public class SportSocialApplication implements CommandLineRunner{
 		friendRepo.save(f1);
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
+	    
+	    userSportRepo.save(us1);
+	    userSportRepo.save(us2);
+	    userSportRepo.save(us3);
+	    
+	    
 		
 		
 	}
