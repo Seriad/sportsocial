@@ -1,6 +1,6 @@
 package fr.solutec.entities;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +17,8 @@ public class Session {
 	
 	@Id @GeneratedValue
 	private Long idSession;
-	private float durationSession;
+	private Timestamp dateStart;
+	private Timestamp dateEnd;
 	@ManyToOne
 	private Sport sportSession;
 	@ManyToOne

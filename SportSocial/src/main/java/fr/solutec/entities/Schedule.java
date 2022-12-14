@@ -18,8 +18,6 @@ public class Schedule {
 	@Id @GeneratedValue
 	private Long idSchedule;
 	private String nameActivity;
-	private Date dateStart;
-	private Date dateEnd;
 	@ManyToOne
 	private Session sessionSchedule;
 	@OneToOne
