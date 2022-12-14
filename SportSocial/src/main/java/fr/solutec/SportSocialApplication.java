@@ -115,7 +115,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
 		
 	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
-	    Messagerie msg1= new Messagerie(u2,m1);
+	    Messagerie msg1= new Messagerie(u2,m1); // Message associé à joline
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);

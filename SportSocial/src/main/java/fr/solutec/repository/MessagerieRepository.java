@@ -9,6 +9,8 @@ public interface MessagerieRepository extends CrudRepository<Messagerie, Long>{
 
 	List<Messagerie> findByDestinataireIdUser(Long idUser);
 
+	List<Messagerie> findByMessageExpediteurMessageIdUser(Long id);
+
 
 
 
