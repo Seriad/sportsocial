@@ -9,6 +9,10 @@ import fr.solutec.entities.UserSport;
 
 public interface UserSportRepository extends CrudRepository<UserSport, Long > {
 	
-	@Query("SELECT u FROM UserSport u WHERE u.sportFK.nameSport = ?1 AND u.userFK.coachUser = true")
-	public List<UserSport> searchUserBySport(String nameSport);
+	@Query("SELECT u FROM UserSport u WHERE u.sport.nameSport = ?1 AND u.user.coachUser = true")
+	public List<UserSport> searchCoachBySport(String nameSport); 
+
+	@Query("SELECT u FROM UserSport u WHERE u.sport.nameSport = ?1 ORDER BY u.score asc")
+	public List<UserSport>searchScoreBySportAsc(String nameSport);
 }
+

@@ -169,6 +169,12 @@ public class SportSocialApplication implements CommandLineRunner{
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
 	    userSportRepo.save(us3);
+	    userSportRepo.save(us4);
+	    userSportRepo.save(us5);
+	    userSportRepo.save(us6);
+	    userSportRepo.save(us7);
+	    userSportRepo.save(us8);
+	    userSportRepo.save(us9);
 	    
 	    produitRepo.save(p1);
 	    produitRepo.save(p2);

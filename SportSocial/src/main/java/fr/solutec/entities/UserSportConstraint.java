@@ -7,7 +7,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class UserSportConstraint implements  Serializable{
 
-	private Long userFK;
-	private Long sportFK;
+	private Long user;
+	private Long sport;
 	
 }

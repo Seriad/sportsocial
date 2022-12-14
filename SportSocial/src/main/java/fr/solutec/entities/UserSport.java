@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 public class UserSport {
 
 	@Id @ManyToOne
-	private User userFK;
+	private User user;
 	@Id @ManyToOne
-	private Sport sportFK;
+	private Sport sport;
 	private int score;
 }
