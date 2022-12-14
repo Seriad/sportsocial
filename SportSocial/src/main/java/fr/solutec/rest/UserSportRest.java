@@ -17,8 +17,12 @@ public class UserSportRest {
 	@Autowired
 	private UserSportRepository userSportRepo;
 	
-	@GetMapping("classement/{nameSport}")
-	public List<UserSport> rankingBySport(@PathVariable String nameSport){
+	@GetMapping("classement/{nameSport}/asc")
+	public List<UserSport> rankingBySportasc(@PathVariable String nameSport){
 		return userSportRepo.searchScoreBySportAsc(nameSport);
+	}
+	@GetMapping("classement/{nameSport}/desc")
+	public List<UserSport> rankingBySportdesc(@PathVariable String nameSport){
+		return userSportRepo.searchScoreBySportDesc(nameSport);
 	}
 }

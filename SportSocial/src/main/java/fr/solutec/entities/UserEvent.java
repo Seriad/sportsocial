@@ -13,11 +13,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Data @IdClass(UserEventPK.class)
+@Entity @Data @IdClass(UserEventConstraint.class)
 public class UserEvent{
 
 	@Id @ManyToOne
-	private User userFK;
+	private User user;
 	@Id @ManyToOne
-	private Event eventFK;
+	private Event event;
 }

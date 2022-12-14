@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Embeddable
 
-public class UserEventPK implements Serializable{
+public class UserEventConstraint implements Serializable{
 
-	private Long userFK;
-	private Long eventFK;
+	private Long user;
+	private Long event;
 }

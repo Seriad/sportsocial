@@ -7,9 +7,9 @@ import javax.persistence.Embeddable;
 
 
 @Embeddable
-public class UserSessionPK implements Serializable{
+public class UserSessionConstraint implements Serializable{
 
 	
-	private Long userFK;
-	private Long sessionFK;
+	private Long user;
+	private Long session;
 }
