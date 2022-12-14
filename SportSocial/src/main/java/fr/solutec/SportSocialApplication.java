@@ -1,7 +1,7 @@
 package fr.solutec;
 
 import java.sql.Date;
-
+import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -94,9 +94,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s2 = new Sport(null,"Escalade",i5);
 		Sport s3 = new Sport(null,"Piscine",i6);
 		
-		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",0,a4,i5,s1);
-		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",0,a5,i6,s2);
-		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",20,a5,i6,s3);
+		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
+		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
+		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
 		
 		Friend f1 = new Friend(null,u1,u2,false);
 	    Friend f2 = new Friend(null,u1,u3,false);
