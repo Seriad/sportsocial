@@ -10,7 +10,7 @@ import fr.solutec.entities.Event;
 public interface EventRepository extends CrudRepository<Event, Long>{
 	
 
-	@Query("SELECT e FROM Event e WHERE e.dateStart > CURRENT_TIMESTAMP")
+	@Query("SELECT e FROM Event e WHERE e.dateStart > CURRENT_TIMESTAMP order by e.dateStart asc")
     Iterable<Event> eventsToCome ();
 
 }
