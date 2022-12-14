@@ -114,8 +114,21 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
 		
-	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
-	    Messagerie msg1= new Messagerie(u2,m1); // Message associé à joline
+	    Message m1 = new Message(null,null,"I love the pain",u1);
+	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
+	    
+	    Message m2 = new Message(null,null,"Me too it's trop bon",u2);
+	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
+	    
+	    Message m3 = new Message(null,null,"J'adore doing du vélo",u1);
+	    Messagerie msg3= new Messagerie(u2,m3); // Message jeanval to joline
+	    
+	    Message m4 = new Message(null,null,"Me too !",u2);
+	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
+	    
+	    Message m5 = new Message(null,null,"Hello",u5);
+	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
+	    
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -170,6 +183,18 @@ public class SportSocialApplication implements CommandLineRunner{
 	    
 	    messageRepo.save(m1);
 	    messagerieRepo.save(msg1);
+	    
+	    messageRepo.save(m2);
+	    messagerieRepo.save(msg2);
+	    
+	    messageRepo.save(m3);
+	    messagerieRepo.save(msg3);
+	    
+	    messageRepo.save(m4);
+	    messagerieRepo.save(msg4);
+	    
+	    messageRepo.save(m5);
+	    messagerieRepo.save(msg5);
 		
 		
 	}
