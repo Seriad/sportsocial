@@ -11,12 +11,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor
-@Entity @Data @IdClass(UserMessagePK.class)
+@Entity @Data @IdClass(UserMessageConstraint.class)
 public class Messagerie {
 
 	
 	@Id @ManyToOne
-	private User userFK; // Destinataire
+	private User destinataire; // Destinataire
 	@Id @ManyToOne
-	private Message messageFK; 
+	private Message message; 
 }

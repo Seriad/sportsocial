@@ -89,8 +89,6 @@ public class SportSocialApplication implements CommandLineRunner{
 		Friend f1 = new Friend(null,u1,u2,false);
 	    Friend f2 = new Friend(null,u1,u3,false);
 	    Friend f3 = new Friend(null,u2,u3,true);
-	    
-		
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
