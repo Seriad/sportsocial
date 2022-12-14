@@ -17,7 +17,7 @@ public class Produit {
 	private Long idProduit;
 	
 	private String descriptionProduit;
-	private Float prixTokenProduit;
+	private Double prixTokenProduit;
 	@ManyToOne
 	private Image imageProduit;
 }

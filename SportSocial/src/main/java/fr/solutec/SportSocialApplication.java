@@ -14,6 +14,7 @@ import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
+import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
@@ -23,6 +24,7 @@ import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
+import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
@@ -48,6 +50,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private FriendRepository friendRepo;
 	@Autowired
 	private UserSportRepository userSportRepo;
+	@Autowired
+	private ProduitRepository produitRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -105,6 +109,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserSport us1 = new UserSport(u1,s1);
 	    UserSport us2 = new UserSport(u4,s3);
 	    UserSport us3 = new UserSport(u5,s2);
+	    
+	    Produit p1 = new Produit(null,"Avatar tête de chat",9.99,i7);
+	    Produit p2 = new Produit(null,"Avatar tête de singe",40.99,i8);
+	    Produit p3 = new Produit(null,"Avatar casque de moto",15.,i9);
 		
 		
 		addressRepo.save(a1);
@@ -153,6 +161,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
 	    userSportRepo.save(us3);
+	    
+	    produitRepo.save(p1);
+	    produitRepo.save(p2);
+	    produitRepo.save(p3);
 	    
 	    
 		
