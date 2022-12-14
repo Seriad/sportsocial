@@ -17,12 +17,12 @@ public class ProduitRest {
 	@Autowired
 	private ProduitRepository produitRepo;
 	
-	@GetMapping("avatar")
+	@GetMapping("avatar") //Voir tout les avatars
 	private Iterable<Produit> getAllAvatar() {
 		return produitRepo.findAll();
 	}
 	
-	@GetMapping("avatar/{description}")
+	@GetMapping("avatar/{description}") //Voir avatar en filtrant avec un mot descriptif
 	private List<Produit> getAvatarWithDescription(@PathVariable String description){
 		return produitRepo.getProduitByDescriptif(description);
 	}
