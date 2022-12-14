@@ -116,9 +116,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserSport us7 = new UserSport(u1,s2,100);
 	    UserSport us8 = new UserSport(u2,s1,200);
 	    UserSport us9 = new UserSport(u3,s3,300);
-	    
-	    Produit p1 = new Produit(null,"Avatar tête de chat",10,i7);
-	    Produit p2 = new Produit(null,"Avatar tête de singe",41,i8);
+	   
+
+	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i7);
+	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i8);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
 		
 	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
