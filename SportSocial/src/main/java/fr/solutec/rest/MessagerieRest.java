@@ -104,7 +104,13 @@ public class MessagerieRest {
 		return messagerieRepo.findByMessageExpediteurMessageIdUser(id);
 		
 	}
+	
+	@GetMapping("message/me/{dest}/{exp}/top")
+	List<Messagerie> getMyMessageTop (@PathVariable Long dest, @PathVariable Long exp){
+	return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserDescTop(dest,exp);
+	}
 
+	
 }
 
 	
