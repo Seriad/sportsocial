@@ -68,6 +68,13 @@ public class MessagerieRest {
 		return messagerieRepo.TrouverByDestinataireIdUserAsc(id);
 	}
 	
+	// Voir les messages reçu en fonction du temps ET par expediteur
+	
+	@GetMapping("message/me/{dest}/{exp}/asc")
+	List<Messagerie> getMyMessageByExpAsc (@PathVariable Long dest, @PathVariable Long exp){
+		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserAsc(dest, exp);
+	}
+	
 	// Voir les messages qu'on a envoyé
 	
 	@GetMapping("message/wrote/{id}")
