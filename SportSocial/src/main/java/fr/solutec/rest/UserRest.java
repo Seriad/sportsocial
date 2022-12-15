@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.UserRepository;
@@ -96,8 +97,8 @@ public class UserRest {
 	    }
 	 
 	@GetMapping("coach/{nameSport}") //Chercher les coachs en filtrant par le sport
-	public List<UserSport> searchCoachesBySport(@PathVariable String nameSport){
-	return userSportRepo.searchCoachBySport(nameSport);
+	public List<User> searchCoachesBySport(@PathVariable String nameSport){
+	return userRepo.searchCoachBySport(nameSport);
 	}
 	
 
