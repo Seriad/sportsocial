@@ -53,6 +53,20 @@ public class MessagerieRest {
 		
 	} 
 	
+	@PostMapping("message/envoyer/{dest}/{exp}")
+    public Messagerie sendMessageById(@PathVariable Long dest, @PathVariable Long exp, @RequestBody Messagerie messagerie) {
+
+        String contenu=messagerie.getMessage().getContentMessage();
+        Optional<User>uexp=userRepo.findByIdUser(exp);
+        Message m = new Message (null,null,contenu,uexp.get());
+        Message msave = messageRepo.save(m);
+
+        Optional<User>udest=userRepo.findByIdUser(dest);
+        Messagerie msg=new Messagerie (udest.get(),msave);
+
+        return messagerieRepo.save(msg);
+    }
+	
 	// Voir les messages 
 	
 	@GetMapping("message/me/{id}")

@@ -27,7 +27,9 @@ public interface UserRepository extends CrudRepository<User, Long>{
     List<User> getCoachsById(Long id);
 
  
-	
+	public Optional<User> findByIdUser(Long exp);
+
+
 	
 
 }
