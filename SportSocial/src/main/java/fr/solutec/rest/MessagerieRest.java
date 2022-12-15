@@ -61,6 +61,12 @@ public class MessagerieRest {
 		//return messagerieRepo.findAll();
 	}
 	
+	// Voir les messages reçu en fonction du temps
+	
+	@GetMapping("message/me/{id}/asc")
+	 List<Messagerie> getMyMessageAsc (@PathVariable Long id){
+		return messagerieRepo.TrouverByDestinataireIdUserAsc(id);
+	}
 	
 	// Voir les messages qu'on a envoyé
 	
