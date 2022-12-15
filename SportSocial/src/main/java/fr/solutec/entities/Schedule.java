@@ -1,6 +1,7 @@
 package fr.solutec.entities;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,8 @@ public class Schedule {
 	@Id @GeneratedValue
 	private Long idSchedule;
 	private String nameActivity;
+	private Timestamp dateStart;
+	private Timestamp dateEnd;
 	@ManyToOne
 	private Session sessionSchedule;
 	@OneToOne

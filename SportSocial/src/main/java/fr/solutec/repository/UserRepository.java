@@ -7,10 +7,14 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserSport;
 
 public interface UserRepository extends CrudRepository<User, Long>{
 	
 	public Optional<User> findByLoginUserAndPasswordUser(String login, String password);
+	
+	@Query("SELECT u FROM User u INNER JOIN UserSport s ON s.user.idUser=u.idUser WHERE s.sport.nameSport = ?1 AND s.user.coachUser = true")
+	public List<User> searchCoachBySport(String nameSport); 
 
 
     @Query ("SELECT u FROM User u WHERE u.lastNameUser = ?1 AND u.firstNameUser = ?2")

@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public class ScheduleRest {
 		Optional<User> u = userRepo.findById(idUser);
 		s.setUserSchedule(u.get());
 		return scheduleRepo.save(s);
+	}
+	
+	@GetMapping("schedule/{idUser}")
+	private List<Schedule> getSchedule(@PathVariable Long idUser ){
+		Optional<User> u = userRepo.findById(idUser);
+		return scheduleRepo.findByUserSchedule(u);
+		
 	}
 	
 	@DeleteMapping("schedule/delete/{idSchedule}")//Supression d'un schedule
