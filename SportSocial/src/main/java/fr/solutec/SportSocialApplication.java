@@ -123,19 +123,19 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
 		
 
-	    Message m1 = new Message(null,null,"Vraiment sympa de faire du vélo",u1);
+	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Vraiment sympa de faire du vélo",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
-	    Message m2 = new Message(null,null,"Me too it's trop bon",u2);
+	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Me too it's trop bon",u2);
 	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
 	    
-	    Message m3 = new Message(null,null,"J'adore doing du vélo",u1);
+	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-25 10:20:00"),"J'adore doing du vélo",u1);
 	    Messagerie msg3= new Messagerie(u2,m3); // Message jeanval to joline
 	    
-	    Message m4 = new Message(null,null,"Me too !",u2);
+	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-25 10:30:00"),"Me too !",u2);
 	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
 	    
-	    Message m5 = new Message(null,null,"Hello",u5);
+	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	    
 
