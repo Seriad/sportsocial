@@ -19,7 +19,7 @@ public class Schedule {
 	@Id @GeneratedValue
 	private Long idSchedule;
 	private String nameActivity;
-	private Timestamp dateStar;
+	private Timestamp dateStart;
 	private Timestamp dateEnd;
 	@ManyToOne
 	private Session sessionSchedule;
