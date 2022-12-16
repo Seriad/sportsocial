@@ -84,7 +84,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i10 = new Image(null, "lien image10");//Utilisateur
-		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","jsuiscoach",true,a10,i10,0);
+		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","111",true,a10,i10,0);
 		
 		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
 		Image i11 = new Image(null, "lien image11");//Utilisateur
@@ -115,6 +115,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Friend f2 = new Friend(null,u1,u3,true);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    Friend f4 = new Friend(null,u2,u5,true);
+	    Friend f5 = new Friend(null,u2,u4,false);
 	    
 	    UserSport us1 = new UserSport(u1,s1,100);
 	    UserSport us2 = new UserSport(u4,s3,200);
@@ -199,6 +200,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
 	    friendRepo.save(f4);
+	    friendRepo.save(f5);
 	    
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);

@@ -10,10 +10,16 @@ import fr.solutec.entities.Friend;
 public interface FriendRepository extends CrudRepository<Friend, Long> {
     @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1 OR f.receiver.id = ?1) AND accept = true")
     List<Friend> getMyFriends (Long idUser);
-
+    
  
 
     @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1 OR f.receiver.id = ?1) AND accept = false")
     List<Friend> getMyFriendRequest (Long idUser);
+    
+    
+    @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1 OR f.receiver.id = ?1) AND accept = false OR (f.receiver.id = ?1 OR f.applicant.id = ?1) AND accept = false")
+    List<Friend> deleteMyFriends (Long idApplicant, Long idReceiver);
+    
+    
 
 }
