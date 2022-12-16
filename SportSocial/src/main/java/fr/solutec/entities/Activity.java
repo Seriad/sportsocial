@@ -22,6 +22,7 @@ public class Activity {
 	private String nameActivity;
 	private Timestamp dateStart;
 	private Timestamp dateEnd;
+	private String descActivity;
 	@ManyToOne	
 	private Address addressActivity;
 	@ManyToOne
