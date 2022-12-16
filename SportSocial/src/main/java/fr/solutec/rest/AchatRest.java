@@ -46,11 +46,23 @@ public class AchatRest {
 		return Optional.of(a.get());
 	}
 	
-	@GetMapping("boutique/achat/{idUser}/{montantEuro}")
-	private boolean achatToken(@PathVariable Long idUser, @PathVariable int montantEuro) {
+	@GetMapping("boutique/achat/euro/{idUser}/{montantEuro}")
+	private boolean achatTokenavecEuro(@PathVariable Long idUser, @PathVariable int montantEuro) {
 		Optional<User> u = userRepo.findById(idUser);
 		if(montantEuro>0) {
-		u.get().setToken(montantEuro*3);
+		u.get().setToken(u.get().getToken() + montantEuro*3);
+		userRepo.save(u.get());
+		return true;
+		
+	}
+		return false;
+	}
+	
+	@GetMapping("boutique/achat/{idUser}/{montantToken}")
+	private boolean achatToken(@PathVariable Long idUser, @PathVariable int montantToken) {
+		Optional<User> u = userRepo.findById(idUser);
+		if(montantToken>0) {
+		u.get().setToken(u.get().getToken() +montantToken);
 		userRepo.save(u.get());
 		return true;
 		
