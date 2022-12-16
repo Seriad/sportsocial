@@ -21,3 +21,4 @@ public class Friend {
     private User receiver;
     private boolean accept;
 }
+

@@ -24,7 +24,7 @@ private UserRepository userRepo;
 
 
 
-@GetMapping("Activity/{iduser}")
+@GetMapping("activity/{iduser}")
 public List<UserActivity> getUserActivity (@PathVariable Long iduser) {
 	return userActivityRepository.findByUserIdUser(iduser);
 }
