@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Achat;
@@ -36,11 +38,23 @@ public class AchatRest {
 			u.get().setToken(u.get().getToken()-p.get().getPrixTokenProduit());
 			a.get().setValidation(true);
 			achatRepo.save(a.get());
+			userRepo.save(u.get());
 			return Optional.of(a.get());
 			
 		}
 		return Optional.of(a.get());
 	}
 	
+	@PutMapping("boutique/achat/{idUser}/{montantEuro}")
+	private boolean achatToken(@PathVariable Long idUser, @PathVariable int montantEuro) {
+		Optional<User> u = userRepo.findById(idUser);
+		if(montantEuro>0) {
+		u.get().setToken(montantEuro*3);
+		userRepo.save(u.get());
+		return true;
+		
+	}
+		return false;
+	}
 
 }
