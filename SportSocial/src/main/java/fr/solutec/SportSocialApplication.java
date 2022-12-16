@@ -64,23 +64,23 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
 		Image i1 = new Image(null, "lien image"); //Utilisateur
-		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1870-03-25"),"jeanval","123",false,a1,i1,0);
+		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,i1,0);
 		
 		Address a2 = new Address(null, "17 avenue des salades","75007","Paris");
 		Image i2 = new Image(null, "lien image2");//Utilisateur
-		User u2 = new User(null, "Joline", "Cujoh",Date.valueOf("1870-03-25"),"joline","cujoh",false,a2,i2,0);
+		User u2 = new User(null,  "Cujoh","Joline",Date.valueOf("2000-07-25"),"JoFitness","cujoh",false,a2,i2,0);
 		
 		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i3 = new Image(null, "lien image3");//Utilisateur
-		User u3 = new User(null, "Josuke", "Higashikata",Date.valueOf("1870-03-25"),"josuke","higashikata",false,a3,i3,0);
+		User u3 = new User(null,  "Dufour","Stéphanie",Date.valueOf("1970-10-05"),"Steph","456",false,a3,i3,0);
 		
 		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i10 = new Image(null, "lien image10");//Utilisateur
-		User u4 = new User(null, "Nekosuke", "PLAITON",Date.valueOf("1980-03-25"),"suke","jsuiscoach",true,a10,i10,0);
+		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","jsuiscoach",true,a10,i10,0);
 		
 		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
 		Image i11 = new Image(null, "lien image11");//Utilisateur
-		User u5 = new User(null, "Heirosuke", "PLATINI",Date.valueOf("1970-03-25"),"Bolo","jsuiscoachaussi",true,a11,i11,0);
+		User u5 = new User(null,  "Perrera","Antoine",Date.valueOf("1970-08-23"),"Anto","jsuiscoachaussi",true,a11,i11,0);
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
@@ -99,13 +99,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s3 = new Sport(null,"Football",i8);
 		Sport s4 = new Sport(null,"Basketball",i6);
 		
-		Event e1 = new Event(null,"Evenement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
-		Event e2 = new Event(null,"Evenement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
+		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
+		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
 		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
 		
-		Friend f1 = new Friend(null,u1,u2,false);
-	    Friend f2 = new Friend(null,u1,u3,false);
+		Friend f1 = new Friend(null,u1,u2,true);
+	    Friend f2 = new Friend(null,u1,u3,true);
 	    Friend f3 = new Friend(null,u2,u3,true);
+	    Friend f4 = new Friend(null,u2,u5,true);
 	    
 	    UserSport us1 = new UserSport(u1,s1,100);
 	    UserSport us2 = new UserSport(u4,s3,200);
@@ -126,7 +127,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
-	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Ouaip Pourquoi pas! Mais tu payes l'entrée :p",u2);
+	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
 	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
 	    
 	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-25 10:20:00"),"T'inquiète, je peux inviter des gens avec mon abonnement",u1);
@@ -135,7 +136,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-25 10:30:00"),"Ah bah faisons comme ça!",u2);
 	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
 	    
-	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour leclub de Basket loisir ?",u5);
+	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	    
 
@@ -176,6 +177,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		sportRepo.save(s1);
 		sportRepo.save(s2);
 		sportRepo.save(s3);
+		sportRepo.save(s4);
 		
 		eventRepo.save(e1);
 		eventRepo.save(e2);
@@ -184,6 +186,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		friendRepo.save(f1);
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
+	    friendRepo.save(f4);
 	    
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
