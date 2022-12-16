@@ -18,6 +18,7 @@ import fr.solutec.entities.Messagerie;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserActivity;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
@@ -28,6 +29,7 @@ import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
+import fr.solutec.repository.UserActivityRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -56,6 +58,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private ProduitRepository produitRepo;
 	@Autowired
 	private ActivityRepository activityRepo;
+	@Autowired
+	private UserActivityRepository userActivityRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -147,6 +151,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",a5,s2);
 	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",a6,s3);
 	    
+	    UserActivity uac1= new UserActivity(u1,ac1);
+	    UserActivity uac2= new UserActivity(u1,ac2);
+	    UserActivity uac3= new UserActivity(u2,ac3);
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -225,6 +232,10 @@ public class SportSocialApplication implements CommandLineRunner{
 		activityRepo.save(ac1);
 		activityRepo.save(ac2);
 		activityRepo.save(ac3);
+		
+		userActivityRepo.save(uac1);
+		userActivityRepo.save(uac2);
+		userActivityRepo.save(uac3);
 		
 		
 
