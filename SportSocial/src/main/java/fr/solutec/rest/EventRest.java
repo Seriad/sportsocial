@@ -1,7 +1,5 @@
 package fr.solutec.rest;
 
-import java.sql.Timestamp;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,7 +29,6 @@ public class EventRest {
 		return eventRepo.findAll();
 	}
 	
-	Timestamp now= new Timestamp(System.currentTimeMillis());
 	
 
 	@GetMapping("event/tocome")
