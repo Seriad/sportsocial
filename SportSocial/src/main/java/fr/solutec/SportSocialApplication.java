@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.solutec.entities.Activity;
 import fr.solutec.entities.Address;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
@@ -142,6 +143,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	 
+	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",a4,s1);
+	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",a5,s2);
+	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",a6,s3);
 	    
 		
 		addressRepo.save(a1);
@@ -218,7 +222,12 @@ public class SportSocialApplication implements CommandLineRunner{
 	    messageRepo.save(m5);
 	    messagerieRepo.save(msg5);
 		
+		activityRepo.save(ac1);
+		activityRepo.save(ac2);
+		activityRepo.save(ac3);
 		
+		
+
 	}
 
 }
