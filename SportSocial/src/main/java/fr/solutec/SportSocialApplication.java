@@ -94,14 +94,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i8 = new Image(null, "lien image8");//Event
 		Image i9 = new Image(null, "lien image9");//Event
 		
-		Sport s1 = new Sport(null,"Running",i4);
-		Sport s2 = new Sport(null,"Swimming",i5);
+		Sport s1 = new Sport(null,"Course à pied",i4);
+		Sport s2 = new Sport(null,"Natation",i5);
 		Sport s3 = new Sport(null,"Football",i8);
 		Sport s4 = new Sport(null,"Basketball",i6);
 		
-		Event e1 = new Event(null,"Evenement de course à pied!","Bah on va courir hein",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
-		Event e2 = new Event(null,"J'adore Grimper","Escalade jusqu'au sommet du MontHugual",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
-		Event e3 = new Event(null,"La Piscine c'est pas ouf mais bon","On y va faut bien se muscler un peu",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
+		Event e1 = new Event(null,"Evenement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
+		Event e2 = new Event(null,"Evenement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
+		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
 		
 		Friend f1 = new Friend(null,u1,u2,false);
 	    Friend f2 = new Friend(null,u1,u3,false);
@@ -123,19 +123,19 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
 		
 
-	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Vraiment sympa de faire du vélo",u1);
+	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
-	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Me too it's trop bon",u2);
+	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Ouaip Pourquoi pas! Mais tu payes l'entrée :p",u2);
 	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
 	    
-	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-25 10:20:00"),"J'adore doing du vélo",u1);
+	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-25 10:20:00"),"T'inquiète, je peux inviter des gens avec mon abonnement",u1);
 	    Messagerie msg3= new Messagerie(u2,m3); // Message jeanval to joline
 	    
-	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-25 10:30:00"),"Me too !",u2);
+	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-25 10:30:00"),"Ah bah faisons comme ça!",u2);
 	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
 	    
-	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello",u5);
+	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour leclub de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	    
 
