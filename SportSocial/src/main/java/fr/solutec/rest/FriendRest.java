@@ -56,6 +56,21 @@ public class FriendRest {
 	            return false;
 	        }
 	    }
+	    
+	    @DeleteMapping("friend/refusebyid/{idReceiver}/{idApplicant}")
+	    private boolean refuseFrienshipById (@PathVariable Long idReceiver, @PathVariable Long idApplicant) {
+	    	Optional<Friend>recei = friendRepos.findById(idReceiver);
+	    	Optional<Friend>appli = friendRepos.findById(idApplicant);
+	    	if (recei.isPresent() && appli.isPresent()) {
+	    		friendRepos.deleteMyFriends(idApplicant, idReceiver);
+	    		return true;
+
+	        }else {
+	            return false;
+	        }
+	    	
+	    }
+	    
 
 
 	    @GetMapping("friend/receiver/{idReceiver}") //Voir ces amis acceptés
