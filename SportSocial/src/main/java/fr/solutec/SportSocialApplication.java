@@ -123,7 +123,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
 		
 
-	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu. Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
+	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
 	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Ouaip Pourquoi pas! Mais tu payes l'entrée :p",u2);
