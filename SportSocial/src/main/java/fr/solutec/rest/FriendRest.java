@@ -76,6 +76,24 @@ public class FriendRest {
 	        return friends;
 	    }
 	    
+	    @GetMapping("notfriend/receiver/{idReceiver}") //Les les demandes d'amis
+	    private List<User> MyNotFriendship(@PathVariable Long idReceiver){
+	        List<User> friends = new ArrayList <>();
+	        List<Friend> recup = friendRepos.getMyFriendRequest(idReceiver);
+	        Optional<User> u = userRepos.findById(idReceiver);
+	        if(u.isPresent()) {
+	            for (Friend friend : recup) {
+	                if(!friend.getApplicant().equals(u.get())) {
+	                    friends.add(friend.getApplicant());
+	                }
+	                if(!friend.getReceiver().equals(u.get())) {
+	                    friends.add(friend.getReceiver());
+	                }
+	            }
+	        }
+	        return friends;
+	    }
+	    
 	    
 
 }

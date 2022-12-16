@@ -107,6 +107,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Friend f2 = new Friend(null,u1,u3,true);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    Friend f4 = new Friend(null,u2,u5,true);
+	    Friend f5 = new Friend(null,u2,u4,false);
 	    
 	    UserSport us1 = new UserSport(u1,s1,100);
 	    UserSport us2 = new UserSport(u4,s3,200);
@@ -187,6 +188,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
 	    friendRepo.save(f4);
+	    friendRepo.save(f5);
 	    
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
