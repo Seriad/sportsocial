@@ -18,15 +18,15 @@ public class Activity {
 	@Id @GeneratedValue
 	private Long idActivity;
 	
-	private float distance;
+	private double distance;
+	private String nameActivity;
 	private Timestamp dateStart;
 	private Timestamp dateEnd;
+	private String descActivity;
 	@ManyToOne	
 	private Address addressActivity;
 	@ManyToOne
 	private Sport sportActivity;
-	@ManyToOne
-	private Schedule scheduleActivity;
 	
 
 }

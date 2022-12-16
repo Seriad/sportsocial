@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import fr.solutec.entities.Activity;
 import fr.solutec.entities.Address;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
@@ -17,7 +18,9 @@ import fr.solutec.entities.Messagerie;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserActivity;
 import fr.solutec.entities.UserSport;
+import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
@@ -26,6 +29,7 @@ import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
+import fr.solutec.repository.UserActivityRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -52,6 +56,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	private UserSportRepository userSportRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
+	@Autowired
+	private ActivityRepository activityRepo;
+	@Autowired
+	private UserActivityRepository userActivityRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -139,10 +147,14 @@ public class SportSocialApplication implements CommandLineRunner{
 	    
 	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
+	 
+	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",a4,s1);
+	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",a5,s2);
+	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",a6,s3);
 	    
-
-
-
+	    UserActivity uac1= new UserActivity(u1,ac1);
+	    UserActivity uac2= new UserActivity(u1,ac2);
+	    UserActivity uac3= new UserActivity(u2,ac3);
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -219,7 +231,16 @@ public class SportSocialApplication implements CommandLineRunner{
 	    messageRepo.save(m5);
 	    messagerieRepo.save(msg5);
 		
+		activityRepo.save(ac1);
+		activityRepo.save(ac2);
+		activityRepo.save(ac3);
 		
+		userActivityRepo.save(uac1);
+		userActivityRepo.save(uac2);
+		userActivityRepo.save(uac3);
+		
+		
+
 	}
 
 }
