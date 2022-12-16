@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -45,7 +46,7 @@ public class AchatRest {
 		return Optional.of(a.get());
 	}
 	
-	@PutMapping("boutique/achat/{idUser}/{montantEuro}")
+	@GetMapping("boutique/achat/{idUser}/{montantEuro}")
 	private boolean achatToken(@PathVariable Long idUser, @PathVariable int montantEuro) {
 		Optional<User> u = userRepo.findById(idUser);
 		if(montantEuro>0) {
@@ -56,5 +57,7 @@ public class AchatRest {
 	}
 		return false;
 	}
+	
+	
 
 }
