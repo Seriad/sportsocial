@@ -1,3 +1,4 @@
+
 package fr.solutec.rest;
 
 import java.util.List;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Activity;
 import fr.solutec.entities.UserActivity;
 import fr.solutec.entities.UserEvent;
+import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.UserActivityRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -19,8 +22,7 @@ import fr.solutec.repository.UserRepository;
 public class UserActivityRest {
 @Autowired
 private UserActivityRepository userActivityRepository;
-@Autowired
-private UserRepository userRepo;
+
 
 
 
@@ -28,6 +30,7 @@ private UserRepository userRepo;
 public List<UserActivity> getUserActivity (@PathVariable Long iduser) {
 	return userActivityRepository.findByUserIdUser(iduser);
 }
+
 
 
 }
