@@ -1,6 +1,7 @@
 package fr.solutec.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,5 +15,9 @@ public interface UserSportRepository extends CrudRepository<UserSport, Long > {
 	
 	@Query("SELECT u FROM UserSport u JOIN Sport s ON u.sport=s.idSport WHERE u.sport.nameSport = ?1 ORDER BY u.score desc")
 	public List<UserSport>searchScoreBySportDesc(String nameSport);
+
+	public java.util.Optional<UserSport> findByUserLoginUser(UserSport sport);
+
+	public List<UserSport> findByUserIdUser(Long id);
 }
 

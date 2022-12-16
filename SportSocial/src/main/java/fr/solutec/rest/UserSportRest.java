@@ -1,6 +1,7 @@
 package fr.solutec.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,5 +25,10 @@ public class UserSportRest {
 	@GetMapping("classement/{nameSport}/desc")
 	public List<UserSport> rankingBySportdesc(@PathVariable String nameSport){
 		return userSportRepo.searchScoreBySportDesc(nameSport);
+	}
+	@GetMapping("classement/me/{iduser}")
+	public List<UserSport>getUser(@PathVariable Long iduser){
+		
+		return userSportRepo.findByUserIdUser(iduser);
 	}
 }
