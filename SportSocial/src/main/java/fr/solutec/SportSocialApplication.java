@@ -18,6 +18,7 @@ import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
+import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
@@ -52,6 +53,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private UserSportRepository userSportRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
+	@Autowired
+	private ActivityRepository activityRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -138,10 +141,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    
 	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
+	 
 	    
-
-
-
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);

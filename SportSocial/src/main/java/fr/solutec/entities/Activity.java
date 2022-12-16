@@ -19,14 +19,13 @@ public class Activity {
 	private Long idActivity;
 	
 	private float distance;
+	private String nameActivity;
 	private Timestamp dateStart;
 	private Timestamp dateEnd;
 	@ManyToOne	
 	private Address addressActivity;
 	@ManyToOne
 	private Sport sportActivity;
-	@ManyToOne
-	private Schedule scheduleActivity;
 	
 
 }
