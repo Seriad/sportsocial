@@ -23,6 +23,5 @@ public class Session {
 	private Sport sportSession;
 	@ManyToOne
 	private User userSession;
-	@ManyToOne Schedule scheduleSession;
 
 }
