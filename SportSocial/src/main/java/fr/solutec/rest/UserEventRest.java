@@ -45,6 +45,7 @@ public class UserEventRest {
 	public List<Event> getEventOfUser(@PathVariable Long idUser){
 		
 	}
+	comment
 	*/
 
 }
