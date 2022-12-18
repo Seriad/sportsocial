@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,21 +32,36 @@ public class UserEventRest {
 	private UserRepository userRepo;
 	
 	
-	@PostMapping("event/ajouter/{idUser}")
-	public UserEvent addEventToUser(@PathVariable Long idUser, @RequestBody Event event) {
+	@PostMapping("userevent/ajouter/{idUser}/{idEvent}")
+	public UserEvent addEventToUser(@PathVariable Long idUser, @PathVariable Long idEvent) {
 		
 		User u = userRepo.findById(idUser).get();
+		Event event = eventRepo.findById(idEvent).get();
 		UserEvent userEvent = new UserEvent(u, event);
 		
 		return userEventRepo.save(userEvent);
 	}
 	
-	/*
-	@GetMapping("event/user/{idUser}")
+	@GetMapping("userevent/find/{idUser}/{idEvent}")
+	public UserEvent findUserEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
+		UserEvent userEvent = userEventRepo.findByUserIdUserAndEventIdEvent(idUser, idEvent).get();
+		return userEvent;
+	}
+	
+	@DeleteMapping("userevent/delete/{idUser}/{idEvent}")
+	public void deleteUserEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
+		UserEvent userEvent = userEventRepo.findByUserIdUserAndEventIdEvent(idUser, idEvent).get();
+		userEventRepo.delete(userEvent);
+	}
+	
+	@GetMapping("userevent")
+	public Iterable<UserEvent> getAllUserEvent() {
+		return userEventRepo.findAll();
+	}
+	
+	/*@GetMapping("event/user/{idUser}")
 	public List<Event> getEventOfUser(@PathVariable Long idUser){
 		
-	}
-	comment
-	*/
+	}*/
 
 }
