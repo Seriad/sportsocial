@@ -119,9 +119,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s5 = new Sport(null, "Rugby", i9);
 		Sport s6 = new Sport(null, "Escalade", i15);
 		
-		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i4,s1);
-		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,a5,i15,s6);
-		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,a5,i16,s3);
+		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,s1);
+		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,a5,s6);
+		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,a5,s2);
 		
 		Friend f1 = new Friend(null,u1,u2,true);
 	    Friend f2 = new Friend(null,u1,u3,true);
