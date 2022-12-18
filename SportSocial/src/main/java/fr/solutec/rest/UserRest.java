@@ -41,6 +41,7 @@ public class UserRest {
 	}
 	
 	
+	
 	@PostMapping("user/save")
 	public User saveUser(@RequestBody User u) {
 		return userRepo.save(u);

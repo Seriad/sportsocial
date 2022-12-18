@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Activity;
 import fr.solutec.entities.Address;
+import fr.solutec.entities.Club;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
@@ -22,6 +23,7 @@ import fr.solutec.entities.UserActivity;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
+import fr.solutec.repository.ClubRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
@@ -60,6 +62,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private ActivityRepository activityRepo;
 	@Autowired
 	private UserActivityRepository userActivityRepo;
+	@Autowired
+	private ClubRepository clubRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -96,20 +100,21 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Image i4 = new Image(null, "lien image4");//Sport
 		Image i5 = new Image(null, "lien image5");//Sport
-		Image i6 = new Image(null, "lien image6");//Sport
+		Image i6 = new Image(null, "https://img.freepik.com/vecteurs-libre/ensemble-elements-basket-vintage_1284-39314.jpg?w=826&t=st=1671391968~exp=1671392568~hmac=1dd55bf9ec92ea81b48263b3fb498b48cd45535e4e069c13b61188bb393b459f");//Sport
 		
 		Image i7 = new Image(null, "lien image7");//Event
-		Image i8 = new Image(null, "lien image8");//Event
-		Image i9 = new Image(null, "lien image9");//Event
+		Image i8 = new Image(null, "https://img.freepik.com/vecteurs-premium/joueur-football-abstrait-tirant-rapidement-balle-eclaboussure-aquarelles-illustration-peintures_291138-342.jpg?w=826");//Event
+		Image i9 = new Image(null, "https://img.freepik.com/vecteurs-libre/ensemble-elements-sport-rugby-vintage_1284-37924.jpg?w=826&t=st=1670941713~exp=1670942313~hmac=ffce7d716ce1183f9286475a795bc2cd1e53c7f08439ca67134829b90669417d");//Event
 		
 		Sport s1 = new Sport(null,"Course à pied",i4);
 		Sport s2 = new Sport(null,"Natation",i5);
 		Sport s3 = new Sport(null,"Football",i8);
 		Sport s4 = new Sport(null,"Basketball",i6);
+		Sport s5 = new Sport(null, "Rugby", i9);
 		
 		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
-		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
-		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
+		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,a5,i6,s2);
+		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,a5,i5,s3);
 		
 		Friend f1 = new Friend(null,u1,u2,true);
 	    Friend f2 = new Friend(null,u1,u3,true);
@@ -131,6 +136,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i7);
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i8);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
+	    
+	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5);
+	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3);
+	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4);
 		
 
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
@@ -191,7 +200,8 @@ public class SportSocialApplication implements CommandLineRunner{
 		sportRepo.save(s2);
 		sportRepo.save(s3);
 		sportRepo.save(s4);
-		
+		sportRepo.save(s5);
+			
 		eventRepo.save(e1);
 		eventRepo.save(e2);
 		eventRepo.save(e3);
@@ -239,6 +249,10 @@ public class SportSocialApplication implements CommandLineRunner{
 		userActivityRepo.save(uac2);
 		userActivityRepo.save(uac3);
 		
+		
+		clubRepo.save(c1);
+		clubRepo.save(c2); 
+		clubRepo.save(c3); 
 		
 
 	}
