@@ -25,8 +25,6 @@ public class Event {
 	@ManyToOne
 	private Address addressEvent;
 	@ManyToOne
-	private Image imageEvent;
-	@ManyToOne
 	private Sport sportEvent;
 	
 }

@@ -58,10 +58,5 @@ public class UserEventRest {
 	public Iterable<UserEvent> getAllUserEvent() {
 		return userEventRepo.findAll();
 	}
-	
-	/*@GetMapping("event/user/{idUser}")
-	public List<Event> getEventOfUser(@PathVariable Long idUser){
-		
-	}*/
 
 }

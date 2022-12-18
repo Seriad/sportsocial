@@ -73,7 +73,7 @@ public class FriendRest {
 	    
 
 
-	    @GetMapping("friend/receiver/{idReceiver}") //Voir ces amis acceptés
+	    @GetMapping("friend/receiver/{idReceiver}") //Voir ses amis acceptés
 	    private List<User> MyFriendship(@PathVariable Long idReceiver){
 	        List<User> friends = new ArrayList <>();
 	        List<Friend> recup = friendRepos.getMyFriends(idReceiver);
