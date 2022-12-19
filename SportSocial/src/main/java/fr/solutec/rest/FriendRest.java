@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -110,5 +111,14 @@ public class FriendRest {
 	    }
 	    
 	    
-
+	    @PutMapping("update/{idApplicant}/{idReceiver}")
+	    private boolean Updatelisteamis(@PathVariable Long idReceiver, @PathVariable Long idApplicant) {
+	    	friendRepos.updateMyFriends(idApplicant, idReceiver);
+	    	return true;
+	    }
+	    
+	    @GetMapping("select/{idApplicant}/{idReceiver}")
+	    private List<Friend> selectFriendRelation (@PathVariable Long idReceiver, @PathVariable Long idApplicant){
+	    	return friendRepos.SelectRelationMyFriends(idApplicant, idReceiver);
+	    }
 }
