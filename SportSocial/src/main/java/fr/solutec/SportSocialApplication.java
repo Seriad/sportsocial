@@ -2,6 +2,8 @@ package fr.solutec;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -84,7 +86,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Address a2 = new Address(null, "17 avenue des salades","75007","Paris");
 		Image i2 = new Image(null, "lien image2");//Utilisateur
-		User u2 = new User(null,  "Cujoh","Joline",Date.valueOf("2000-07-25"),"JoFitness","cujoh",false,a2,i2,0);
+		User u2 = new User(null,  "Cujoh","Joline",Date.valueOf("2000-07-25"),"JoFitness","cujoh",true,a2,i2,0);
 		
 		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i3 = new Image(null, "lien image3");//Utilisateur
@@ -123,9 +125,22 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s5 = new Sport(null, "Rugby", i9);
 		Sport s6 = new Sport(null, "Escalade", i15);
 		
-		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,s1);
-		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,a5,s6);
-		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,a5,s2);
+		List<User> participantse1 = new ArrayList<>();
+		List<User> participantse2 = new ArrayList<>();
+		List<User> participantse3 = new ArrayList<>();
+		
+		participantse1.add(u1);
+		participantse1.add(u2);
+		participantse1.add(u3);
+		participantse2.add(u4);
+		participantse1.add(u5);
+		participantse3.add(u3);
+		participantse3.add(u2);
+		participantse3.add(u5);
+		
+		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,participantse1,a4,s1);
+		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,participantse2,a5,s6);
+		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,participantse3,a5,s2);
 		
 		Friend f1 = new Friend(null,u1,u2,true);
 	    Friend f2 = new Friend(null,u1,u3,true);
