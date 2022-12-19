@@ -21,6 +21,7 @@ public class Message {
 	
 	@Id @GeneratedValue
 	private Long idMessage;
+	@CreationTimestamp
 	private Timestamp dateSendMessage;
 	private String contentMessage;
 	@ManyToOne
