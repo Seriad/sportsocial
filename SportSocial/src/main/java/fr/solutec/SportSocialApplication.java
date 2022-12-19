@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Activity;
 import fr.solutec.entities.Address;
+import fr.solutec.entities.Club;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
@@ -19,9 +20,11 @@ import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserActivity;
+import fr.solutec.entities.UserEvent;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
+import fr.solutec.repository.ClubRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
@@ -30,6 +33,7 @@ import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserActivityRepository;
+import fr.solutec.repository.UserEventRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -60,6 +64,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	private ActivityRepository activityRepo;
 	@Autowired
 	private UserActivityRepository userActivityRepo;
+	@Autowired
+	private ClubRepository clubRepo;
+	@Autowired
+	private UserEventRepository userEventRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -84,7 +92,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
 		Image i10 = new Image(null, "lien image10");//Utilisateur
-		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","jsuiscoach",true,a10,i10,0);
+		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","111",true,a10,i10,0);
 		
 		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
 		Image i11 = new Image(null, "lien image11");//Utilisateur
@@ -94,27 +102,36 @@ public class SportSocialApplication implements CommandLineRunner{
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
 		Address a6 = new Address(null, "3 Avenue du Général Leclerc","92200","Neuilly-Sur-Seine");
 		
-		Image i4 = new Image(null, "lien image4");//Sport
+		Image i4 = new Image(null, "https://img.freepik.com/vecteurs-libre/affiche-fitness-homme-cours-execution_1284-12590.jpg?w=1060&t=st=1671395275~exp=1671395875~hmac=6b7d03a193f0d9544c124a55d7ad60659765a9375b350299c740b7e553c63bcd");//Sport
 		Image i5 = new Image(null, "lien image5");//Sport
-		Image i6 = new Image(null, "lien image6");//Sport
+		Image i6 = new Image(null, "https://img.freepik.com/vecteurs-libre/ensemble-elements-basket-vintage_1284-39314.jpg?w=826&t=st=1671391968~exp=1671392568~hmac=1dd55bf9ec92ea81b48263b3fb498b48cd45535e4e069c13b61188bb393b459f");//Sport
 		
 		Image i7 = new Image(null, "lien image7");//Event
-		Image i8 = new Image(null, "lien image8");//Event
-		Image i9 = new Image(null, "lien image9");//Event
+		Image i8 = new Image(null, "https://img.freepik.com/vecteurs-premium/joueur-football-abstrait-tirant-rapidement-balle-eclaboussure-aquarelles-illustration-peintures_291138-342.jpg?w=826");//Event
+		Image i9 = new Image(null, "https://img.freepik.com/vecteurs-libre/ensemble-elements-sport-rugby-vintage_1284-37924.jpg?w=826&t=st=1670941713~exp=1670942313~hmac=ffce7d716ce1183f9286475a795bc2cd1e53c7f08439ca67134829b90669417d");//Event
+		
+		Image i12= new Image(null, "https://img.freepik.com/vecteurs-libre/portrait-chat-cravate-lunettes-hipster-regard-isole-illustration-vectorielle_1284-1931.jpg?w=740&t=st=1671217853~exp=1671218453~hmac=78a64242cef183b74f0652c04ec43ad54b568a43e6c8d62f5ec333df365f6d8e");
+		Image i13= new Image(null, "https://img.freepik.com/vecteurs-libre/tete-gorille-style-monochrome_225004-461.jpg?w=826&t=st=1671394323~exp=1671394923~hmac=b310f5f4a53bf75f456b9ca38a3d3c9cf9accb8c66ba529a726d7367920f0129");
+		Image i14= new Image(null, "https://cdn-icons-png.flaticon.com/512/1061/1061216.png?w=826&t=st=1671394373~exp=1671394973~hmac=c2a1cbed743d21a3a7ffda4282a79f4ee2fd2ff14b634007f1051ced2ff26e86");
+		Image i15= new Image(null, "https://img.freepik.com/photos-gratuite/grimpeur-mur-escarpe_23-2147665027.jpg?w=1380&t=st=1671394819~exp=1671395419~hmac=7ce9cc84e2f2fb6e3995592cc48d30491197ed39ef119541c1072cc80f2be4d2");
+		Image i16= new Image(null, "https://img.freepik.com/photos-gratuite/nageur-male-nageant-coup-papillon_171337-7613.jpg?w=1380&t=st=1671395097~exp=1671395697~hmac=ad8f6662e82ad73d918ad02a60510f504f5f04b48590974a5d0aada901b4c4c9");
 		
 		Sport s1 = new Sport(null,"Course à pied",i4);
-		Sport s2 = new Sport(null,"Natation",i5);
+		Sport s2 = new Sport(null,"Natation",i16);
 		Sport s3 = new Sport(null,"Football",i8);
 		Sport s4 = new Sport(null,"Basketball",i6);
+		Sport s5 = new Sport(null, "Rugby", i9);
+		Sport s6 = new Sport(null, "Escalade", i15);
 		
-		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,i5,s1);
-		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2022-12-10 08:00:00"),Timestamp.valueOf("2022-12-10 16:00:00"),0,a5,i6,s2);
-		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2022-12-15 18:30:00"),Timestamp.valueOf("2022-12-15 20:15:00"),20,a5,i6,s3);
+		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,a4,s1);
+		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,a5,s6);
+		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,a5,s2);
 		
 		Friend f1 = new Friend(null,u1,u2,true);
 	    Friend f2 = new Friend(null,u1,u3,true);
 	    Friend f3 = new Friend(null,u2,u3,true);
 	    Friend f4 = new Friend(null,u2,u5,true);
+	    Friend f5 = new Friend(null,u2,u4,false);
 	    
 	    UserSport us1 = new UserSport(u1,s1,100);
 	    UserSport us2 = new UserSport(u4,s3,200);
@@ -127,9 +144,13 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserSport us9 = new UserSport(u3,s3,300);
 	   
 
-	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i7);
-	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i8);
-	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i9);
+	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i12);
+	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i13);
+	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i14);
+	    
+	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5);
+	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3);
+	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4);
 		
 
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
@@ -154,6 +175,16 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac1= new UserActivity(u1,ac1);
 	    UserActivity uac2= new UserActivity(u1,ac2);
 	    UserActivity uac3= new UserActivity(u2,ac3);
+	    
+	    UserEvent ue1 = new UserEvent(u1,e1);
+	    UserEvent ue2 = new UserEvent(u2,e1);
+	    UserEvent ue3 = new UserEvent(u3,e1);
+	    UserEvent ue4 = new UserEvent(u4,e2);
+	    UserEvent ue5 = new UserEvent(u5,e2);
+	    UserEvent ue6 = new UserEvent(u2,e2);
+	    UserEvent ue7 = new UserEvent(u5,e3);
+	    UserEvent ue8 = new UserEvent(u1,e3);
+	    UserEvent ue9 = new UserEvent(u4,e3);
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -185,12 +216,19 @@ public class SportSocialApplication implements CommandLineRunner{
 		imageRepo.save(i7);
 		imageRepo.save(i8);
 		imageRepo.save(i9);
+		imageRepo.save(i12);
+		imageRepo.save(i13);
+		imageRepo.save(i14);
+		imageRepo.save(i15);
+		imageRepo.save(i16);
 		
 		sportRepo.save(s1);
 		sportRepo.save(s2);
 		sportRepo.save(s3);
 		sportRepo.save(s4);
-		
+		sportRepo.save(s5);
+		sportRepo.save(s6);
+			
 		eventRepo.save(e1);
 		eventRepo.save(e2);
 		eventRepo.save(e3);
@@ -199,6 +237,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    friendRepo.save(f2);
 	    friendRepo.save(f3);
 	    friendRepo.save(f4);
+	    friendRepo.save(f5);
 	    
 	    userSportRepo.save(us1);
 	    userSportRepo.save(us2);
@@ -238,7 +277,19 @@ public class SportSocialApplication implements CommandLineRunner{
 		userActivityRepo.save(uac3);
 		
 		
-
+		clubRepo.save(c1);
+		clubRepo.save(c2); 
+		clubRepo.save(c3); 
+		
+		userEventRepo.save(ue1);
+		userEventRepo.save(ue2);
+		userEventRepo.save(ue3);
+		userEventRepo.save(ue4);
+		userEventRepo.save(ue5);
+		userEventRepo.save(ue6);
+		userEventRepo.save(ue7);
+		userEventRepo.save(ue8);
+		userEventRepo.save(ue9);
 	}
 
 }

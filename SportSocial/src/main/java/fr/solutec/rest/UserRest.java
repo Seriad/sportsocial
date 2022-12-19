@@ -41,6 +41,7 @@ public class UserRest {
 	}
 	
 	
+	
 	@PostMapping("user/save")
 	public User saveUser(@RequestBody User u) {
 		return userRepo.save(u);
@@ -101,6 +102,9 @@ public class UserRest {
 	return userRepo.searchCoachBySport(nameSport);
 	}
 	
-
+	@GetMapping("user/participateEvent/{idEvent}")//chercher les users participant a un event
+	public List<User> usersParticipatingEvent(@PathVariable Long idEvent){
+		return userRepo.getUsersParticipatingEvent(idEvent);
+	}
 
 }

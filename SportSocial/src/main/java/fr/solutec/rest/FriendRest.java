@@ -56,12 +56,45 @@ public class FriendRest {
 	            return false;
 	        }
 	    }
+	    
+	    @DeleteMapping("friend/refusebyid/{idReceiver}/{idApplicant}")
+	    private boolean refuseFrienshipById (@PathVariable Long idReceiver, @PathVariable Long idApplicant) {
+	    	Optional<Friend>recei = friendRepos.findById(idReceiver);
+	    	Optional<Friend>appli = friendRepos.findById(idApplicant);
+	    	if (recei.isPresent() && appli.isPresent()) {
+	    		friendRepos.deleteMyFriends(idApplicant, idReceiver);
+	    		return true;
+
+	        }else {
+	            return false;
+	        }
+	    	
+	    }
+	    
 
 
-	    @GetMapping("friend/receiver/{idReceiver}") //Voir ces amis acceptés
+	    @GetMapping("friend/receiver/{idReceiver}") //Voir ses amis acceptés
 	    private List<User> MyFriendship(@PathVariable Long idReceiver){
 	        List<User> friends = new ArrayList <>();
 	        List<Friend> recup = friendRepos.getMyFriends(idReceiver);
+	        Optional<User> u = userRepos.findById(idReceiver);
+	        if(u.isPresent()) {
+	            for (Friend friend : recup) {
+	                if(!friend.getApplicant().equals(u.get())) {
+	                    friends.add(friend.getApplicant());
+	                }
+	                if(!friend.getReceiver().equals(u.get())) {
+	                    friends.add(friend.getReceiver());
+	                }
+	            }
+	        }
+	        return friends;
+	    }
+	    
+	    @GetMapping("notfriend/receiver/{idReceiver}") //Les les demandes d'amis
+	    private List<User> MyNotFriendship(@PathVariable Long idReceiver){
+	        List<User> friends = new ArrayList <>();
+	        List<Friend> recup = friendRepos.getMyFriendRequest(idReceiver);
 	        Optional<User> u = userRepos.findById(idReceiver);
 	        if(u.isPresent()) {
 	            for (Friend friend : recup) {
