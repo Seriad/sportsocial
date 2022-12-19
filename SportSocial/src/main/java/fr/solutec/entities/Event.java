@@ -2,10 +2,12 @@ package fr.solutec.entities;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +23,9 @@ public class Event {
 	private String descriptionEvent;
 	private Timestamp dateStart;
 	private Timestamp dateEnd;
-	private float priceEvent;	
+	private float priceEvent;
+	@ManyToMany
+	private List<User> participants;
 	@ManyToOne
 	private Address addressEvent;
 	@ManyToOne
