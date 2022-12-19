@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -98,5 +99,22 @@ public class EventRest {
         
         return eventsOfFriendsWithoutDuplicates;
 	}
+	
+	@PatchMapping("event/participer/{idEvent}")
+	public Event addEventToUser(@RequestBody Event event, @PathVariable Long idEvent) {
+		List<User> newParticipant = new ArrayList<>();
+		newParticipant = event.getParticipants();
+		eventRepo.findById(idEvent).get().setParticipants(newParticipant);
+		return event;	
+	}
+	
+	@PatchMapping("event/participer2/{idEvent}")
+	public Event ajoutEventToUser(@RequestBody Event event, @PathVariable Long idEvent) {
+		List<User> newParticipant = new ArrayList<>();
+		newParticipant = event.getParticipants();
+		eventRepo.findById(idEvent).get().setParticipants(newParticipant);
+		return event;	
+	}
+
 
 }
