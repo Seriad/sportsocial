@@ -22,7 +22,6 @@ import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.UserEventRepository;
 import fr.solutec.repository.UserRepository;
-import fr.solutec.rest.FriendRest.*;
 
 @RestController
 @CrossOrigin("*")
