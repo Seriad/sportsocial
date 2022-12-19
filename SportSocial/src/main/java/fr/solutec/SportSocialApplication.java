@@ -84,7 +84,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i1 = new Image(null, "lien image"); //Utilisateur
 		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,i1,0);
 		
-		Address a2 = new Address(null, "17 avenue des salades","75007","Paris");
+		Address a2 = new Address(null, "29 Bd Camélinat","92240","Malakoff");
 		Image i2 = new Image(null, "lien image2");//Utilisateur
 		User u2 = new User(null,  "Cujoh","Joline",Date.valueOf("2000-07-25"),"JoFitness","cujoh",true,a2,i2,0);
 		

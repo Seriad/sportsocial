@@ -100,21 +100,15 @@ public class EventRest {
         return eventsOfFriendsWithoutDuplicates;
 	}
 	
-	@PatchMapping("event/participer/{idEvent}")
-	public Event addEventToUser(@RequestBody Event event, @PathVariable Long idEvent) {
-		List<User> newParticipant = new ArrayList<>();
-		newParticipant = event.getParticipants();
-		eventRepo.findById(idEvent).get().setParticipants(newParticipant);
-		return event;	
+	@PatchMapping("event/participer/{idUser}/{idEvent}")
+	public Event addEventToUser(@PathVariable Long idUser, @PathVariable Long idEvent) {
+		Optional<User> u= userRepo.findById(idUser);
+		Optional<Event> e =	eventRepo.findById(idEvent);
+		e.get().getParticipants().add(u.get());
+		
+		return eventRepo.save(e.get());	
 	}
 	
-	@PatchMapping("event/participer2/{idEvent}")
-	public Event ajoutEventToUser(@RequestBody Event event, @PathVariable Long idEvent) {
-		List<User> newParticipant = new ArrayList<>();
-		newParticipant = event.getParticipants();
-		eventRepo.findById(idEvent).get().setParticipants(newParticipant);
-		return event;	
-	}
-
+	
 
 }
