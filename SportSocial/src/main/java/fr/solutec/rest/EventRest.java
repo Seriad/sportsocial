@@ -45,10 +45,9 @@ public class EventRest {
 	@PostMapping("event/create/{idUser}")
 	public Event createEvent(@PathVariable Long idUser, @RequestBody Event e) {
 		
+		//User u = userRepo.findById(idUser).get();
+		//e.getParticipants().add(u);
 		Event eventCreated = eventRepo.save(e);
-		User u = userRepo.findById(idUser).get();
-		UserEvent userEvent = new UserEvent(u, eventCreated);
-		userEventRepo.save(userEvent);
 		
 		return eventCreated;
 	}
