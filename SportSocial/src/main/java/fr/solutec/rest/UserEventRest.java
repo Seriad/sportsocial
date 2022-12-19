@@ -58,5 +58,10 @@ public class UserEventRest {
 	public Iterable<UserEvent> getAllUserEvent() {
 		return userEventRepo.findAll();
 	}
+	
+	@GetMapping("userevent/participate/{idUser}/{idEvent}")
+	public boolean userParticipateToEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
+		return userEventRepo.findByUserIdUserAndEventIdEvent(idUser, idEvent).isPresent();
+	}
 
 }

@@ -14,6 +14,6 @@ public interface EventRepository extends CrudRepository<Event, Long>{
     Iterable<Event> eventsToCome ();
 
 	
-	@Query("SELECT e from Event e INNER JOIN UserEvent ue on e.idEvent=ue.event.idEvent WHERE ue.user.idUser = ?1")
+	@Query("SELECT e from Event e INNER JOIN UserEvent ue on e.idEvent=ue.event.idEvent WHERE ue.user.idUser = ?1 order by e.dateStart desc")
 	Iterable<Event> eventsOfUser(Long idUser);
 }

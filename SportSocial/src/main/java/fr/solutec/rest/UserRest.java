@@ -102,6 +102,9 @@ public class UserRest {
 	return userRepo.searchCoachBySport(nameSport);
 	}
 	
-
+	@GetMapping("user/participateEvent/{idEvent}")//chercher les users participant a un event
+	public List<User> usersParticipatingEvent(@PathVariable Long idEvent){
+		return userRepo.getUsersParticipatingEvent(idEvent);
+	}
 
 }

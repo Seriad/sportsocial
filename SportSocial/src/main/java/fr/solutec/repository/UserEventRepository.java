@@ -15,7 +15,5 @@ public interface UserEventRepository extends CrudRepository<UserEvent, Long>{
 	List<UserEvent> findByUserIdUser (Long idUser);
 	
 	Optional<UserEvent> findByUserIdUserAndEventIdEvent (Long idUser, Long idEvent);
-	
-	
 
 }
