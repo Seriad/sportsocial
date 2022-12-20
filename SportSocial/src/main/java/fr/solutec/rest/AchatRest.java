@@ -58,7 +58,7 @@ public class AchatRest {
 		return false;
 	}
 	
-	@GetMapping("boutique/achat/{idUser}/{montantToken}")
+	@GetMapping("boutique/achatToken/{idUser}/{montantToken}")
 	private boolean achatToken(@PathVariable Long idUser, @PathVariable int montantToken) {
 		Optional<User> u = userRepo.findById(idUser);
 		if(montantToken>0) {
