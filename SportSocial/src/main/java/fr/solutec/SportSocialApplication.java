@@ -22,7 +22,6 @@ import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserActivity;
-import fr.solutec.entities.UserEvent;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
@@ -35,7 +34,6 @@ import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.UserActivityRepository;
-import fr.solutec.repository.UserEventRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -68,8 +66,6 @@ public class SportSocialApplication implements CommandLineRunner{
 	private UserActivityRepository userActivityRepo;
 	@Autowired
 	private ClubRepository clubRepo;
-	@Autowired
-	private UserEventRepository userEventRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -190,16 +186,6 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac1= new UserActivity(u1,ac1);
 	    UserActivity uac2= new UserActivity(u1,ac2);
 	    UserActivity uac3= new UserActivity(u2,ac3);
-	    
-	    UserEvent ue1 = new UserEvent(u1,e1);
-	    UserEvent ue2 = new UserEvent(u2,e1);
-	    UserEvent ue3 = new UserEvent(u3,e1);
-	    UserEvent ue4 = new UserEvent(u4,e2);
-	    UserEvent ue5 = new UserEvent(u5,e2);
-	    UserEvent ue6 = new UserEvent(u2,e2);
-	    UserEvent ue7 = new UserEvent(u5,e3);
-	    UserEvent ue8 = new UserEvent(u1,e3);
-	    UserEvent ue9 = new UserEvent(u4,e3);
 		
 		addressRepo.save(a1);
 		imageRepo.save(i1);
@@ -295,16 +281,6 @@ public class SportSocialApplication implements CommandLineRunner{
 		clubRepo.save(c1);
 		clubRepo.save(c2); 
 		clubRepo.save(c3); 
-		
-		userEventRepo.save(ue1);
-		userEventRepo.save(ue2);
-		userEventRepo.save(ue3);
-		userEventRepo.save(ue4);
-		userEventRepo.save(ue5);
-		userEventRepo.save(ue6);
-		userEventRepo.save(ue7);
-		userEventRepo.save(ue8);
-		userEventRepo.save(ue9);
 	}
 
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
+import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -28,6 +29,8 @@ public class UserRest {
 	private UserRepository userRepo;
 	@Autowired
 	private UserSportRepository userSportRepo;
+	@Autowired
+	private EventRepository eventRepo;
 
 
 	@GetMapping("user")
@@ -104,7 +107,7 @@ public class UserRest {
 	
 	@GetMapping("user/participateEvent/{idEvent}")//chercher les users participant a un event
 	public List<User> usersParticipatingEvent(@PathVariable Long idEvent){
-		return userRepo.getUsersParticipatingEvent(idEvent);
+		return eventRepo.findById(idEvent).get().getParticipants();
 	}
 
 }

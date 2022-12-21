@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.User;
-import fr.solutec.entities.UserEvent;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
-import fr.solutec.repository.UserEventRepository;
 import fr.solutec.repository.UserRepository;
 
 @RestController
@@ -30,9 +28,6 @@ public class EventRest {
 	
 	@Autowired
 	private EventRepository eventRepo;
-	
-	@Autowired
-	private UserEventRepository userEventRepo;
 	
 	@Autowired
 	private UserRepository userRepo;
