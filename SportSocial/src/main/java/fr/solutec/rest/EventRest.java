@@ -84,6 +84,7 @@ public class EventRest {
             }
         }
         //fin recuperer liste d'amis
+        
         List<Event> eventsOfFriends = new ArrayList<>();
         for (User user : friends) {
         	eventsOfFriends.addAll(getEventsOfOneUser(user.getIdUser()));
