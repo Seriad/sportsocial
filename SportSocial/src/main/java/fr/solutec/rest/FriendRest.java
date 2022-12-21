@@ -118,7 +118,7 @@ public class FriendRest {
 	    }
 	    
 	    @GetMapping("select/{idApplicant}/{idReceiver}")
-	    private List<Friend> selectFriendRelation (@PathVariable Long idReceiver, @PathVariable Long idApplicant){
+	    private Optional<Friend> selectFriendRelation (@PathVariable Long idReceiver, @PathVariable Long idApplicant){
 	    	return friendRepos.SelectRelationMyFriends(idApplicant, idReceiver);
 	    }
 }
