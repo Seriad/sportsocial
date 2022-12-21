@@ -39,7 +39,7 @@ public class FriendRest {
 
 	 
 
-	    @PutMapping("friend/accept/{idFriend}") //accepter la demande
+	    @PatchMapping("friend/accept/{idFriend}") //accepter la demande
 	    private Friend acceptFriendship (@RequestBody Friend f, @PathVariable Long idFriend ) {
 	        f.setIdFriend(idFriend);
 	        return friendRepos.save(f);    
@@ -111,7 +111,7 @@ public class FriendRest {
 	    }
 	    
 	    
-	    @PutMapping("update/{idApplicant}/{idReceiver}")
+	    @PatchMapping("update/{idApplicant}/{idReceiver}")
 	    private boolean Updatelisteamis(@PathVariable Long idReceiver, @PathVariable Long idApplicant) {
 	    	friendRepos.updateMyFriends(idApplicant, idReceiver);
 	    	return true;
