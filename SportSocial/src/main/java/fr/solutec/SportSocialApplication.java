@@ -80,6 +80,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		System.out.println("Lancement en cours");
 		
+		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
 		Image i1 = new Image(null, "lien image"); //Utilisateur
 		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,i1,0);
@@ -99,6 +100,8 @@ public class SportSocialApplication implements CommandLineRunner{
 		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
 		Image i11 = new Image(null, "lien image11");//Utilisateur
 		User u5 = new User(null,  "Perrera","Antoine",Date.valueOf("1970-08-23"),"Anto","jsuiscoachaussi",true,a11,i11,0);
+		
+		
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
 		Address a5 = new Address(null, "25 Rue de Lacretelle","75168","Saint-Maur-des-Fossés");
