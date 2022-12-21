@@ -43,8 +43,6 @@ public class UserRest {
 		return userRepo.findByLoginUserAndPasswordUser(u.getLoginUser(), u.getPasswordUser() );
 	}
 	
-	
-	
 	@PostMapping("user/save")
 	public User saveUser(@RequestBody User u) {
 		return userRepo.save(u);
