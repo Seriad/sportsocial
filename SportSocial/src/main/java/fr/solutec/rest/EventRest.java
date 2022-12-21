@@ -44,9 +44,6 @@ public class EventRest {
 	//Ajoute un event dans la table event et dans son ID et l'id de l'user l'ayant créé dans la table UserEvent
 	@PostMapping("event/create/{idUser}")
 	public Event createEvent(@PathVariable Long idUser, @RequestBody Event e) {
-		
-		//User u = userRepo.findById(idUser).get();
-		//e.getParticipants().add(u);
 		Event eventCreated = eventRepo.save(e);
 		
 		return eventCreated;
@@ -66,7 +63,7 @@ public class EventRest {
 	
 	@GetMapping("event/{idUser}")
 	public List<Event> getEventsOfOneUser(@PathVariable Long idUser){
-		return (List<Event>) eventRepo.eventsOfUser(idUser);
+		return (List<Event>) eventRepo.eventsOfOneUser(idUser);
 	}
 	
 	@GetMapping("event/friends/{idUser}")//Les events des amis
@@ -100,7 +97,7 @@ public class EventRest {
 	}
 	
 	@PatchMapping("event/participer/{idUser}/{idEvent}")
-	public Event addEventToUser(@PathVariable Long idUser, @PathVariable Long idEvent) {
+	public Event addUserToEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
 		Optional<User> u= userRepo.findById(idUser);
 		Optional<Event> e =	eventRepo.findById(idEvent);
 		e.get().getParticipants().add(u.get());
@@ -108,6 +105,14 @@ public class EventRest {
 		return eventRepo.save(e.get());	
 	}
 	
+	
+	@PatchMapping("event/desister/{idUser}/{idEvent}")
+	public Event removeUserFromEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
+		Event e = eventRepo.findById(idEvent).get();
+		e.getParticipants().removeIf(p-> p.getIdUser()==idUser);
+		return eventRepo.save(e);
+		
+	}
 	
 
 }

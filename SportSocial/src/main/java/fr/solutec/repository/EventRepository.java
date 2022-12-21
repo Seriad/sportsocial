@@ -9,6 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Sport;
+import fr.solutec.entities.User;
 
 public interface EventRepository extends CrudRepository<Event, Long>{
 	
@@ -22,4 +23,7 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	
 	@Query("SELECT e from Event e where sportEvent = ?1")
 	List<Event> eventsBySport(Sport sport);
+	
+	@Query("SELECT e FROM Event e INNER JOIN e.participants ep WHERE ep.idUser = ?1 order by e.dateStart desc")
+	Iterable<Event> eventsOfOneUser(Long idUser);
 }
