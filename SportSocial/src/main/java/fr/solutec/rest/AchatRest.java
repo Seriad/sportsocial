@@ -28,14 +28,14 @@ public class AchatRest {
 	private ProduitRepository produitRepo;
 	
 	
-	@PatchMapping("boutique/achat/{idUser}/{idProduit}")
+	@GetMapping("boutique/achat/{idUser}/{idProduit}")
 	private Optional<Achat> achatProduit(@PathVariable Long idUser,@PathVariable Long idProduit) {
 		Optional<Achat> a = Optional.of(new Achat(null,null,false));
 		Optional<User> u = userRepo.findById(idUser);
 		Optional<Produit> p =  produitRepo.findById(idProduit);
 		a.get().setUserFK(u.get());
 		a.get().setProduitFK(p.get());
-		if (u.get().getToken()>p.get().getPrixTokenProduit()) {
+		if (u.get().getToken()>=p.get().getPrixTokenProduit()) {
 			u.get().setToken(u.get().getToken()-p.get().getPrixTokenProduit());
 			a.get().setValidation(true);
 			achatRepo.save(a.get());
@@ -58,7 +58,7 @@ public class AchatRest {
 		return false;
 	}
 	
-	@GetMapping("boutique/achat/{idUser}/{montantToken}")
+	@GetMapping("boutique/achatToken/{idUser}/{montantToken}")
 	private boolean achatToken(@PathVariable Long idUser, @PathVariable int montantToken) {
 		Optional<User> u = userRepo.findById(idUser);
 		if(montantToken>0) {
