@@ -31,6 +31,11 @@ public interface UserRepository extends CrudRepository<User, Long>{
 
 	@Query("SELECT u from User u INNER JOIN UserEvent ue on u.idUser = ue.user.idUser WHERE ue.event.idEvent = ?1")
 	List<User> getUsersParticipatingEvent(Long idEvent);
+	
+	
+	@Query("SELECT u FROM User u WHERE u.idUser != ?1")
+	public List<User> findAllUserExceptConnected (Long idUser);
+	
 
 	
 
