@@ -41,7 +41,7 @@ public class EventRest {
 	public Event createEvent(@PathVariable Long idUser, @RequestBody Event e) {
 		Event eventCreated = eventRepo.save(e);
 		
-		return eventCreated;
+		return addUserToEvent(idUser, eventCreated.getIdEvent());
 	}
 	
 	@GetMapping("event")

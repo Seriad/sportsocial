@@ -2,6 +2,7 @@ package fr.solutec.entities;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Event {
 	private Timestamp dateEnd;
 	private float priceEvent;
 	@ManyToMany
-	private List<User> participants;
+	private List<User> participants = new ArrayList<User>();
 	@ManyToOne
 	private Address addressEvent;
 	@ManyToOne
