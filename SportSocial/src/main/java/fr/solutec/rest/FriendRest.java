@@ -34,7 +34,7 @@ public class FriendRest {
 	    private Friend createFriendship (@RequestBody User a, @PathVariable Long idUser) {
 	    	Optional<User> u = userRepos.findById(idUser);
 	    	
-	    	Friend f = new Friend (null, u.get(), a, true);
+	    	Friend f = new Friend (null, u.get(), a, false);
 	        return friendRepos.save(f);
 	    }
 
