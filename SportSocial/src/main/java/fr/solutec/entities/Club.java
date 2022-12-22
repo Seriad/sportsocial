@@ -1,8 +1,11 @@
 package fr.solutec.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
@@ -24,4 +27,8 @@ public class Club {
 		private Image imageClub;
 		@ManyToOne
 		private Sport sportClub;
+		@ManyToOne
+		private User createur;
+		@ManyToMany
+		private List<User> membres;
 }

@@ -37,6 +37,11 @@ public class UserRest {
 	public Iterable<User> getAllUser() {
 		return userRepo.findAll();
 	}
+	
+	@GetMapping("user/exceptconnected/{idUser}")
+	public List<User> getAllUserExceptConnected(@PathVariable Long idUser) {
+		return userRepo.findAllUserExceptConnected(idUser);
+	}
 
 	@PostMapping("user")
 	public Optional<User> postByLoginAndPassword(@RequestBody User u) {

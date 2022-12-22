@@ -28,6 +28,15 @@ public interface UserRepository extends CrudRepository<User, Long>{
 
  
 	public Optional<User> findByIdUser(Long exp);
+	
+	
+	@Query("SELECT u FROM User u WHERE u.idUser != ?1")
+	public List<User> findAllUserExceptConnected (Long idUser);
+	
+	@Query ("SELECT u FROM User u WHERE (u.id NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (accept=true AND f.receiver.id = 6 AND f.applicant.id != 6)))AND (u.id NOT IN (SELECT f.receiver.id FROM Friend f WHERE (accept= true AND f.receiver.id != 6 AND f.applicant.id = 6)))) AND (u.id != 6 )")
+	List<User> getNonFriends (Long idUser);
+	
+
 
 	
 

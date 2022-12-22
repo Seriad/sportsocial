@@ -97,6 +97,41 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i11 = new Image(null, "lien image11");//Utilisateur
 		User u5 = new User(null,  "Perrera","Antoine",Date.valueOf("1970-08-23"),"Anto","jsuiscoachaussi",true,a11,i11,0);
 		
+		Address a12 = new Address(null, "2 rue Solutec","75008","Paris");
+		User u12 = new User(null, "Cantona", "Eric",Date.valueOf("1977-03-25"),"Footman","123",false,a1,i1,0);
+		
+		Address a13 = new Address(null, "29 Bd Lecompte","31000","Toulouse");
+		User u13 = new User(null,  "Dupont","Antoine",Date.valueOf("2000-07-25"),"ToulouseRBG","bestplayer",true,a2,i2,0);
+		
+		Address a14 = new Address(null, "322 Boulevard des patines","13000","Marseille");
+		User u14 = new User(null,  "Dufond","Stéphane",Date.valueOf("1979-10-25"),"Stephou","456",false,a3,i3,0);
+		
+		Address a15 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
+		User u15 = new User(null,  "Grand","Manuel",Date.valueOf("1966-07-07"),"BigManu","111",true,a10,i10,0);
+		
+		Address a16 = new Address(null, "39 Avenue jean Lorange","33000","Bordeaux");
+		User u16 = new User(null,  "Poirier","Jacques",Date.valueOf("1970-04-23"),"Jacqui","poire",true,a11,i11,0);
+		
+		Address a17 = new Address(null, "2 rue du livre","75006","Paris");
+		User u17 = new User(null, "Hugo", "Victor",Date.valueOf("1953-03-21"),"Miserable","123",false,a1,i1,0);
+		
+		Address a18 = new Address(null, "29 avenue Esic","92240","Malakoff");
+		User u18 = new User(null,  "Formateur","Joel",Date.valueOf("1993-07-25"),"Jojo","esic",true,a2,i2,0);
+		
+		Address a19 = new Address(null, "322 Boulevard de l'envie","75012","Paris");
+		User u19 = new User(null,  "Zidane","Zinedine",Date.valueOf("1998-06-20"),"Champ","123",false,a3,i3,0);
+		
+		Address a20 = new Address(null, "3 rue du bureau","30000","Nime");
+		User u20 = new User(null,  "Adi","Jacques",Date.valueOf("1985-11-11"),"Jaja","987",true,a10,i10,0);
+		
+		Address a21 = new Address(null, "75 Avenue la truite","29200","Brest");
+		User u21 = new User(null,  "Kern","Loic",Date.valueOf("1971-08-01"),"Akenavo","phare",true,a11,i11,0);
+		
+		Address a22 = new Address(null, "2 rue du Nord","59000","Lille");
+		User u22 = new User(null, "Monceau", "Jules",Date.valueOf("1984-06-15"),"Juju","123",false,a1,i1,0);
+		
+		Address a23 = new Address(null, "29 Bd Symphonie","69000","Lyon");
+		User u23 = new User(null,  "Mozart","Wolfgang",Date.valueOf("2000-04-21"),"Musique","son",true,a2,i2,0);
 		
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
@@ -114,6 +149,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i12= new Image(null, "https://img.freepik.com/vecteurs-libre/portrait-chat-cravate-lunettes-hipster-regard-isole-illustration-vectorielle_1284-1931.jpg?w=740&t=st=1671217853~exp=1671218453~hmac=78a64242cef183b74f0652c04ec43ad54b568a43e6c8d62f5ec333df365f6d8e");
 		Image i13= new Image(null, "https://img.freepik.com/vecteurs-libre/tete-gorille-style-monochrome_225004-461.jpg?w=826&t=st=1671394323~exp=1671394923~hmac=b310f5f4a53bf75f456b9ca38a3d3c9cf9accb8c66ba529a726d7367920f0129");
 		Image i14= new Image(null, "https://cdn-icons-png.flaticon.com/512/1061/1061216.png?w=826&t=st=1671394373~exp=1671394973~hmac=c2a1cbed743d21a3a7ffda4282a79f4ee2fd2ff14b634007f1051ced2ff26e86");
+		
 		Image i15= new Image(null, "https://img.freepik.com/photos-gratuite/grimpeur-mur-escarpe_23-2147665027.jpg?w=1380&t=st=1671394819~exp=1671395419~hmac=7ce9cc84e2f2fb6e3995592cc48d30491197ed39ef119541c1072cc80f2be4d2");
 		Image i16= new Image(null, "https://img.freepik.com/photos-gratuite/nageur-male-nageant-coup-papillon_171337-7613.jpg?w=1380&t=st=1671395097~exp=1671395697~hmac=ad8f6662e82ad73d918ad02a60510f504f5f04b48590974a5d0aada901b4c4c9");
 		
@@ -162,10 +198,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i13);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i14);
 	    
-	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5);
-	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3);
-	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4);
-		
+	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,null);
+	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,null);
+	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4, null);
 
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
@@ -284,6 +319,42 @@ public class SportSocialApplication implements CommandLineRunner{
 		clubRepo.save(c1);
 		clubRepo.save(c2); 
 		clubRepo.save(c3); 
+		
+		addressRepo.save(a12);
+		userRepo.save(u12);
+		
+		addressRepo.save(a13);
+		userRepo.save(u13);
+		
+		addressRepo.save(a14);
+		userRepo.save(u14);
+		
+		addressRepo.save(a15);
+		userRepo.save(u15);
+		
+		addressRepo.save(a16);
+		userRepo.save(u16);
+		
+		addressRepo.save(a17);
+		userRepo.save(u17);
+		
+		addressRepo.save(a18);
+		userRepo.save(u18);
+		
+		addressRepo.save(a19);
+		userRepo.save(u19);
+		
+		addressRepo.save(a20);
+		userRepo.save(u20);
+		
+		addressRepo.save(a21);
+		userRepo.save(u21);
+		
+		addressRepo.save(a22);
+		userRepo.save(u22);
+		
+		addressRepo.save(a23);
+		userRepo.save(u23);
 	}
 
 }
