@@ -31,9 +31,10 @@ public class FriendRest {
 	 
 
 	    @PostMapping("friend/{idUser}") //demande
-	    private Friend createFriendship (@RequestBody Friend f, @PathVariable Long idUser) {
+	    private Friend createFriendship (@RequestBody User a, @PathVariable Long idUser) {
 	    	Optional<User> u = userRepos.findById(idUser);
-	    	f.setApplicant(u.get());
+	    	
+	    	Friend f = new Friend (null, u.get(), a, true);
 	        return friendRepos.save(f);
 	    }
 
