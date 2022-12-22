@@ -139,4 +139,12 @@ public class FriendRest {
 	    private Optional<Friend> selectFriendRelation (@PathVariable Long idReceiver, @PathVariable Long idApplicant){
 	    	return friendRepos.SelectRelationMyFriends(idApplicant, idReceiver);
 	    }
+	    
+	    
+	    // Voir les personnes avec lesquelles on n'est pas ami 
+	    @GetMapping("nonfriend/{idUser}") // Obtenir les users non amis
+		public List<User> usersNonFriends(@PathVariable Long idUser){
+			return userRepos.getNonFriends(idUser);
+		}
+        
 }

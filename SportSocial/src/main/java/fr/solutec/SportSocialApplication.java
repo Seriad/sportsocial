@@ -198,10 +198,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i13);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i14);
 	    
-	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5);
-	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3);
-	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4);
-		
+	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,null);
+	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,null);
+	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4, null);
 
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
