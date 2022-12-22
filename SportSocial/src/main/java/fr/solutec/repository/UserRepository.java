@@ -37,6 +37,7 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	public List<User> findAllUserExceptConnected (Long idUser);
 	
 
+
 	
 
 }
