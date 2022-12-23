@@ -117,6 +117,7 @@ public class UserRest {
 	public List<User> usersParticipatingEvent(@PathVariable Long idEvent){
 		return eventRepo.findById(idEvent).get().getParticipants();
 	}
+
 	
 	@GetMapping("user/inventaire/{idUser}")//Voir la liste d'image (Id) de l'utilisateur
 	public ArrayList<String> getInventaire(@PathVariable Long idUser){
@@ -139,5 +140,12 @@ public class UserRest {
 	}else {
 		return false;
 	}
+		}
+
+
+	@GetMapping("user/search/{loginUser}")
+	public List<User>FilterUser(@PathVariable String loginUser){
+		return userRepo.SearchUserByLogin(loginUser);
+
 	}
 }
