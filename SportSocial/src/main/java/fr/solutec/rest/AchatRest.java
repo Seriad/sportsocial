@@ -26,6 +26,7 @@ public class AchatRest {
 	private UserRepository userRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
+
 	
 	
 	@GetMapping("boutique/achat/{idUser}/{idProduit}")
@@ -39,6 +40,7 @@ public class AchatRest {
 			u.get().setToken(u.get().getToken()-p.get().getPrixTokenProduit());
 			a.get().setValidation(true);
 			achatRepo.save(a.get());
+			u.get().getInventaire().add(p.get().getImageProduit().getIdImage());
 			userRepo.save(u.get());
 			return Optional.of(a.get());
 			

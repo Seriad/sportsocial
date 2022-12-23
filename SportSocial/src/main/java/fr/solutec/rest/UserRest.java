@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Image;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.EventRepository;
+import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -31,6 +34,8 @@ public class UserRest {
 	private UserSportRepository userSportRepo;
 	@Autowired
 	private EventRepository eventRepo;
+	@Autowired
+	private ImageRepository imageRepo;
 
 
 	@GetMapping("user")
@@ -112,5 +117,27 @@ public class UserRest {
 	public List<User> usersParticipatingEvent(@PathVariable Long idEvent){
 		return eventRepo.findById(idEvent).get().getParticipants();
 	}
-
+	
+	@GetMapping("user/inventaire/{idUser}")//Voir la liste d'image (Id) de l'utilisateur
+	public ArrayList<String> getInventaire(@PathVariable Long idUser){
+		Optional<User> u = userRepo.findById(idUser);
+		List<String> i = new ArrayList<String>();
+		for (Long idImage : u.get().getInventaire()) {
+			Optional<Image> img = imageRepo.findById(idImage);
+			i.add(img.get().getNameImage());
+		}
+		return (ArrayList<String>) i;
+	}
+	
+	@GetMapping("user/changement/{idUser}/{idImage}")
+	public boolean changementPP(@PathVariable Long idUser, @PathVariable Long idImage) {
+		Optional<User> u = userRepo.findById(idUser);
+		Optional<Image> i = imageRepo.findById(idImage);
+		if(i.isPresent()) {
+		u.get().setImageUser(i.get());
+		return true;
+	}else {
+		return false;
+	}
+	}
 }
