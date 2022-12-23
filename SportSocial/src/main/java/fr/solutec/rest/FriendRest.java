@@ -37,7 +37,6 @@ public class FriendRest {
 	    	Friend f = new Friend (null, u.get(), a, false);
 	        return friendRepos.save(f);
 	    }
-
 	 
 
 	    @PatchMapping("friend/accept/{idFriend}") //accepter la demande
@@ -45,7 +44,6 @@ public class FriendRest {
 	        f.setIdFriend(idFriend);
 	        return friendRepos.save(f);    
 	    }
-
 	 
 
 	    @DeleteMapping("friend/refuse/{idFriend}") //Refuser ou supprimer une amitié
@@ -58,21 +56,7 @@ public class FriendRest {
 	            return false;
 	        }
 	    }
-	    
-	    @DeleteMapping("friend/refusebyid/{idReceiver}/{idApplicant}")
-	    private boolean refuseFrienshipById (@PathVariable Long idReceiver, @PathVariable Long idApplicant) {
-	    	Optional<Friend>recei = friendRepos.findById(idReceiver);
-	    	Optional<Friend>appli = friendRepos.findById(idApplicant);
-	    	if (recei.isPresent() && appli.isPresent()) {
-	    		friendRepos.deleteMyFriends(idApplicant, idReceiver);
-	    		return true;
-
-	        }else {
-	            return false;
-	        }
-	    	
-	    }
-	    
+	       
 
 
 	    @GetMapping("friend/receiver/{idReceiver}") //Voir ses amis acceptés
@@ -136,9 +120,14 @@ public class FriendRest {
 	    	return true;
 	    }
 	    
-	    @GetMapping("select/{idApplicant}/{idReceiver}")
+	    @GetMapping("select/{idApplicant}/{idReceiver}") // sélectionner idFriend si demander d'amitié en cours 
 	    private Optional<Friend> selectFriendRelation (@PathVariable Long idReceiver, @PathVariable Long idApplicant){
 	    	return friendRepos.SelectRelationMyFriends(idApplicant, idReceiver);
+	    }
+	    
+	    @GetMapping("selectaccepted/{idApplicant}/{idReceiver}") // selectionner l'idFriend si ami 
+	    private Optional<Friend> selectFriendRelationAccepted (@PathVariable Long idReceiver, @PathVariable Long idApplicant){
+	    	return friendRepos.SelectRelationMyFriendsAccepted(idApplicant, idReceiver);
 	    }
 	    
 	   
