@@ -36,6 +36,9 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	@Query ("SELECT u FROM User u WHERE (u.id NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = 6 AND f.applicant.id != 6)))AND (u.id NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != 6 AND f.applicant.id = 6)))) AND (u.id != 6 )")
 	List<User> getNonFriends (Long idUser);
 	
+	@Query ("SELECT u FROM User u WHERE loginUser LIKE %?1%")
+	List<User> SearchUserByLogin (String loginUser);
+	
 
 
 	

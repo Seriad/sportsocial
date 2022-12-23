@@ -113,4 +113,8 @@ public class UserRest {
 		return eventRepo.findById(idEvent).get().getParticipants();
 	}
 
+	@GetMapping("user/search/{loginUser}")
+	public List<User>FilterUser(@PathVariable String loginUser){
+		return userRepo.SearchUserByLogin(loginUser);
+	}
 }
