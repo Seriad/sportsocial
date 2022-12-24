@@ -68,9 +68,9 @@ public class AchatRest {
 		userRepo.save(u.get());
 		return true;
 		
-	}
+	}else {
 		return false;
-	}
+	}}
 	
 	
 

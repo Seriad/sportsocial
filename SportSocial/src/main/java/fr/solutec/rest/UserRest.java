@@ -120,14 +120,14 @@ public class UserRest {
 
 	
 	@GetMapping("user/inventaire/{idUser}")//Voir la liste d'image (Id) de l'utilisateur
-	public ArrayList<String> getInventaire(@PathVariable Long idUser){
+	public ArrayList<Image> getInventaire(@PathVariable Long idUser){
 		Optional<User> u = userRepo.findById(idUser);
-		List<String> i = new ArrayList<String>();
+		List<Image> i = new ArrayList<Image>();
 		for (Long idImage : u.get().getInventaire()) {
 			Optional<Image> img = imageRepo.findById(idImage);
-			i.add(img.get().getNameImage());
+			i.add(img.get());
 		}
-		return (ArrayList<String>) i;
+		return (ArrayList<Image>) i;
 	}
 	
 	@GetMapping("user/changement/{idUser}/{idImage}")
@@ -136,6 +136,7 @@ public class UserRest {
 		Optional<Image> i = imageRepo.findById(idImage);
 		if(i.isPresent()) {
 		u.get().setImageUser(i.get());
+		userRepo.save(u.get());
 		return true;
 	}else {
 		return false;
