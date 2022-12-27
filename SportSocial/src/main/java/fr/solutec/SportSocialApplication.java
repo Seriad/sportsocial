@@ -338,6 +338,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		addressRepo.save(a16);
 		userRepo.save(u16);
 		
+		
 		addressRepo.save(a17);
 		userRepo.save(u17);
 		
