@@ -18,5 +18,5 @@ public class Image implements Serializable {
 
 	@Id @GeneratedValue
 	private Long idImage;
-	private String nameImage = "https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg";
+	private String nameImage;
 }

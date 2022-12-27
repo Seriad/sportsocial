@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import fr.solutec.repository.ImageRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor @AllArgsConstructor
 @Entity @Data
 public class User {
+
 	@Id @GeneratedValue
 	private Long idUser;
 	private String lastNameUser;

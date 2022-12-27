@@ -55,6 +55,8 @@ public class UserRest {
 	
 	@PostMapping("user/save")
 	public User saveUser(@RequestBody User u) {
+		u.getInventaire().add(imageRepo.findByNameImage("https://media.istockphoto.com/id/1018999828/fr/vectoriel/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-espace-r%C3%A9serv%C3%A9-de-photo-gris.jpg?s=170667a&w=0&k=20&c=yZAkya7Wg7vtsu8FF86k5r_1IrkE6jp4hwl7sf6bXJ0=")
+						.get().getIdImage());
 		return userRepo.save(u);
 	}
 
