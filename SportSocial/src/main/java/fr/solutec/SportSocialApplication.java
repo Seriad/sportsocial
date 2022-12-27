@@ -78,6 +78,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		System.out.println("Lancement en cours");
 		
+		//EMPTY ADDRESS TO ADD TO A NEWLY CREATED USER, DO NOT DELETE. IT IS USED IN THE USER CREATION API
+		Address a0 = new Address(null, "","","");
+		addressRepo.save(a0);
 		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
 		//DONT DELETE Image i1, THIS IMAGE IS USED AS A DEFAULT PROFILE PIC IN USER CLASS
