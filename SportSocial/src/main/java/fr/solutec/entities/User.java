@@ -32,7 +32,7 @@ public class User {
 	@ManyToOne
 	private Image imageUser;
 	private int token;
-	private ArrayList<Long> inventaire; 
+	private ArrayList<Long> inventaire = new ArrayList<Long>();
 	
 	
 	

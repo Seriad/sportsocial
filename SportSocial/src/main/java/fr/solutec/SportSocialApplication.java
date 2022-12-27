@@ -79,8 +79,8 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
-		Image i1 = new Image(null, "lien image"); //Utilisateur
-		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,i1,0,new ArrayList<Long>());
+		//Image i1 = new Image(null, "https://as2.ftcdn.net/v2/jpg/01/07/43/45/1000_F_107434511_iarF2z88c6Ds6AlgtwotHSAktWCdYOn7.jpg"); //Utilisateur
+		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,null,0,new ArrayList<Long>());
 		
 		Address a2 = new Address(null, "29 Bd Camélinat","92240","Malakoff");
 		Image i2 = new Image(null, "lien image2");//Utilisateur
@@ -99,7 +99,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		User u5 = new User(null,  "Perrera","Antoine",Date.valueOf("1970-08-23"),"Anto","jsuiscoachaussi",true,a11,i11,0,new ArrayList<Long>());
 		
 		Address a12 = new Address(null, "2 rue Solutec","75008","Paris");
-		User u12 = new User(null, "Cantona", "Eric",Date.valueOf("1977-03-25"),"Footman","123",false,a1,i1,0,new ArrayList<Long>());
+		User u12 = new User(null, "Cantona", "Eric",Date.valueOf("1977-03-25"),"Footman","123",false,a1,null,0,new ArrayList<Long>());
 		
 		Address a13 = new Address(null, "29 Bd Lecompte","31000","Toulouse");
 		User u13 = new User(null,  "Dupont","Antoine",Date.valueOf("2000-07-25"),"ToulouseRBG","bestplayer",true,a2,i2,0,new ArrayList<Long>());
@@ -114,7 +114,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		User u16 = new User(null,  "Poirier","Jacques",Date.valueOf("1970-04-23"),"Jacqui","poire",true,a11,i11,0,new ArrayList<Long>());
 		
 		Address a17 = new Address(null, "2 rue du livre","75006","Paris");
-		User u17 = new User(null, "Hugo", "Victor",Date.valueOf("1953-03-21"),"Miserable","123",false,a1,i1,0,new ArrayList<Long>());
+		User u17 = new User(null, "Hugo", "Victor",Date.valueOf("1953-03-21"),"Miserable","123",false,a1,null,0,new ArrayList<Long>());
 		
 		Address a18 = new Address(null, "29 avenue Esic","92240","Malakoff");
 		User u18 = new User(null,  "Formateur","Joel",Date.valueOf("1993-07-25"),"Jojo","esic",true,a2,i2,0,new ArrayList<Long>());
@@ -129,7 +129,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		User u21 = new User(null,  "Kern","Loic",Date.valueOf("1971-08-01"),"Akenavo","phare",true,a11,i11,0,new ArrayList<Long>());
 		
 		Address a22 = new Address(null, "2 rue du Nord","59000","Lille");
-		User u22 = new User(null, "Monceau", "Jules",Date.valueOf("1984-06-15"),"Juju","123",false,a1,i1,0,new ArrayList<Long>());
+		User u22 = new User(null, "Monceau", "Jules",Date.valueOf("1984-06-15"),"Juju","123",false,a1,null,0,new ArrayList<Long>());
 		
 		Address a23 = new Address(null, "29 Bd Symphonie","69000","Lyon");
 		User u23 = new User(null,  "Mozart","Wolfgang",Date.valueOf("2000-04-21"),"Musique","son",true,a2,i2,0,new ArrayList<Long>());
@@ -228,7 +228,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac3= new UserActivity(u2,ac3);
 		
 		addressRepo.save(a1);
-		imageRepo.save(i1);
+		//imageRepo.save(i1);
 		userRepo.save(u1);
 		
 		
