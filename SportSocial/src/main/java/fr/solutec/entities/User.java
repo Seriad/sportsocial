@@ -35,7 +35,7 @@ public class User {
 	private Address addressUser;
 	@ManyToOne
 	private Image imageUser;
-	private int token;
+	private int token = 0;
 	private ArrayList<Long> inventaire = new ArrayList<Long>();
 	
 	

@@ -18,6 +18,7 @@ import fr.solutec.entities.Image;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
+import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.UserRepository;
@@ -36,6 +37,8 @@ public class UserRest {
 	private EventRepository eventRepo;
 	@Autowired
 	private ImageRepository imageRepo;
+	@Autowired 
+	AddressRepository addressRepo;
 
 
 	@GetMapping("user")
@@ -60,6 +63,7 @@ public class UserRest {
 		newUser.getInventaire().add(imageRepo.findByNameImage("https://media.istockphoto.com/id/1018999828/fr/vectoriel/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-espace-r%C3%A9serv%C3%A9-de-photo-gris.jpg?s=170667a&w=0&k=20&c=yZAkya7Wg7vtsu8FF86k5r_1IrkE6jp4hwl7sf6bXJ0=")
 						.get().getIdImage());
 		newUser.setImageUser(imageRepo.findByNameImage("https://media.istockphoto.com/id/1018999828/fr/vectoriel/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-espace-r%C3%A9serv%C3%A9-de-photo-gris.jpg?s=170667a&w=0&k=20&c=yZAkya7Wg7vtsu8FF86k5r_1IrkE6jp4hwl7sf6bXJ0=").get());
+		newUser.setAddressUser(addressRepo.findByStreetAddress("").get());
 		return userRepo.save(newUser);
 	}
 
