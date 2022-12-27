@@ -19,5 +19,6 @@ public class ImageRest {
 	public Iterable<Image> getAllImage() {
 		return imageRepo.findAll();
 	}
+	
 
 }

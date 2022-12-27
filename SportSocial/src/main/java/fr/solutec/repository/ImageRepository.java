@@ -8,6 +8,6 @@ import fr.solutec.entities.Image;
 
 public interface ImageRepository extends CrudRepository<Image, Long>{
 	
-	public Optional<String> findByNameImage (String nameImage);
+	public Optional<Image> findByNameImage (String nameImage);
 
 }

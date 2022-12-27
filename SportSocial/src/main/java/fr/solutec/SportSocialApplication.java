@@ -3,6 +3,7 @@ package fr.solutec;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,60 +80,58 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		
 		Address a1 = new Address(null, "2 rue Pomme","75002","Paris");
+		//DONT DELETE Image i1, THIS IMAGE IS USED AS A DEFAULT PROFILE PIC IN USER CLASS
 		Image i1 = new Image(null, "https://media.istockphoto.com/id/1018999828/fr/vectoriel/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-espace-r%C3%A9serv%C3%A9-de-photo-gris.jpg?s=170667a&w=0&k=20&c=yZAkya7Wg7vtsu8FF86k5r_1IrkE6jp4hwl7sf6bXJ0="); //Utilisateur
-		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,i1,0,new ArrayList<Long>());
+		imageRepo.save(i1);
+		User u1 = new User(null, "Valjean", "Jean",Date.valueOf("1990-03-25"),"JeanVal","123",false,a1,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a2 = new Address(null, "29 Bd Camélinat","92240","Malakoff");
-		Image i2 = new Image(null, "lien image2");//Utilisateur
-		User u2 = new User(null,  "Cujoh","Joline",Date.valueOf("2000-07-25"),"JoFitness","cujoh",true,a2,i1,0,new ArrayList<Long>());
+		User u2 = new User(null,  "Cujoh","Joline",Date.valueOf("2000-07-25"),"JoFitness","cujoh",true,a2,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a3 = new Address(null, "322 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
-		Image i3 = new Image(null, "lien image3");//Utilisateur
-		User u3 = new User(null,  "Dufour","Stéphanie",Date.valueOf("1970-10-05"),"Steph","456",false,a3,i1,0,new ArrayList<Long>());
+		User u3 = new User(null,  "Dufour","Stéphanie",Date.valueOf("1970-10-05"),"Steph","456",false,a3,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a10 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
-		Image i10 = new Image(null, "lien image10");//Utilisateur
-		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","111",true,a10,i1,0,new ArrayList<Long>());
+		User u4 = new User(null,  "Petit","Manuel",Date.valueOf("1980-10-10"),"Manu","111",true,a10,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a11 = new Address(null, "75 Avenue jean Lolive","93500","Pantin");
-		Image i11 = new Image(null, "lien image11");//Utilisateur
-		User u5 = new User(null,  "Perrera","Antoine",Date.valueOf("1970-08-23"),"Anto","jsuiscoachaussi",true,a11,i1,0,new ArrayList<Long>());
+		User u5 = new User(null,  "Perrera","Antoine",Date.valueOf("1970-08-23"),"Anto","jsuiscoachaussi",true,a11,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a12 = new Address(null, "2 rue Solutec","75008","Paris");
-		User u12 = new User(null, "Cantona", "Eric",Date.valueOf("1977-03-25"),"Footman","123",false,a1,i1,0,new ArrayList<Long>());
+		User u12 = new User(null, "Cantona", "Eric",Date.valueOf("1977-03-25"),"Footman","123",false,a1,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a13 = new Address(null, "29 Bd Lecompte","31000","Toulouse");
-		User u13 = new User(null,  "Dupont","Antoine",Date.valueOf("2000-07-25"),"ToulouseRBG","bestplayer",true,a2,i1,0,new ArrayList<Long>());
+		User u13 = new User(null,  "Dupont","Antoine",Date.valueOf("2000-07-25"),"ToulouseRBG","bestplayer",true,a2,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a14 = new Address(null, "322 Boulevard des patines","13000","Marseille");
-		User u14 = new User(null,  "Dufond","Stéphane",Date.valueOf("1979-10-25"),"Stephou","456",false,a3,i1,0,new ArrayList<Long>());
+		User u14 = new User(null,  "Dufond","Stéphane",Date.valueOf("1979-10-25"),"Stephou","456",false,a3,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a15 = new Address(null, "325 Boulevard de l'écume","92200","Neuilly-Sur-Seine");
-		User u15 = new User(null,  "Grand","Manuel",Date.valueOf("1966-07-07"),"BigManu","111",true,a10,i1,0,new ArrayList<Long>());
+		User u15 = new User(null,  "Grand","Manuel",Date.valueOf("1966-07-07"),"BigManu","111",true,a10,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a16 = new Address(null, "39 Avenue jean Lorange","33000","Bordeaux");
-		User u16 = new User(null,  "Poirier","Jacques",Date.valueOf("1970-04-23"),"Jacqui","poire",true,a11,i1,0,new ArrayList<Long>());
+		User u16 = new User(null,  "Poirier","Jacques",Date.valueOf("1970-04-23"),"Jacqui","poire",true,a11,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a17 = new Address(null, "2 rue du livre","75006","Paris");
-		User u17 = new User(null, "Hugo", "Victor",Date.valueOf("1953-03-21"),"Miserable","123",false,a1,i1,0,new ArrayList<Long>());
+		User u17 = new User(null, "Hugo", "Victor",Date.valueOf("1953-03-21"),"Miserable","123",false,a1,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a18 = new Address(null, "29 avenue Esic","92240","Malakoff");
-		User u18 = new User(null,  "Formateur","Joel",Date.valueOf("1993-07-25"),"Jojo","esic",true,a2,i1,0,new ArrayList<Long>());
+		User u18 = new User(null,  "Formateur","Joel",Date.valueOf("1993-07-25"),"Jojo","esic",true,a2,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a19 = new Address(null, "322 Boulevard de l'envie","75012","Paris");
-		User u19 = new User(null,  "Zidane","Zinedine",Date.valueOf("1998-06-20"),"Champ","123",false,a3,i1,0,new ArrayList<Long>());
+		User u19 = new User(null,  "Zidane","Zinedine",Date.valueOf("1998-06-20"),"Champ","123",false,a3,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a20 = new Address(null, "3 rue du bureau","30000","Nime");
-		User u20 = new User(null,  "Adi","Jacques",Date.valueOf("1985-11-11"),"Jaja","987",true,a10,i1,0,new ArrayList<Long>());
+		User u20 = new User(null,  "Adi","Jacques",Date.valueOf("1985-11-11"),"Jaja","987",true,a10,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a21 = new Address(null, "75 Avenue la truite","29200","Brest");
-		User u21 = new User(null,  "Kern","Loic",Date.valueOf("1971-08-01"),"Akenavo","phare",true,a11,i1,0,new ArrayList<Long>());
+		User u21 = new User(null,  "Kern","Loic",Date.valueOf("1971-08-01"),"Akenavo","phare",true,a11,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a22 = new Address(null, "2 rue du Nord","59000","Lille");
-		User u22 = new User(null, "Monceau", "Jules",Date.valueOf("1984-06-15"),"Juju","123",false,a1,i1,0,new ArrayList<Long>());
+		User u22 = new User(null, "Monceau", "Jules",Date.valueOf("1984-06-15"),"Juju","123",false,a1,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		Address a23 = new Address(null, "29 Bd Symphonie","69000","Lyon");
-		User u23 = new User(null,  "Mozart","Wolfgang",Date.valueOf("2000-04-21"),"Musique","son",true,a2,i1,0,new ArrayList<Long>());
+		User u23 = new User(null,  "Mozart","Wolfgang",Date.valueOf("2000-04-21"),"Musique","son",true,a2,i1,0,new ArrayList<Long>(Arrays.asList(i1.getIdImage())));
 		
 		
 		Address a4 = new Address(null, "73 Rue des sportifs","75008","Paris");
@@ -140,10 +139,8 @@ public class SportSocialApplication implements CommandLineRunner{
 		Address a6 = new Address(null, "3 Avenue du Général Leclerc","92200","Neuilly-Sur-Seine");
 		
 		Image i4 = new Image(null, "https://img.freepik.com/vecteurs-libre/affiche-fitness-homme-cours-execution_1284-12590.jpg?w=1060&t=st=1671395275~exp=1671395875~hmac=6b7d03a193f0d9544c124a55d7ad60659765a9375b350299c740b7e553c63bcd");//Sport
-		Image i5 = new Image(null, "lien image5");//Sport
 		Image i6 = new Image(null, "https://img.freepik.com/vecteurs-libre/ensemble-elements-basket-vintage_1284-39314.jpg?w=826&t=st=1671391968~exp=1671392568~hmac=1dd55bf9ec92ea81b48263b3fb498b48cd45535e4e069c13b61188bb393b459f");//Sport
 		
-		Image i7 = new Image(null, "lien image7");//Event
 		Image i8 = new Image(null, "https://img.freepik.com/vecteurs-premium/joueur-football-abstrait-tirant-rapidement-balle-eclaboussure-aquarelles-illustration-peintures_291138-342.jpg?w=826");//Event
 		Image i9 = new Image(null, "https://img.freepik.com/vecteurs-libre/ensemble-elements-sport-rugby-vintage_1284-37924.jpg?w=826&t=st=1670941713~exp=1670942313~hmac=ffce7d716ce1183f9286475a795bc2cd1e53c7f08439ca67134829b90669417d");//Event
 		
@@ -228,24 +225,18 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac3= new UserActivity(u2,ac3);
 		
 		addressRepo.save(a1);
-		imageRepo.save(i1);
 		userRepo.save(u1);
 		
-		
 		addressRepo.save(a2);
-		imageRepo.save(i2);
 		userRepo.save(u2);
 		
 		addressRepo.save(a3);
-		imageRepo.save(i3);
 		userRepo.save(u3);
 		
 		addressRepo.save(a10);
-		imageRepo.save(i10);
 		userRepo.save(u4);
 		
 		addressRepo.save(a11);
-		imageRepo.save(i11);
 		userRepo.save(u5);
 		
 		addressRepo.save(a4);
@@ -253,9 +244,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		addressRepo.save(a6);
 		
 		imageRepo.save(i4);
-		imageRepo.save(i5);
 		imageRepo.save(i6);
-		imageRepo.save(i7);
 		imageRepo.save(i8);
 		imageRepo.save(i9);
 		imageRepo.save(i12);
