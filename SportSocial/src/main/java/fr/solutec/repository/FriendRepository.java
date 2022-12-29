@@ -7,13 +7,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.solutec.entities.Friend;
+import fr.solutec.entities.User;
 
 public interface FriendRepository extends CrudRepository<Friend, Long> {
     @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1 OR f.receiver.id = ?1) AND accept = true")
     List<Friend> getMyFriends (Long idUser);
 
-    @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1 OR f.receiver.id = ?1) AND accept = false")
+    @Query("SELECT f FROM Friend f WHERE (f.receiver.id = ?1) AND accept = false")
     List<Friend> getMyFriendRequest (Long idUser);
+    
+    @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1) AND accept = false")
+    List<Friend> getMyFriendRequestDelete (Long idUser);
     
     
     @Query("SELECT f FROM Friend f WHERE (f.applicant.id = ?1 OR f.receiver.id = ?1) AND accept = false OR (f.receiver.id = ?1 OR f.applicant.id = ?1) AND accept = false")
@@ -31,4 +35,7 @@ public interface FriendRepository extends CrudRepository<Friend, Long> {
     
     @Query("SELECT f From Friend f WHERE f.receiver.id=?1  AND accept =false")
     List<Friend>SelectMydemand(Long idReceiver);
+    
+	@Query ("SELECT f From Friend f WHERE (f.applicant.loginUser LIKE %?1% AND f.receiver.id = ?2) AND f.accept = true OR (f.receiver.loginUser LIKE %?1%  AND f.applicant.id = ?2) AND f.accept = true")
+	List<Friend> SearchFriendByLogin (String loginUser, Long idUser);
 }

@@ -153,9 +153,4 @@ public class UserRest {
 		}
 
 
-	@GetMapping("user/search/{loginUser}")
-	public List<User>FilterUser(@PathVariable String loginUser){
-		return userRepo.SearchUserByLogin(loginUser);
-
-	}
 }
