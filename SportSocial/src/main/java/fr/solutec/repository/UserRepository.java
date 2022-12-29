@@ -39,6 +39,10 @@ public interface UserRepository extends CrudRepository<User, Long>{
 
 	@Query ("SELECT u FROM User u WHERE loginUser LIKE %?1%")
 	List<User> SearchUserByLogin (String loginUser);
+	
+
+	@Query ("SELECT u FROM User u WHERE loginUser LIKE %?1%")
+	Optional<User> SearchUserByLoginOptional (String loginUser);
 
 	
 

@@ -1,6 +1,7 @@
 package fr.solutec.rest;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -161,4 +162,24 @@ public class FriendRest {
 	    	return friendRepos.SelectMydemand( idReceiver);
 	    	
 	    }
+	    
+		@GetMapping("friend/search/{loginUser}/{idUser}")
+		private List<User>FilterFriend(@PathVariable String loginUser, @PathVariable Long idUser){
+			List<User> friends = new ArrayList<>();
+			List<Friend> recup = friendRepos.SearchFriendByLogin(loginUser, idUser);
+			Optional<User> u = userRepos.findById(idUser);
+			if (u.isPresent()) {
+				for (Friend friend : recup) {
+					if (!friend.getApplicant().equals(u.get())) {
+						friends.add(friend.getApplicant());
+					}
+					if (!friend.getReceiver().equals(u.get())) {
+						friends.add(friend.getReceiver());
+					}
+				}
+			}
+			return friends;
+
+		}
+
 }
