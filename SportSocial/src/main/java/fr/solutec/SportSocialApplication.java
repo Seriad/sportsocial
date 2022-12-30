@@ -367,10 +367,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    messagerieRepo.save(msg5);
 	    
 	    messageRepo.save(m6);
-
 	    
 	    messageRepo.save(m7);
-
 	    
 	    messageRepo.save(m8);
 
