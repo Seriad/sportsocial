@@ -185,7 +185,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		conversation1.add(m6);
 		conversation1.add(m7);
 		conversation1.add(m8);
-		
+		 
 		
 		Team t1 = new Team(null, "Les rugbymen", membres1, conversation1);
 		
