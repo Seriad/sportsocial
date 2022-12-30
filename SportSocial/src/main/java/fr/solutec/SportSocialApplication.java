@@ -21,6 +21,7 @@ import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
+import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserActivity;
 import fr.solutec.entities.UserSport;
@@ -34,6 +35,7 @@ import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
+import fr.solutec.repository.TeamRepository;
 import fr.solutec.repository.UserActivityRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
@@ -67,6 +69,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private UserActivityRepository userActivityRepo;
 	@Autowired
 	private ClubRepository clubRepo;
+	@Autowired
+	private TeamRepository teamRepo;
 
 
 	public static void main(String[] args) {
@@ -161,6 +165,29 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s5 = new Sport(null, "Rugby", i9);
 		Sport s6 = new Sport(null, "Escalade", i15);
 		
+		List<User> membres1 = new ArrayList<>();
+		
+		membres1.add(u1);
+		membres1.add(u2);
+		membres1.add(u13);
+
+		Message m6 = new Message(null,Timestamp.valueOf("2022-12-25 11:00:00"),"Salut, Rugby ce soir ?",u1);
+
+	    
+	    Message m7 = new Message(null,Timestamp.valueOf("2022-12-25 11:10:00"),"Oui ! rencdez-vous à 19h au parc",u2);
+
+	    
+	    Message m8 = new Message(null,Timestamp.valueOf("2022-12-25 11:30:00"),"Trop cool, à ce soir !",u13);
+
+		
+		List<Message> conversation1 = new ArrayList<>();
+		
+		conversation1.add(m6);
+		conversation1.add(m7);
+		conversation1.add(m8);
+		
+		
+		Team t1 = new Team(null, "Les rugbymen", membres1, conversation1);
 		
 		List<User> participantse1 = new ArrayList<>();
 		List<User> participantse2 = new ArrayList<>();
@@ -218,7 +245,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    
 	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
-	 
+	    
+	    
 	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",a4,s1);
 	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",a5,s2);
 	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",a6,s3);
@@ -245,6 +273,42 @@ public class SportSocialApplication implements CommandLineRunner{
 		addressRepo.save(a4);
 		addressRepo.save(a5);
 		addressRepo.save(a6);
+		
+		addressRepo.save(a12);
+		userRepo.save(u12);
+		
+		addressRepo.save(a13);
+		userRepo.save(u13);
+		
+		addressRepo.save(a14);
+		userRepo.save(u14);
+		
+		addressRepo.save(a15);
+		userRepo.save(u15);
+		
+		addressRepo.save(a16);
+		userRepo.save(u16);
+		
+		addressRepo.save(a17);
+		userRepo.save(u17);
+		
+		addressRepo.save(a18);
+		userRepo.save(u18);
+		
+		addressRepo.save(a19);
+		userRepo.save(u19);
+		
+		addressRepo.save(a20);
+		userRepo.save(u20);
+		
+		addressRepo.save(a21);
+		userRepo.save(u21);
+		
+		addressRepo.save(a22);
+		userRepo.save(u22);
+		
+		addressRepo.save(a23);
+		userRepo.save(u23);
 		
 		imageRepo.save(i4);
 		imageRepo.save(i6);
@@ -301,7 +365,16 @@ public class SportSocialApplication implements CommandLineRunner{
 	    
 	    messageRepo.save(m5);
 	    messagerieRepo.save(msg5);
-		
+	    
+	    messageRepo.save(m6);
+
+	    
+	    messageRepo.save(m7);
+
+	    
+	    messageRepo.save(m8);
+
+
 		activityRepo.save(ac1);
 		activityRepo.save(ac2);
 		activityRepo.save(ac3);
@@ -310,47 +383,13 @@ public class SportSocialApplication implements CommandLineRunner{
 		userActivityRepo.save(uac2);
 		userActivityRepo.save(uac3);
 		
-		
 		clubRepo.save(c1);
 		clubRepo.save(c2); 
 		clubRepo.save(c3); 
+	
+		teamRepo.save(t1);
 		
-		addressRepo.save(a12);
-		userRepo.save(u12);
-		
-		addressRepo.save(a13);
-		userRepo.save(u13);
-		
-		addressRepo.save(a14);
-		userRepo.save(u14);
-		
-		addressRepo.save(a15);
-		userRepo.save(u15);
-		
-		addressRepo.save(a16);
-		userRepo.save(u16);
-		
-		
-		addressRepo.save(a17);
-		userRepo.save(u17);
-		
-		addressRepo.save(a18);
-		userRepo.save(u18);
-		
-		addressRepo.save(a19);
-		userRepo.save(u19);
-		
-		addressRepo.save(a20);
-		userRepo.save(u20);
-		
-		addressRepo.save(a21);
-		userRepo.save(u21);
-		
-		addressRepo.save(a22);
-		userRepo.save(u22);
-		
-		addressRepo.save(a23);
-		userRepo.save(u23);
+
 		
 	
 	}
