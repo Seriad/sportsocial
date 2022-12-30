@@ -158,6 +158,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i15= new Image(null, "https://img.freepik.com/photos-gratuite/grimpeur-mur-escarpe_23-2147665027.jpg?w=1380&t=st=1671394819~exp=1671395419~hmac=7ce9cc84e2f2fb6e3995592cc48d30491197ed39ef119541c1072cc80f2be4d2");
 		Image i16= new Image(null, "https://img.freepik.com/photos-gratuite/nageur-male-nageant-coup-papillon_171337-7613.jpg?w=1380&t=st=1671395097~exp=1671395697~hmac=ad8f6662e82ad73d918ad02a60510f504f5f04b48590974a5d0aada901b4c4c9");
 		
+		Image i17= new Image(null, "https://img.freepik.com/photos-gratuite/joueur-football-portant-maillot-numero-10_53876-146599.jpg?w=1380&t=st=1672415588~exp=1672416188~hmac=60dd7c4a646d706b5530c388a0e7b4987e8fc1b6bf84550c2f7d3c7f1e655a2f");
+		imageRepo.save(i17);
+		
 		Sport s1 = new Sport(null,"Course à pied",i4);
 		Sport s2 = new Sport(null,"Natation",i16);
 		Sport s3 = new Sport(null,"Football",i8);
@@ -186,8 +189,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		conversation1.add(m7);
 		conversation1.add(m8);
 		 
-		
-		Team t1 = new Team(null, "Les rugbymen", membres1, conversation1);
+		Team t1 = new Team(null,"Les rugbymen", i17 ,membres1, conversation1);
 		
 		List<User> participantse1 = new ArrayList<>();
 		List<User> participantse2 = new ArrayList<>();
@@ -386,7 +388,6 @@ public class SportSocialApplication implements CommandLineRunner{
 		clubRepo.save(c3); 
 	
 		teamRepo.save(t1);
-		
 
 		
 	

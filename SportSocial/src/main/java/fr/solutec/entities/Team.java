@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,8 @@ public class Team {
 	@Id@GeneratedValue
 	private Long idTeam;
 	private String title;
+	@ManyToOne
+	private Image imageTeam;
 	@ManyToMany
 	private List<User> membres = new ArrayList<User>();
 	@ManyToMany
