@@ -32,6 +32,17 @@ public class ClubRest {
 		return clubRepo.findAll();
 	}
 	
+	@GetMapping("mesClubs/{idUser}")
+	public Iterable<Club> getMyClubs(@PathVariable Long idUser){
+		return clubRepo.getMyClubs(idUser);
+	}
+	
+	@GetMapping("autresClubs/{idUser}")
+	public Iterable<Club> getOtherClubs(@PathVariable Long idUser){
+		return clubRepo.getOtherClubs(idUser);
+	}
+	
+	
 	@PostMapping("club/{idUser}")
 	public Club createClub(@PathVariable Long idUser, @RequestBody Club c) {
 		Optional<User> user = this.userRepo.findByIdUser(idUser);
