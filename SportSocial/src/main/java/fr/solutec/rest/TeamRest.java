@@ -70,9 +70,18 @@ public class TeamRest {
     	return teamRepo.save(team);
     	
     }
+    
+    @PostMapping("team/rename/{idTeam}")
+    public Team renameTeam (@PathVariable Long idTeam, @RequestBody Team team) {
+    	String newtitle = team.getTitle();
+    	Team t = teamRepo.findById(idTeam).get();
+    	t.setTitle(newtitle);
+    	return teamRepo.save(t);
+    }
+    }
 
        
 	
 	
 
-}
+
