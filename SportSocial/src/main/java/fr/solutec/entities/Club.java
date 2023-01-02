@@ -1,5 +1,6 @@
 package fr.solutec.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -30,5 +31,5 @@ public class Club {
 		@ManyToOne
 		private User createur;
 		@ManyToMany
-		private List<User> membres;
+		private List<User> membres = new ArrayList<User>();
 }
