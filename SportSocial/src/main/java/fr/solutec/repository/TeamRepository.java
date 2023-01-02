@@ -12,6 +12,17 @@ public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT t FROM Team t INNER JOIN t.membres m WHERE (m.idUser = ?1 )")
     List<Team> getMyTeam (Long idUser);
     
+    @Query("SELECT t FROM Team t WHERE t.idTeam = ?1 ")
+    List<Team> getMyTeamInformation (Long idTeam);
+    
+    /*
+    @Query("SELECT t FROM Team t INNER JOIN t.conversation c WHERE (t.idTeam = ?1 ) Order By c.dateSendMessage Asc")
+    List<Team> getMyTeamMessage (Long idTeam);7
+    */
+    
+    @Query("SELECT c FROM Team t INNER JOIN t.conversation c WHERE (t.idTeam = ?1 ) Order By c.dateSendMessage Asc")
+    Iterable<Team> getMyTeamMessage (Long idTeam);
+    
 
 
 }

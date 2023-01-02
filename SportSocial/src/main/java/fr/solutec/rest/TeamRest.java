@@ -25,5 +25,17 @@ public class TeamRest {
 		return teamRepo.getMyTeam(idUser);
 	}
 	
+	@GetMapping("team/all/{idTeam}")
+	private List<Team> MyTeamsInformation(@PathVariable Long idTeam){
+		return teamRepo.getMyTeamInformation(idTeam);
+	}
+	
+	@GetMapping("team/message/{idTeam}")
+	private Iterable<Team> MyTeamsMessage(@PathVariable Long idTeam){
+		return teamRepo.getMyTeamMessage(idTeam);
+		
+	}
+	
+	
 
 }

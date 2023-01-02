@@ -168,6 +168,21 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s5 = new Sport(null, "Rugby", i9);
 		Sport s6 = new Sport(null, "Escalade", i15);
 		
+	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
+	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
+	    
+	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
+	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
+	    
+	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-25 10:20:00"),"T'inquiète, je peux inviter des gens avec mon abonnement",u1);
+	    Messagerie msg3= new Messagerie(u2,m3); // Message jeanval to joline
+	    
+	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-25 10:30:00"),"Ah bah faisons comme ça!",u2);
+	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
+	    
+	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
+	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
+		
 		List<User> membres1 = new ArrayList<>();
 		
 		membres1.add(u1);
@@ -175,11 +190,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		membres1.add(u13);
 
 		Message m6 = new Message(null,Timestamp.valueOf("2022-12-25 11:00:00"),"Salut, Rugby ce soir ?",u1);
+  
+	    Message m7 = new Message(null,Timestamp.valueOf("2022-12-25 11:10:00"),"Oui ! rendez-vous à 19h au parc",u2);
 
-	    
-	    Message m7 = new Message(null,Timestamp.valueOf("2022-12-25 11:10:00"),"Oui ! rencdez-vous à 19h au parc",u2);
-
-	    
 	    Message m8 = new Message(null,Timestamp.valueOf("2022-12-25 11:30:00"),"Trop cool, à ce soir !",u13);
 
 		
@@ -232,21 +245,6 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,null);
 	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,null);
 	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4, null);
-
-	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
-	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
-	    
-	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-25 10:10:00"),"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
-	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
-	    
-	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-25 10:20:00"),"T'inquiète, je peux inviter des gens avec mon abonnement",u1);
-	    Messagerie msg3= new Messagerie(u2,m3); // Message jeanval to joline
-	    
-	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-25 10:30:00"),"Ah bah faisons comme ça!",u2);
-	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
-	    
-	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-25 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
-	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 	    
 	    
 	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",a4,s1);
