@@ -49,6 +49,12 @@ public class TeamRest {
 		
 	}
 	
+	@GetMapping("team/member/{idTeam}")
+	private Iterable<Team> MyTeamsMember(@PathVariable Long idTeam){
+		return teamRepo.getMyTeamMember(idTeam);
+		
+	}
+	
 	@PostMapping("team/envoyer/{idTeam}/{idExp}")
     public Message sendTeamMessageById(@PathVariable Long idTeam, @PathVariable Long idExp, @RequestBody Message message) {
 
