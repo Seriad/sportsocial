@@ -19,6 +19,7 @@ import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
 import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
+import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.TeamRepository;
 import fr.solutec.repository.UserRepository;
@@ -31,6 +32,8 @@ public class TeamRest {
 	private MessageRepository messageRepo;
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private ImageRepository imageRepo;
 	
 	
 	@GetMapping("team/{idUser}")
@@ -100,6 +103,20 @@ public class TeamRest {
 	public List<User> userNonTeamMember(@PathVariable Long idTeam){
 		return userRepo.getNonTeamMember(idTeam);
 	}
+    
+
+	@PostMapping("team/create/{idUser}")
+	public Team createTeam(@PathVariable Long idUser, @RequestBody Team t) {
+		Team teamcreated = teamRepo.save(t);
+
+		teamcreated.getConversation();
+		teamcreated.getMembres();
+		teamcreated.setImageTeam(imageRepo.findByNameImage("https://media.istockphoto.com/id/1018999828/fr/vectoriel/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-espace-r%C3%A9serv%C3%A9-de-photo-gris.jpg?s=170667a&w=0&k=20&c=yZAkya7Wg7vtsu8FF86k5r_1IrkE6jp4hwl7sf6bXJ0=").get());
+		teamcreated.setAdmin(userRepo.findById(idUser).get());
+		return addMember(idUser, teamcreated.getIdTeam());
+
+	}
+	
     
     
     }
