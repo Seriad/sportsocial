@@ -53,7 +53,7 @@ public class ClubRest {
 		return clubCreated;
 	}
 	
-	@PatchMapping("club/participer/{idUser}/{idClub}")
+	@PatchMapping("club/rejoindre/{idUser}/{idClub}")
 	public Club addUserToClub(@PathVariable Long idUser, @PathVariable Long idClub) {
 		Optional<User> u = userRepo.findById(idUser);
 		Optional<Club> c = clubRepo.findById(idClub);
