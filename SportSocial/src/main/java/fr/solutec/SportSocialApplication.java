@@ -184,10 +184,13 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 		
 		List<User> membres1 = new ArrayList<>();
+		List<User> membres2 = new ArrayList<>();
 		
 		membres1.add(u1);
 		membres1.add(u2);
 		membres1.add(u13);
+		
+		membres2.add(u1);
 
 		Message m6 = new Message(null,Timestamp.valueOf("2022-12-25 11:00:00"),"Salut, Rugby ce soir ?",u1);
   
@@ -197,12 +200,15 @@ public class SportSocialApplication implements CommandLineRunner{
 
 		
 		List<Message> conversation1 = new ArrayList<>();
+		List<Message> conversation2 = new ArrayList<>();
 		
 		conversation1.add(m6);
 		conversation1.add(m7);
 		conversation1.add(m8);
 		 
-		Team t1 = new Team(null,"Les rugbymen", i17 ,membres1, conversation1);
+		Team t1 = new Team(null,"Les rugbymen",u2 ,i17 ,membres1, conversation1);
+		
+		Team t2 = new Team(null,"Les footeux",u1 ,i17 ,membres2, conversation2);
 		
 		List<User> participantse1 = new ArrayList<>();
 		List<User> participantse2 = new ArrayList<>();
@@ -395,6 +401,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		clubRepo.save(c3); 
 	
 		teamRepo.save(t1);
+		teamRepo.save(t2);
 
 		
 	

@@ -84,6 +84,24 @@ public class TeamRest {
     	t.setTitle(newtitle);
     	return teamRepo.save(t);
     }
+    
+    @PostMapping("team/addmember/{idTeam}/{idUser}")
+    public Team addMember (@PathVariable Long idTeam, @PathVariable Long idUser) {
+    	User mem= userRepo.findByIdUser(idUser).get();
+    	Team t = teamRepo.findById(idTeam).get();
+    	t.getMembres().add(mem);
+    
+    	return teamRepo.save(t);
+    			
+    }
+    
+    // Voir les personnes non membres de la team 
+    @GetMapping("team/nonmember/{idTeam}") 
+	public List<User> userNonTeamMember(@PathVariable Long idTeam){
+		return userRepo.getNonTeamMember(idTeam);
+	}
+    
+    
     }
 
        

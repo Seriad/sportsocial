@@ -21,6 +21,8 @@ public class Team {
 	private Long idTeam;
 	private String title;
 	@ManyToOne
+	private User admin;
+	@ManyToOne
 	private Image imageTeam;
 	@ManyToMany
 	private List<User> membres = new ArrayList<User>();
