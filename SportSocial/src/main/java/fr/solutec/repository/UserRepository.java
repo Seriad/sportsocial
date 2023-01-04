@@ -34,7 +34,7 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	@Query("SELECT u FROM User u WHERE u.idUser != ?1")
 	public List<User> findAllUserExceptConnected (Long idUser);
 	
-	@Query ("SELECT u FROM User u WHERE (u.idUser NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.id NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 )")
+	@Query ("SELECT u FROM User u WHERE (u.id NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.id NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 )")
 	List<User> getNonFriends (Long idUser);
 	
 	@Query ("SELECT u FROM User u WHERE (u.idUser NOT IN (SELECT c.idUser FROM Team t INNER JOIN t.membres c INNER JOIN User u ON c.idUser = u.idUser WHERE (t.idTeam = ?1)))")
@@ -43,8 +43,6 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	@Query ("SELECT u FROM User u WHERE loginUser LIKE %?1%")
 	List<User> SearchUserByLogin (String loginUser);
 
-	@Query ("SELECT u FROM User u WHERE loginUser LIKE %?1%")
-	Optional<User> SearchUserByLoginOptional (String loginUser);
 
 	
 

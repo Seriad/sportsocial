@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.User;
@@ -151,6 +152,14 @@ public class UserRest {
 		return false;
 	}
 		}
+	
+	@GetMapping("user/search/{loginUser}")
+	private List<User>FilterUser(@PathVariable String loginUser){
+		List<User> u = userRepo.SearchUserByLogin(loginUser);
+
+		return u;
+
+	}
 
 
 }
