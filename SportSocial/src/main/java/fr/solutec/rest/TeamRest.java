@@ -80,7 +80,7 @@ public class TeamRest {
     	
     }
     
-    @PostMapping("team/rename/{idTeam}")
+    @PostMapping("team/rename/{idTeam}")// renomer le groupe 
     public Team renameTeam (@PathVariable Long idTeam, @RequestBody Team team) {
     	String newtitle = team.getTitle();
     	Team t = teamRepo.findById(idTeam).get();
@@ -88,7 +88,7 @@ public class TeamRest {
     	return teamRepo.save(t);
     }
     
-    @PostMapping("team/addmember/{idTeam}/{idUser}")
+    @PostMapping("team/addmember/{idTeam}/{idUser}")// Ajouter un membre au groupe 
     public Team addMember (@PathVariable Long idTeam, @PathVariable Long idUser) {
     	User mem= userRepo.findByIdUser(idUser).get();
     	Team t = teamRepo.findById(idTeam).get();
@@ -105,7 +105,7 @@ public class TeamRest {
 	}
     
 
-	@PostMapping("team/create/{idUser}")
+	@PostMapping("team/create/{idUser}")//Créer un groupe 
 	public Team createTeam(@PathVariable Long idUser, @RequestBody Team t) {
 		Team teamcreated = teamRepo.save(t);
 		User newuser = userRepo.findById(idUser).get();
@@ -118,6 +118,16 @@ public class TeamRest {
 		return teamcreated;
 
 	}
+	
+    @DeleteMapping("team/delete/{idTeam}") //Supprimer un groupe 
+    public List<Team> quitTeam(@PathVariable Long idTeam) {
+    	Team team = teamRepo.findById(idTeam).get();
+   
+    	teamRepo.delete(team);
+
+    	return teamRepo.getAllTeam();
+    	
+    }
 	
     
     
