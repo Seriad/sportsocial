@@ -128,6 +128,12 @@ public class TeamRest {
     	return teamRepo.getAllTeam();
     	
     }
+    
+    @GetMapping("team/search/{title}/{idUser}")
+    public List<Team> searchMyTeam (@PathVariable Long idUser, @PathVariable String title) {
+    	List<Team> team = teamRepo.searchMyTeam(idUser, title);
+    	return team;
+    			}
 	
     
     
