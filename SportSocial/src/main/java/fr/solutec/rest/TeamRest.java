@@ -63,7 +63,7 @@ public class TeamRest {
 
         String contenu= message.getContentMessage();
         Optional<User>uexp=userRepo.findByIdUser(idExp);
-        Message m = new Message (null,null,contenu,uexp.get());
+        Message m = new Message (null,null,false,contenu,uexp.get());
         Message msave = messageRepo.save(m);
 
         Optional<Team>team = teamRepo.findById(idTeam);
@@ -79,7 +79,7 @@ public class TeamRest {
     	String contenu= "a quitté le groupe " + title ;
     	
         Optional<User>uexp=userRepo.findByIdUser(idUser);
-        Message m = new Message (null,null,contenu,uexp.get());
+        Message m = new Message (null,null, false,contenu,uexp.get());
         messageRepo.save(m);
 
     	

@@ -175,19 +175,19 @@ public class SportSocialApplication implements CommandLineRunner{
 		Sport s5 = new Sport(null, "Rugby", i9);
 		Sport s6 = new Sport(null, "Escalade", i15);
 		
-	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"),"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
+	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"), true,"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
-	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-26 10:10:00"),"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
+	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-26 10:10:00"), true,"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
 	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
 	    
-	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-27 10:20:00"),"T'inquiète, je peux inviter des gens avec mon abonnement",u1);
+	    Message m3 = new Message(null,Timestamp.valueOf("2022-12-27 10:20:00"), true,"T'inquiète, je peux inviter des gens avec mon abonnement",u1);
 	    Messagerie msg3= new Messagerie(u2,m3); // Message jeanval to joline
 	    
-	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-28 10:30:00"),"Ah bah faisons comme ça!",u2);
+	    Message m4 = new Message(null,Timestamp.valueOf("2022-12-28 10:30:00"), true,"Ah bah faisons comme ça!",u2);
 	    Messagerie msg4= new Messagerie(u1,m4); // Message joline to jeanval
 	    
-	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-29 10:40:00"),"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
+	    Message m5 = new Message(null,Timestamp.valueOf("2022-12-29 10:40:00"), true,"Hello, tu peux me dire où se trouve le gymnase dont tu m'avais parlé pour le club de Basket loisir ?",u5);
 	    Messagerie msg5= new Messagerie(u2,m5); // Message josuke to joline
 		
 		List<User> membres1 = new ArrayList<>();
@@ -199,11 +199,11 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		membres2.add(u1);
 
-		Message m6 = new Message(null,Timestamp.valueOf("2022-12-25 11:00:00"),"Salut, Rugby ce soir ?",u1);
+		Message m6 = new Message(null,Timestamp.valueOf("2022-12-25 11:00:00"), true,"Salut, Rugby ce soir ?",u1);
   
-	    Message m7 = new Message(null,Timestamp.valueOf("2022-12-25 11:10:00"),"Oui ! rendez-vous à 19h au parc",u2);
+	    Message m7 = new Message(null,Timestamp.valueOf("2022-12-25 11:10:00"), true,"Oui ! rendez-vous à 19h au parc",u2);
 
-	    Message m8 = new Message(null,Timestamp.valueOf("2022-12-25 11:30:00"),"Trop cool, à ce soir !",u13);
+	    Message m8 = new Message(null,Timestamp.valueOf("2022-12-25 11:30:00"), true,"Trop cool, à ce soir !",u13);
 
 		
 		List<Message> conversation1 = new ArrayList<>();

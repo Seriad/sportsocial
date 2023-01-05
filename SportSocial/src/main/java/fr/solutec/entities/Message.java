@@ -23,6 +23,7 @@ public class Message {
 	private Long idMessage;
 	@CreationTimestamp
 	private Timestamp dateSendMessage;
+	private Boolean lu;
 	private String contentMessage;
 	@ManyToOne
 	private User expediteurMessage;
