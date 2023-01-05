@@ -29,7 +29,7 @@ private UserRepository userRepo;
 public Message createMessage(@PathVariable String expediteur,@RequestBody Timestamp dateSend, @RequestBody String contenu) {
 	
 	Optional<User>uexp= userRepo.findByLoginUser(expediteur);
-	Message m = new Message(null, dateSend, contenu,uexp.get());
+	Message m = new Message(null, dateSend, false,contenu,uexp.get());
 	return messageRepo.save(m);
 }
 }
