@@ -161,6 +161,13 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i17= new Image(null, "https://img.freepik.com/photos-gratuite/joueur-football-portant-maillot-numero-10_53876-146599.jpg?w=1380&t=st=1672415588~exp=1672416188~hmac=60dd7c4a646d706b5530c388a0e7b4987e8fc1b6bf84550c2f7d3c7f1e655a2f");
 		imageRepo.save(i17);
 		
+		Image i18= new Image(null, "https://img.freepik.com/photos-gratuite/joueurs-football-action-stade-professionnel_654080-1194.jpg?w=1060&t=st=1672908598~exp=1672909198~hmac=4c50d90e0c6c6b15daea737cba46ded0e5112d3697e19e0cd60011a1731222ec");
+		imageRepo.save(i18);
+		
+		Image i19= new Image(null, "https://img.freepik.com/vecteurs-libre/employes-donnant-mains-aidant-leurs-collegues-monter-escaliers_74855-5236.jpg?w=1060&t=st=1672913654~exp=1672914254~hmac=5575146b381963534bad888d4b17ba15718e7fd0cfa859afcc31555559ecfaa0");
+		imageRepo.save(i19);
+		
+		
 		Sport s1 = new Sport(null,"Course à pied",i4);
 		Sport s2 = new Sport(null,"Natation",i16);
 		Sport s3 = new Sport(null,"Football",i8);
@@ -208,7 +215,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		 
 		Team t1 = new Team(null,"Les rugbymen",u2 ,i17 ,membres1, conversation1);
 		
-		Team t2 = new Team(null,"Les footeux",u1 ,i17 ,membres2, conversation2);
+		Team t2 = new Team(null,"Les footeux",u1 ,i18 ,membres2, conversation2);
 		
 		List<User> participantse1 = new ArrayList<>();
 		List<User> participantse2 = new ArrayList<>();

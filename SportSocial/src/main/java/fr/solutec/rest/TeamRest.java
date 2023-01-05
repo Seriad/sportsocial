@@ -108,12 +108,14 @@ public class TeamRest {
 	@PostMapping("team/create/{idUser}")
 	public Team createTeam(@PathVariable Long idUser, @RequestBody Team t) {
 		Team teamcreated = teamRepo.save(t);
+		User newuser = userRepo.findById(idUser).get();
 
 		teamcreated.getConversation();
-		teamcreated.getMembres();
-		teamcreated.setImageTeam(imageRepo.findByNameImage("https://media.istockphoto.com/id/1018999828/fr/vectoriel/ic%C3%B4ne-de-profil-avatar-par-d%C3%A9faut-espace-r%C3%A9serv%C3%A9-de-photo-gris.jpg?s=170667a&w=0&k=20&c=yZAkya7Wg7vtsu8FF86k5r_1IrkE6jp4hwl7sf6bXJ0=").get());
+		teamcreated.getMembres().add(newuser);
+		teamcreated.setImageTeam(imageRepo.findByNameImage("https://img.freepik.com/vecteurs-libre/employes-donnant-mains-aidant-leurs-collegues-monter-escaliers_74855-5236.jpg?w=1060&t=st=1672913654~exp=1672914254~hmac=5575146b381963534bad888d4b17ba15718e7fd0cfa859afcc31555559ecfaa0").get());
 		teamcreated.setAdmin(userRepo.findById(idUser).get());
-		return addMember(idUser, teamcreated.getIdTeam());
+		teamRepo.save(teamcreated);
+		return teamcreated;
 
 	}
 	
