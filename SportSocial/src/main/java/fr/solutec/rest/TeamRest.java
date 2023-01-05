@@ -75,7 +75,8 @@ public class TeamRest {
     @DeleteMapping("team/quit/{idTeam}/{idUser}") //Quitter un groupe 
     public Team quitTeam(@PathVariable Long idTeam, @PathVariable Long idUser) {
     	Team team = teamRepo.findById(idTeam).get();
-    	String contenu= "a quitté le groupe";
+    	String title = teamRepo.getMyTeamTitle(idTeam);
+    	String contenu= "a quitté le groupe " + title ;
     	
         Optional<User>uexp=userRepo.findByIdUser(idUser);
         Message m = new Message (null,null,contenu,uexp.get());

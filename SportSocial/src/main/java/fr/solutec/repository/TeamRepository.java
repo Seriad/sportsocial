@@ -29,6 +29,9 @@ public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT t FROM Team t INNER JOIN t.membres m WHERE (m.idUser = ?1 ) AND (t.title LIKE %?2%)")
     List<Team> searchMyTeam (Long idUser, String title);
     
+    @Query("SELECT t.title FROM Team t WHERE t.idTeam = ?1 ")
+    String getMyTeamTitle (Long idTeam);
+    
 
 
 }
