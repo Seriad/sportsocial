@@ -37,6 +37,9 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	@Query ("SELECT u FROM User u WHERE (u.id NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.id NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 )")
 	List<User> getNonFriends (Long idUser);
 	
+	@Query ("SELECT u FROM User u WHERE (u.id NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.id NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 ) AND (u.loginUser LIKE %?2%)")
+	List<User> searchNonFriends (Long idUser, String loginUser);
+	
 	@Query ("SELECT u FROM User u WHERE (u.idUser NOT IN (SELECT c.idUser FROM Team t INNER JOIN t.membres c INNER JOIN User u ON c.idUser = u.idUser WHERE (t.idTeam = ?1)))")
 	List<User> getNonTeamMember (Long idTeam);
 

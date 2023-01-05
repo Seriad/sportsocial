@@ -41,7 +41,7 @@ public class MessagerieRest {
 		String contenu= messagerie.getMessage().getContentMessage();
 		System.out.println("contenu "+ contenu);
 		Optional<User>uexp=userRepo.findByLoginUser(messagerie.getMessage().getExpediteurMessage().getLoginUser());
-		Message m = new Message(null, null, contenu,uexp.get());
+		Message m = new Message(null, null, false,contenu,uexp.get());
 	
 		Message msave = messageRepo.save(m);
 		
@@ -58,7 +58,7 @@ public class MessagerieRest {
 
         String contenu=messagerie.getMessage().getContentMessage();
         Optional<User>uexp=userRepo.findByIdUser(exp);
-        Message m = new Message (null,null,contenu,uexp.get());
+        Message m = new Message (null,null,false, contenu,uexp.get());
         Message msave = messageRepo.save(m);
 
         Optional<User>udest=userRepo.findByIdUser(dest);

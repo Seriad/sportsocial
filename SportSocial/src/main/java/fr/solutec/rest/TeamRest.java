@@ -63,7 +63,7 @@ public class TeamRest {
 
         String contenu= message.getContentMessage();
         Optional<User>uexp=userRepo.findByIdUser(idExp);
-        Message m = new Message (null,null,contenu,uexp.get());
+        Message m = new Message (null,null,false,contenu,uexp.get());
         Message msave = messageRepo.save(m);
 
         Optional<Team>team = teamRepo.findById(idTeam);
@@ -75,12 +75,21 @@ public class TeamRest {
     @DeleteMapping("team/quit/{idTeam}/{idUser}") //Quitter un groupe 
     public Team quitTeam(@PathVariable Long idTeam, @PathVariable Long idUser) {
     	Team team = teamRepo.findById(idTeam).get();
+    	String title = teamRepo.getMyTeamTitle(idTeam);
+    	String contenu= "a quitté le groupe " + title ;
+    	
+        Optional<User>uexp=userRepo.findByIdUser(idUser);
+        Message m = new Message (null,null, false,contenu,uexp.get());
+        messageRepo.save(m);
+
+    	
+    	team.getConversation().add(m);
     	team.getMembres().removeIf(p-> p.getIdUser()==idUser);
     	return teamRepo.save(team);
     	
     }
     
-    @PostMapping("team/rename/{idTeam}")
+    @PostMapping("team/rename/{idTeam}")// renomer le groupe 
     public Team renameTeam (@PathVariable Long idTeam, @RequestBody Team team) {
     	String newtitle = team.getTitle();
     	Team t = teamRepo.findById(idTeam).get();
@@ -88,7 +97,7 @@ public class TeamRest {
     	return teamRepo.save(t);
     }
     
-    @PostMapping("team/addmember/{idTeam}/{idUser}")
+    @PostMapping("team/addmember/{idTeam}/{idUser}")// Ajouter un membre au groupe 
     public Team addMember (@PathVariable Long idTeam, @PathVariable Long idUser) {
     	User mem= userRepo.findByIdUser(idUser).get();
     	Team t = teamRepo.findById(idTeam).get();
@@ -105,7 +114,7 @@ public class TeamRest {
 	}
     
 
-	@PostMapping("team/create/{idUser}")
+	@PostMapping("team/create/{idUser}")//Créer un groupe 
 	public Team createTeam(@PathVariable Long idUser, @RequestBody Team t) {
 		Team teamcreated = teamRepo.save(t);
 		User newuser = userRepo.findById(idUser).get();
@@ -118,6 +127,22 @@ public class TeamRest {
 		return teamcreated;
 
 	}
+	
+    @DeleteMapping("team/delete/{idTeam}") //Supprimer un groupe 
+    public List<Team> quitTeam(@PathVariable Long idTeam) {
+    	Team team = teamRepo.findById(idTeam).get();
+   
+    	teamRepo.delete(team);
+
+    	return teamRepo.getAllTeam();
+    	
+    }
+    
+    @GetMapping("team/search/{title}/{idUser}")
+    public List<Team> searchMyTeam (@PathVariable Long idUser, @PathVariable String title) {
+    	List<Team> team = teamRepo.searchMyTeam(idUser, title);
+    	return team;
+    			}
 	
     
     

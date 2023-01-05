@@ -160,6 +160,14 @@ public class UserRest {
 		return u;
 
 	}
+	
+	@GetMapping("nonfriend/search/{loginUser}/{idUser}")
+	private List<User>FilterNonFriend(@PathVariable String loginUser, @PathVariable Long idUser){
+		List<User> u = userRepo.searchNonFriends(idUser, loginUser);
+
+		return u;
+
+	}
 
 
 }
