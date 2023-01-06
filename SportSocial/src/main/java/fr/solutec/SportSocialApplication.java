@@ -262,8 +262,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    membresClub1.add(u2);
 	    membresClub2.add(u1);
 	    membresClub3.add(u4);
-	    
-	    
+	    membresClub1.add(u1);
+	    membresClub1.add(u15);
+	    membresClub1.add(u20);
+	    membresClub1.add(u23);
 	    
 	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,membresClub1);
 	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,membresClub2);

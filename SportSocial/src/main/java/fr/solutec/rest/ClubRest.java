@@ -69,5 +69,15 @@ public class ClubRest {
 	}
 	
 	
+	@GetMapping("club/amis/{idUser}/{idClub}")
+	public Iterable<User> getFriendsInClub(@PathVariable Long idUser, @PathVariable Long idClub){
+		return userRepo.getFriendsInClub(idUser, idClub);
+	}
+	
+	@GetMapping("club/test/{idUser}/{idClub}")
+	public Iterable<User> test(@PathVariable Long idUser, @PathVariable Long idClub){
+		return userRepo.test(idUser, idClub);
+	}
+	
 }
 
