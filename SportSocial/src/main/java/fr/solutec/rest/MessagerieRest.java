@@ -22,95 +22,102 @@ import fr.solutec.repository.MessagerieRepository;
 
 import fr.solutec.repository.UserRepository;
 
-@RestController @CrossOrigin("*")
+@RestController
+@CrossOrigin("*")
 public class MessagerieRest {
 
 	@Autowired
 	private UserRepository userRepo;
 	@Autowired
 	private MessageRepository messageRepo;
-	@Autowired 
+	@Autowired
 	private MessagerieRepository messagerieRepo;
-	
+
 	// Envoi de message
-	
 
 	@PostMapping("message/envoyer")
-	public Messagerie sendMessage( @RequestBody Messagerie messagerie) { 
+	public Messagerie sendMessage(@RequestBody Messagerie messagerie) {
 
-		String contenu= messagerie.getMessage().getContentMessage();
-		System.out.println("contenu "+ contenu);
-		Optional<User>uexp=userRepo.findByLoginUser(messagerie.getMessage().getExpediteurMessage().getLoginUser());
-		Message m = new Message(null, null, false,contenu,uexp.get());
-	
+		String contenu = messagerie.getMessage().getContentMessage();
+		System.out.println("contenu " + contenu);
+		Optional<User> uexp = userRepo.findByLoginUser(messagerie.getMessage().getExpediteurMessage().getLoginUser());
+		Message m = new Message(null, null, false, contenu, uexp.get());
+
 		Message msave = messageRepo.save(m);
-		
-		String destinataire=messagerie.getDestinataire().getLoginUser(); // récupération login du destinataire 
-		Optional<User>udest=userRepo.findByLoginUser(destinataire); // récupération du user
-		Messagerie um= new Messagerie(udest.get(),msave);
-		
+
+		String destinataire = messagerie.getDestinataire().getLoginUser(); // récupération login du destinataire
+		Optional<User> udest = userRepo.findByLoginUser(destinataire); // récupération du user
+		Messagerie um = new Messagerie(udest.get(), msave);
+
 		return messagerieRepo.save(um);
-		
-	} 
-	
-	@PostMapping("message/envoyer/{dest}/{exp}")
-    public Messagerie sendMessageById(@PathVariable Long dest, @PathVariable Long exp, @RequestBody Messagerie messagerie) {
 
-        String contenu=messagerie.getMessage().getContentMessage();
-        Optional<User>uexp=userRepo.findByIdUser(exp);
-        Message m = new Message (null,null,false, contenu,uexp.get());
-        Message msave = messageRepo.save(m);
-
-        Optional<User>udest=userRepo.findByIdUser(dest);
-        Messagerie msg=new Messagerie (udest.get(),msave);
-
-        return messagerieRepo.save(msg);
-    }
-	
-	// Voir les messages 
-	
-	@GetMapping("message/me/{id}")
-	 List<Messagerie> getMyMessage (@PathVariable Long id){
-		return messagerieRepo.findByDestinataireIdUser(id);
-		//return messagerieRepo.findAll();
 	}
-	
+
+	@PostMapping("message/envoyer/{dest}/{exp}")
+	public Messagerie sendMessageById(@PathVariable Long dest, @PathVariable Long exp,
+			@RequestBody Messagerie messagerie) {
+
+		String contenu = messagerie.getMessage().getContentMessage();
+		Optional<User> uexp = userRepo.findByIdUser(exp);
+		Message m = new Message(null, null, false, contenu, uexp.get());
+		Message msave = messageRepo.save(m);
+
+		Optional<User> udest = userRepo.findByIdUser(dest);
+		Messagerie msg = new Messagerie(udest.get(), msave);
+
+		return messagerieRepo.save(msg);
+	}
+
+	// Voir les messages
+
+	@GetMapping("message/me/{id}")
+	List<Messagerie> getMyMessage(@PathVariable Long id) {
+		return messagerieRepo.findByDestinataireIdUser(id);
+		// return messagerieRepo.findAll();
+	}
+
 	// Voir les messages reçu en fonction du temps
-	
+
 	@GetMapping("message/me/{id}/asc")
-	 List<Messagerie> getMyMessageAsc (@PathVariable Long id){
+	List<Messagerie> getMyMessageAsc(@PathVariable Long id) {
 		return messagerieRepo.TrouverByDestinataireIdUserAsc(id);
 	}
-	
+
 	// Voir les messages reçu en fonction du temps ET par expediteur
-	
+
 	@GetMapping("message/me/{dest}/{exp}/asc")
-	List<Messagerie> getMyMessageByExpAsc (@PathVariable Long dest, @PathVariable Long exp){
+	List<Messagerie> getMyMessageByExpAsc(@PathVariable Long dest, @PathVariable Long exp) {
 		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserAsc(dest, exp);
 	}
-	
-	// Voir les messages reçu et envoyé par expediteur et destinataire en fonction du temps
-	
+
+	// Voir les messages reçu et envoyé par expediteur et destinataire en fonction
+	// du temps
+
 	@GetMapping("message/me/{dest}/{exp}/combine")
-	List<Messagerie> getMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp){
-		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserCombine(dest,exp);
+	List<Messagerie> getMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp) {
+		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserCombine(dest, exp);
 	}
-	
+
+	@GetMapping("messagetrue/me/{dest}/{exp}/combine")
+	List<Message> trueMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp) {
+		List<Message> m = messagerieRepo.MessageByDestinataireAndByExpediteurIdUserCombine(dest, exp);
+		m.forEach(message -> message.setLu(true));
+		messageRepo.saveAll(m);	
+		return m;
+	}
+
 	// Voir les messages qu'on a envoyé
-	
+
 	@GetMapping("message/wrote/{id}")
-	List<Messagerie> getMessageSend(@PathVariable Long id){
+	List<Messagerie> getMessageSend(@PathVariable Long id) {
 
 		return messagerieRepo.findByMessageExpediteurMessageIdUser(id);
-		
+
 	}
-	
+
 	@GetMapping("message/me/{dest}/{exp}/top")
-	List<Messagerie> getMyMessageTop (@PathVariable Long dest, @PathVariable Long exp){
-	return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserDescTop(dest,exp);
+	List<Messagerie> getMyMessageTop(@PathVariable Long dest, @PathVariable Long exp) {
+		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserDescTop(dest, exp);
 	}
 
-	
 }
-
-	

@@ -6,7 +6,10 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;import fr.solutec.entities.Messagerie;
+import org.springframework.data.repository.CrudRepository;
+
+import fr.solutec.entities.Message;
+import fr.solutec.entities.Messagerie;
 
 public interface MessagerieRepository extends CrudRepository<Messagerie, Long>{
 
@@ -24,9 +27,11 @@ public interface MessagerieRepository extends CrudRepository<Messagerie, Long>{
 	@Query("SELECT m FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) OR (m.destinataire.idUser=?2 AND m.message.expediteurMessage.idUser=?1) Order By m.message.dateSendMessage Asc ")
 	List<Messagerie>TrouverByDestinataireAndByExpediteurIdUserCombine(Long idDest, Long idExp);
 	
+	@Query("SELECT m.message FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) OR (m.destinataire.idUser=?2 AND m.message.expediteurMessage.idUser=?1) Order By m.message.dateSendMessage Asc ")
+	List<Message>MessageByDestinataireAndByExpediteurIdUserCombine(Long idDest, Long idExp);
+	
 	@Query(value="SELECT 1 m FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) Order By m.message.dateSendMessage Desc LIMIT 1", nativeQuery=true)
 	List<Messagerie> TrouverByDestinataireAndByExpediteurIdUserDescTop(Long idDest, Long idExp);
 	
-	
-	
+
 }
