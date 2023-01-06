@@ -178,6 +178,9 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"), true,"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
+	    
+	    
+	    
 	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-26 10:10:00"), true,"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
 	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
 	    

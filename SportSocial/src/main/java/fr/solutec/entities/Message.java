@@ -1,13 +1,12 @@
 package fr.solutec.entities;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 
 import org.hibernate.annotations.CreationTimestamp;
 
