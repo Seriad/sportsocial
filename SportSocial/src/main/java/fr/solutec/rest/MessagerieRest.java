@@ -1,12 +1,14 @@
 package fr.solutec.rest;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -96,6 +98,11 @@ public class MessagerieRest {
 	@GetMapping("message/me/{dest}/{exp}/combine")
 	List<Messagerie> getMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp) {
 		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserCombine(dest, exp);
+	}
+	 //Affiche le dernier message 
+	@GetMapping("messagelast/me/{dest}/{exp}/combine")
+	List<Messagerie> LastMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp) {
+		return messagerieRepo.LastByDestinataireAndByExpediteurIdUserCombine(dest, exp, PageRequest.of(0, 1));
 	}
 
 	@GetMapping("messagetrue/me/{dest}/{exp}/combine")
