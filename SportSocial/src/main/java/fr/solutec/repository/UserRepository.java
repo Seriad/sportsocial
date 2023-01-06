@@ -46,12 +46,11 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	@Query ("SELECT u FROM User u WHERE loginUser LIKE %?1%")
 	List<User> SearchUserByLogin (String loginUser);
 
-	@Query ("SELECT cm FROM Club c INNER JOIN c.membres cm RIGHT JOIN User u WHERE c.idClub = ?2 AND cm.idUser != ?1  AND ( cm.idUser NOT IN (SELECT u.idUser FROM User u WHERE (u.idUser NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.idUser NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 )))")
+	@Query ("SELECT cm FROM Club c INNER JOIN c.membres cm WHERE c.idClub = ?2 AND cm.idUser != ?1  AND ( cm.idUser NOT IN (SELECT u.idUser FROM User u WHERE (u.idUser NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.idUser NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 )))")
 	List<User> getFriendsInClub (Long idUser, Long idClub);
 	
-	@Query ("SELECT cm FROM Club c INNER JOIN c.membres cm WHERE (c.id = ?2 AND cm.id != ?1) ")
-	List<User> test (Long idUser, Long idClub);
-
+	@Query ("SELECT cm FROM Club c INNER JOIN c.membres cm WHERE c.idClub = ?2 AND cm.idUser != ?1  AND ( cm.idUser IN (SELECT u.idUser FROM User u WHERE (u.idUser NOT IN ((SELECT f.applicant.id FROM Friend f WHERE (f.receiver.id = ?1 AND f.applicant.id != ?1)))AND (u.idUser NOT IN (SELECT f.receiver.id FROM Friend f WHERE (f.receiver.id != ?1 AND f.applicant.id = ?1)))) AND (u.id != ?1 )))")
+	List<User> getNonFriendsInClub (Long idUser, Long idClub);
 	
 
 }

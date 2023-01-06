@@ -69,14 +69,17 @@ public class ClubRest {
 	}
 	
 	
+	//récupérer les amis qui sont dans le même club que nous
+	
 	@GetMapping("club/amis/{idUser}/{idClub}")
 	public Iterable<User> getFriendsInClub(@PathVariable Long idUser, @PathVariable Long idClub){
 		return userRepo.getFriendsInClub(idUser, idClub);
 	}
 	
-	@GetMapping("club/test/{idUser}/{idClub}")
+	// récupérer les non amis qui sont dans le même club que nous
+	@GetMapping("club/nonamis/{idUser}/{idClub}")
 	public Iterable<User> test(@PathVariable Long idUser, @PathVariable Long idClub){
-		return userRepo.test(idUser, idClub);
+		return userRepo.getNonFriendsInClub(idUser, idClub);
 	}
 	
 }
