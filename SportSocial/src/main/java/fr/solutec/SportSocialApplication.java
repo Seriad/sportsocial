@@ -252,6 +252,11 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserSport us7 = new UserSport(u1,s2,100);
 	    UserSport us8 = new UserSport(u2,s1,200);
 	    UserSport us9 = new UserSport(u3,s3,300);
+	    UserSport us10 = new UserSport(u13,s6,400);
+	    UserSport us11 = new UserSport(u15,s4,300);
+	    UserSport us12 = new UserSport(u16,s6,200);
+	    UserSport us13 = new UserSport(u18,s1,600);
+	    
 	   
 
 	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i12);
@@ -373,6 +378,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    userSportRepo.save(us7);
 	    userSportRepo.save(us8);
 	    userSportRepo.save(us9);
+	    userSportRepo.save(us10);
+	    userSportRepo.save(us11);
+	    userSportRepo.save(us12);
+	    userSportRepo.save(us13);
 	    
 	    produitRepo.save(p1);
 	    produitRepo.save(p2);
