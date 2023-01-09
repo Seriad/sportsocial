@@ -1,5 +1,7 @@
 package fr.solutec.rest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Club;
+import fr.solutec.entities.Friend;
 import fr.solutec.entities.User;
 import fr.solutec.repository.ClubRepository;
+import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.UserRepository;
 
 @RestController
@@ -26,6 +30,7 @@ public class ClubRest {
 
 	@Autowired
 	private UserRepository userRepo;
+	
 	
 	@GetMapping("club")
 	public Iterable<Club> getAllClub(){
@@ -78,9 +83,17 @@ public class ClubRest {
 	
 	// récupérer les non amis qui sont dans le même club que nous
 	@GetMapping("club/nonamis/{idUser}/{idClub}")
-	public Iterable<User> test(@PathVariable Long idUser, @PathVariable Long idClub){
+	public Iterable<User> getNonFriendsInClub(@PathVariable Long idUser, @PathVariable Long idClub){
 		return userRepo.getNonFriendsInClub(idUser, idClub);
 	}
+	
+	// récupérer les amis demandés ou qui nous ont demandé qui sont dans le même club que nous
+		@GetMapping("club/amisdemandes/{idUser}/{idClub}")
+		public Iterable<User> getAskedFriendsInClub(@PathVariable Long idUser, @PathVariable Long idClub){
+			return userRepo.getAskedFriendsInClub(idUser, idClub);
+		}
+
+	
 	
 }
 
