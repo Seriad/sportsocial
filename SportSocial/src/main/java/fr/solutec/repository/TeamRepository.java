@@ -2,9 +2,11 @@ package fr.solutec.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import fr.solutec.entities.Message;
 import fr.solutec.entities.Team;
 
 public interface TeamRepository extends CrudRepository<Team, Long> {
@@ -18,6 +20,12 @@ public interface TeamRepository extends CrudRepository<Team, Long> {
     
     @Query("SELECT c FROM Team t INNER JOIN t.conversation c WHERE (t.idTeam = ?1 ) Order By c.dateSendMessage Asc")
     Iterable<Team> getMyTeamMessage (Long idTeam);
+    
+    @Query("SELECT c FROM Team t INNER JOIN t.conversation c WHERE (t.idTeam = ?1 ) Order By c.dateSendMessage Asc")
+    List<Message> getMyTeamMessageTrue (Long idTeam);
+    
+    @Query("SELECT c FROM Team t INNER JOIN t.conversation c WHERE (t.idTeam = ?1 ) Order By c.dateSendMessage Desc")
+    Iterable<Team> getMyLastTeamMessage (Long idTeam, PageRequest pageable);
     
     @Query("SELECT c FROM Team t INNER JOIN t.membres c WHERE (t.idTeam = ?1 )")
     Iterable<Team> getMyTeamMember (Long idTeam);
