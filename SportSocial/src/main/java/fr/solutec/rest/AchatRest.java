@@ -72,6 +72,22 @@ public class AchatRest {
 		return false;
 	}}
 	
+	@GetMapping("boutique/echangeToken/{idUser}/{idReceiver}/{montantToken}")
+	private boolean echangeToken(@PathVariable Long idUser, @PathVariable Long idReceiver, @PathVariable int montantToken) {
+		Optional<User> u = userRepo.findById(idUser);
+		Optional<User> receiver = userRepo.findById(idReceiver);
+		if(montantToken>0) {
+			if(montantToken <= u.get().getToken()) {
+				receiver.get().setToken(receiver.get().getToken() + montantToken);
+				u.get().setToken(u.get().getToken() - montantToken);
+				userRepo.save(u.get());
+				userRepo.save(receiver.get());
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	
 
 }
