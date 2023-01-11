@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,6 +50,21 @@ public class TeamRest {
 	@GetMapping("team/message/{idTeam}")
 	private Iterable<Team> MyTeamsMessage(@PathVariable Long idTeam){
 		return teamRepo.getMyTeamMessage(idTeam);
+		
+	}
+	
+	@GetMapping("team/truemessage/{idTeam}")
+	List<Message> MyTeamsMessageTrue(@PathVariable Long idTeam){
+		List<Message> m = teamRepo.getMyTeamMessageTrue(idTeam);
+		m.forEach(message -> message.setLu(true));
+		messageRepo.saveAll(m);
+		return m ;
+		
+	}
+	
+	@GetMapping("team/lastmessage/{idTeam}")
+	private Iterable<Team> MyLastTeamsMessage(@PathVariable Long idTeam){
+		return teamRepo.getMyLastTeamMessage(idTeam, PageRequest.of(0, 1));
 		
 	}
 	
