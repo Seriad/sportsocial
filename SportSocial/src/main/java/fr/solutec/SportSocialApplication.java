@@ -295,8 +295,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac2= new UserActivity(u1,ac2);
 	    UserActivity uac3= new UserActivity(u2,ac3);
 	    
-	    Comment com1 = new Comment(null, null, "Je suis d'accord avec toi, Joline.aque était superbe. Félicitations à l'équipe pour cette victoire méritée!", u15);
-		Comment com2 = new Comment(null, null, "Je suis déçu de l'issue de ce match. Bien que l'él y a encore beaucoup de choses à améliorer pour l'équipe si elle veut gagner les prochains matchs.", u20);
+	    Comment com1 = new Comment(null, null, "Je suis d'accord avec toi, Joline. C'était vraiment un match incroyable à regarder. Les joueurs ont donné tout ce qu'ils avaient et cela s'est vu dans leur jeu. La défense était impénétrable et l'attaque était superbe. Félicitations à l'équipe pour cette victoire méritée!", u15);
+		Comment com2 = new Comment(null, null, "Je suis déçu de l'issue de ce match. Bien que l'équipe ait gagné, je pense qu'ils ont manqué d'agressivité et d'énergie. La défense était trop passive et l'attaque n'a pas réussi à marquer autant de points qu'elle aurait dû. Il y a encore beaucoup de choses à améliorer pour l'équipe si elle veut gagner les prochains matchs.", u20);
 	    
 		List<Comment> comList1 = new ArrayList<Comment>();
 		
@@ -308,8 +308,11 @@ public class SportSocialApplication implements CommandLineRunner{
 		aimePost.add(u15);
 		aimePost.add(u20);
 		
-	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avecnte. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c3, aimePost, comList1);
-		Post post2 = new Post(null, null, "Chers amateurs de rugby, Nous a'actions et d'émotions. Nous espérons vous voir là-bas pour cette journée de rugby!Cordialement, Le Comité organisateur", null, u15, c3, null, null);
+	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c3, aimePost, comList1);
+		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
+				+ "/n Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
+				+ "/n Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. /n Nous espérons vous voir là-bas pour cette journée de rugby! "
+				+ "/n Cordialement, Le Comité organisateur", null, u15, c3, null, null);
 		
 		
 		
