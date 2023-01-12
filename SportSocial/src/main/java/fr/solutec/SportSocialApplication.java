@@ -308,12 +308,25 @@ public class SportSocialApplication implements CommandLineRunner{
 		aimePost.add(u15);
 		aimePost.add(u20);
 		
-	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c3, aimePost, comList1);
-		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
-				+ "/n Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
-				+ "/n Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. /n Nous espérons vous voir là-bas pour cette journée de rugby! "
-				+ "/n Cordialement, Le Comité organisateur", null, u15, c3, null, null);
+		String newLine = System.getProperty("line.separator");
 		
+	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1);
+		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
+				+ newLine + "Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
+				+ newLine + "Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. "
+				+ newLine + "Nous espérons vous voir là-bas pour cette journée de rugby! "
+				+ newLine + "Cordialement,"
+				+ newLine + "Le Comité organisateur", null, u15, c1, null, null);
+		Post post3 = new Post(null, null,"Chers supporters du club,"
+				+ newLine + "Nous avons le plaisir de vous annoncer l'arrivée de trois nouveaux joueurs de football dans notre équipe. Ces joueurs talentueux apporteront de nouvelles compétences et de l'énergie à notre équipe et nous sommes convaincus qu'ils contribueront à notre succès sur le terrain. "
+				+ newLine + "Les nouveaux joueurs sont : "
+				+ newLine + "Ahmed Benkirane, attaquant rapide et agile "
+				+ newLine + "Samuel Martin, défenseur solide et expérimenté "
+				+ newLine + "Baptiste Dupont, milieu de terrain créatif et technique "
+				+ newLine + "Nous espérons que vous serez tous présents pour les accueillir lors de notre prochain match à domicile. Nous sommes certains qu'ils feront un excellent travail en portant les couleurs de notre club. "
+				+ newLine + "Nous vous remercions de votre soutien continu et nous espérons vous voir à notre prochaine rencontre. "
+				+ newLine + "Cordialement, "
+				+ newLine + "Le Comité du club", i8, u23, c2, null, null);
 		
 		
 		
@@ -459,6 +472,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		postRepo.save(post1);
 		postRepo.save(post2);
+		postRepo.save(post3);
 
 		
 		
