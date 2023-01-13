@@ -32,4 +32,5 @@ public class Comment {
 	private String contentComment;
 	@ManyToOne
 	private User createurComment;
+	
 }
