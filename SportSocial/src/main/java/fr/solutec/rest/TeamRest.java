@@ -22,6 +22,7 @@ import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.MessageRepository;
+import fr.solutec.repository.MessagerieRepository;
 import fr.solutec.repository.TeamRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -35,6 +36,8 @@ public class TeamRest {
 	private UserRepository userRepo;
 	@Autowired
 	private ImageRepository imageRepo;
+	@Autowired
+	private MessagerieRepository messagerieRepo;
 	
 	
 	@GetMapping("team/{idUser}")
@@ -160,6 +163,22 @@ public class TeamRest {
     	return team;
     			}
 	
+    @DeleteMapping("team/message/delete/{idUser}/{idMessage}/{idTeam}")
+	public Message deleteMyTeamMessage(@PathVariable Long idUser, @PathVariable Long idMessage, @PathVariable Long idTeam) {
+    	Team team = teamRepo.findById(idTeam).get();
+
+    	Message m = messagerieRepo.DeleteMyMessage(idUser, idMessage);
+    	team.getConversation().remove(m);
+		
+		teamRepo.save(team);
+		
+		messageRepo.delete(m);
+
+		
+		return m ;
+
+		
+	}
     
     
     }
