@@ -14,11 +14,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.solutec.entities.Activity;
 import fr.solutec.entities.Address;
 import fr.solutec.entities.Club;
+import fr.solutec.entities.Comment;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
+import fr.solutec.entities.Post;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.Team;
@@ -28,11 +30,13 @@ import fr.solutec.entities.UserSport;
 import fr.solutec.repository.ActivityRepository;
 import fr.solutec.repository.AddressRepository;
 import fr.solutec.repository.ClubRepository;
+import fr.solutec.repository.CommentRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
+import fr.solutec.repository.PostRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.TeamRepository;
@@ -71,6 +75,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	private ClubRepository clubRepo;
 	@Autowired
 	private TeamRepository teamRepo;
+	@Autowired
+	private PostRepository postRepo;	
+	@Autowired
+	private CommentRepository commentRepo;
 
 
 	public static void main(String[] args) {
@@ -286,6 +294,41 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac1= new UserActivity(u1,ac1);
 	    UserActivity uac2= new UserActivity(u1,ac2);
 	    UserActivity uac3= new UserActivity(u2,ac3);
+	    
+	    Comment com1 = new Comment(null, null, "Je suis d'accord avec toi, Joline. C'était vraiment un match incroyable à regarder. Les joueurs ont donné tout ce qu'ils avaient et cela s'est vu dans leur jeu. La défense était impénétrable et l'attaque était superbe. Félicitations à l'équipe pour cette victoire méritée!", u15);
+		Comment com2 = new Comment(null, null, "Je suis déçu de l'issue de ce match. Bien que l'équipe ait gagné, je pense qu'ils ont manqué d'agressivité et d'énergie. La défense était trop passive et l'attaque n'a pas réussi à marquer autant de points qu'elle aurait dû. Il y a encore beaucoup de choses à améliorer pour l'équipe si elle veut gagner les prochains matchs.", u20);
+	    
+		List<Comment> comList1 = new ArrayList<Comment>();
+		
+		comList1.add(com1);
+		comList1.add(com2);
+		
+		List<User> aimePost = new ArrayList<User>();
+		
+		aimePost.add(u15);
+		aimePost.add(u20);
+		
+		String newLine = System.getProperty("line.separator");
+		
+	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1);
+		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
+				+ newLine + "Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
+				+ newLine + "Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. "
+				+ newLine + "Nous espérons vous voir là-bas pour cette journée de rugby! "
+				+ newLine + "Cordialement,"
+				+ newLine + "Le Comité organisateur", null, u15, c1, null, null);
+		Post post3 = new Post(null, null,"Chers supporters du club,"
+				+ newLine + "Nous avons le plaisir de vous annoncer l'arrivée de trois nouveaux joueurs de football dans notre équipe. Ces joueurs talentueux apporteront de nouvelles compétences et de l'énergie à notre équipe et nous sommes convaincus qu'ils contribueront à notre succès sur le terrain. "
+				+ newLine + "Les nouveaux joueurs sont : "
+				+ newLine + "Ahmed Benkirane, attaquant rapide et agile "
+				+ newLine + "Samuel Martin, défenseur solide et expérimenté "
+				+ newLine + "Baptiste Dupont, milieu de terrain créatif et technique "
+				+ newLine + "Nous espérons que vous serez tous présents pour les accueillir lors de notre prochain match à domicile. Nous sommes certains qu'ils feront un excellent travail en portant les couleurs de notre club. "
+				+ newLine + "Nous vous remercions de votre soutien continu et nous espérons vous voir à notre prochaine rencontre. "
+				+ newLine + "Cordialement, "
+				+ newLine + "Le Comité du club", i8, u23, c2, null, null);
+		
+		
 		
 		addressRepo.save(a1);
 		userRepo.save(u1);
@@ -423,7 +466,15 @@ public class SportSocialApplication implements CommandLineRunner{
 	
 		teamRepo.save(t1);
 		teamRepo.save(t2);
+		
+		commentRepo.save(com1);
+		commentRepo.save(com2);
+		
+		postRepo.save(post1);
+		postRepo.save(post2);
+		postRepo.save(post3);
 
+		
 		
 	
 	}
