@@ -30,7 +30,6 @@ public interface TeamRepository extends CrudRepository<Team, Long> {
     @Query("SELECT c FROM Team t INNER JOIN t.membres c WHERE (t.idTeam = ?1 )")
     Iterable<Team> getMyTeamMember (Long idTeam);
     
-    
     @Query("SELECT t FROM Team t ")
     List<Team> getAllTeam ();
     
