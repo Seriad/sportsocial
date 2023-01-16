@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
+import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
@@ -109,6 +110,12 @@ public class EventRest {
 		return eventRepo.save(e);
 		
 	}
+	
+    @GetMapping("event/search/{titleEvent}")
+    public Iterable<Event> searchEvent (@PathVariable String titleEvent) {
+    	Iterable<Event> event = eventRepo.searchEventsToCome(titleEvent);
+    	return event;
+    			}
 	
 
 }

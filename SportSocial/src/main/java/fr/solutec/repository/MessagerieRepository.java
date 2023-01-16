@@ -38,5 +38,9 @@ public interface MessagerieRepository extends CrudRepository<Messagerie, Long>{
 	@Query(value="SELECT 1 m FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) Order By m.message.dateSendMessage Desc LIMIT 1", nativeQuery=true)
 	List<Messagerie> TrouverByDestinataireAndByExpediteurIdUserDescTop(Long idDest, Long idExp);
 	
+	@Query("SELECT m FROM Message m Where (m.expediteurMessage.idUser=?1 AND m.idMessage =?2)")
+	Message DeleteMyMessage(Long idUser, Long idMessage);
+
+	
 
 }

@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
+import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
@@ -126,5 +128,19 @@ public class MessagerieRest {
 	List<Messagerie> getMyMessageTop(@PathVariable Long dest, @PathVariable Long exp) {
 		return messagerieRepo.TrouverByDestinataireAndByExpediteurIdUserDescTop(dest, exp);
 	}
+	
+	@DeleteMapping("message/delete/{idUser}/{idMessage}")
+	public Message deleteMyMessage(@PathVariable Long idUser, @PathVariable Long idMessage) {
+		Message m = messagerieRepo.DeleteMyMessage(idUser, idMessage);
+		
+		messageRepo.delete(m);
+
+		
+		return m ;
+
+		
+	}
+	
+	
 
 }
