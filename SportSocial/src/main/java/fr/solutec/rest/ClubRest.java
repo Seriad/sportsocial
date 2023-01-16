@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Club;
 import fr.solutec.entities.Friend;
+import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.ClubRepository;
 import fr.solutec.repository.FriendRepository;
@@ -92,6 +93,13 @@ public class ClubRest {
 		public Iterable<User> getAskedFriendsInClub(@PathVariable Long idUser, @PathVariable Long idClub){
 			return userRepo.getAskedFriendsInClub(idUser, idClub);
 		}
+		
+	
+	  @GetMapping("club/search/{titleClub}/{idUser}")
+	  public List<Club> searchMyClub (@PathVariable Long idUser, @PathVariable String titleClub) {
+	   List<Club> club = clubRepo.searchOtherClubs(idUser, titleClub);
+	    return club;
+	    	}
 
 	
 	
