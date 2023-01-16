@@ -134,8 +134,6 @@ public class MessagerieRest {
 		Message m = messagerieRepo.DeleteMyMessage(idUser, idMessage);
 		
 		messageRepo.delete(m);
-		messagerieRepo.deleteAll();
-
 
 		
 		return m ;
