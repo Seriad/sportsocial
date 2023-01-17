@@ -299,11 +299,15 @@ public class SportSocialApplication implements CommandLineRunner{
 		Comment com2 = new Comment(null, null, "Je suis déçu de l'issue de ce match. Bien que l'équipe ait gagné, je pense qu'ils ont manqué d'agressivité et d'énergie. La défense était trop passive et l'attaque n'a pas réussi à marquer autant de points qu'elle aurait dû. Il y a encore beaucoup de choses à améliorer pour l'équipe si elle veut gagner les prochains matchs.", u20, null);
 	    
 		List<Comment> comList3 = new ArrayList<Comment>();
+		List<Comment> comList4 = new ArrayList<Comment>();
 		
 		
 		Comment com3 = new Comment(null, null, "Je suis tellement excité pour le prochain match de rugby amateur ! J'ai hâte de voir Les lions rugissants en action sur le terrain. Je sais qu'ils ont travaillé dur pour se préparer pour ce match et j'ai hâte de voir leur performance. Je vais amener toute ma famille pour soutenir l'équipe locale et passer un bon moment ensemble. Je suis prêt à crier et à soutenir les lions rugissants jusqu'à la fin ! ", u20, comList3);
 		Comment com4 = new Comment(null, null, "Je suis tellement excité de venir au prochain match de rugby amateur ! C'est toujours amusant de se rassembler avec des amis et de soutenir l'équipe locale. Je suis impatient de voir Les lions rugissants en action sur le terrain, ils ont l'air d'être une équipe solide et talentueuse. Je vais certainement acheter un t-shirt de l'équipe pour montrer mon soutien. J'ai hâte de passer un bon moment et de profiter de l'ambiance de match de rugby !", u1, null);
-		Comment com5 = new Comment(null, null, "Cher supporter, Nous sommes ravis de lire votre enthousiasme pour le prochain match de rugby amateur ! Nous sommes heureux que vous ayez l'intention de venir avec votre famille et vos amis pour soutenir l'équipe locale. Les  lions rugissants sont une équipe solide et talentueuse et ils apprécieront certainement votre soutien sur le terrain.Nous vous rappelons que des t-shirts de l'équipe seront disponibles à l'achat le jour du match, ainsi que d'autres articles de supporter. Nous espérons que vous passerez un bon moment et que vous profiterez de l'ambiance de match de rugby. Merci de votre soutien continu et nous espérons vous voir à notre prochaine rencontre. Cordialement,Le Comité du club", u1, null);
+		Comment com5 = new Comment(null, null, "Cher supporter, Nous sommes ravis de lire votre enthousiasme pour le prochain match de rugby amateur ! Nous sommes heureux que vous ayez l'intention de venir avec votre famille et vos amis pour soutenir l'équipe locale. Les  lions rugissants sont une équipe solide et talentueuse et ils apprécieront certainement votre soutien sur le terrain.Nous vous rappelons que des t-shirts de l'équipe seront disponibles à l'achat le jour du match, ainsi que d'autres articles de supporter. Nous espérons que vous passerez un bon moment et que vous profiterez de l'ambiance de match de rugby. Merci de votre soutien continu et nous espérons vous voir à notre prochaine rencontre. Cordialement,Le Comité du club", u15, null);
+		Comment com6 = new Comment(null, null, "Je suis tellement excité pour le prochain match de rugby amateur ! Je sais que nous avons travaillé dur pour nous préparer pour cette rencontre, et je suis confiant que nous allons donner le meilleur de nous-mêmes sur le terrain. Je remercie les supporters pour leur soutien continu, cela nous donne un vrai coup de boost pour jouer. Je promets de donner tout ce que j'ai et de jouer avec cœur pour remporter la victoire pour l'équipe Les lions rugissants. \n #LionsRugissants #Teamwork", u23, comList4);
+		Comment com7 = new Comment(null, null, "Je suis tellement impatient de voir ce joueur en action lors du prochain match de rugby amateur ! J'ai entendu parler de ses compétences et de sa détermination sur le terrain et je suis certain qu'il va être un atout pour l'équipe. J'ai hâte de voir comment il va contribuer à la victoire de notre équipe. Je vais amener ma famille et mes amis pour le soutenir et pour passer un bon moment ensemble. Je suis prêt à crier fort et à soutenir l'équipe jusqu'à la fin ! \n #teamspirit #victory", u1, null);
+		Comment com8 = new Comment(null, null, "Je suis totalement d'accord avec toi ! Je suis également très impatient de voir ce joueur en action lors du prochain match de rugby amateur. J'ai entendu beaucoup de bien de lui et je suis convaincu qu'il sera un atout pour l'équipe.", u1, null);
 		
 		List<Comment> comList1 = new ArrayList<Comment>();
 		List<Comment> comList2 = new ArrayList<Comment>();
@@ -315,7 +319,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		comList2.add(com3);
 		comList2.add(com4);
 		comList3.add(com5);
-		
+		comList2.add(com6);
+		comList4.add(com7);
+		comList4.add(com8);
 		
 		
 		List<User> aimePost = new ArrayList<User>();
@@ -323,15 +329,23 @@ public class SportSocialApplication implements CommandLineRunner{
 		aimePost.add(u15);
 		aimePost.add(u20);
 		
+		
+		List<User> aimePost2 = new ArrayList<User>();
+		
+		aimePost2.add(u20);
+		aimePost2.add(u1);
+		aimePost2.add(u23);
+		
+		
 		String newLine = System.getProperty("line.separator");
 		
-	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1);
+	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1,0, 0);
 		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
 				+ newLine + "Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
 				+ newLine + "Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. "
 				+ newLine + "Nous espérons vous voir là-bas pour cette journée de rugby! "
 				+ newLine + "Cordialement,"
-				+ newLine + "Le Comité organisateur", null, u15, c1, null, comList2);
+				+ newLine + "Le Comité organisateur", null, u15, c1, aimePost2, comList2,0,0);
 		Post post3 = new Post(null, null,"Chers supporters du club,"
 				+ newLine + "Nous avons le plaisir de vous annoncer l'arrivée de trois nouveaux joueurs de football dans notre équipe. Ces joueurs talentueux apporteront de nouvelles compétences et de l'énergie à notre équipe et nous sommes convaincus qu'ils contribueront à notre succès sur le terrain. "
 				+ newLine + "Les nouveaux joueurs sont : "
@@ -341,7 +355,7 @@ public class SportSocialApplication implements CommandLineRunner{
 				+ newLine + "Nous espérons que vous serez tous présents pour les accueillir lors de notre prochain match à domicile. Nous sommes certains qu'ils feront un excellent travail en portant les couleurs de notre club. "
 				+ newLine + "Nous vous remercions de votre soutien continu et nous espérons vous voir à notre prochaine rencontre. "
 				+ newLine + "Cordialement, "
-				+ newLine + "Le Comité du club", i8, u23, c2, null, null);
+				+ newLine + "Le Comité du club", i8, u23, c2, null, null,0,0);
 		
 		
 		
@@ -487,6 +501,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		commentRepo.save(com5);
 		commentRepo.save(com3);
 		commentRepo.save(com4);
+		commentRepo.save(com7);
+		commentRepo.save(com8);
+		commentRepo.save(com6);
 		
 		
 		postRepo.save(post1);
