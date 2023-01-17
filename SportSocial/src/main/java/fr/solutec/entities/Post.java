@@ -43,5 +43,7 @@ public class Post {
 	private List<User> likePost = new ArrayList<User>();
 	@ManyToMany
 	private List<Comment> commentsPost = new ArrayList<Comment>();
+	private int numberLikes = 0;
+	private int numberComments =0;
 	
 }

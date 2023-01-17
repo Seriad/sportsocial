@@ -329,15 +329,23 @@ public class SportSocialApplication implements CommandLineRunner{
 		aimePost.add(u15);
 		aimePost.add(u20);
 		
+		
+		List<User> aimePost2 = new ArrayList<User>();
+		
+		aimePost2.add(u20);
+		aimePost2.add(u1);
+		aimePost2.add(u23);
+		
+		
 		String newLine = System.getProperty("line.separator");
 		
-	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1);
+	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1,0, 0);
 		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
 				+ newLine + "Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
 				+ newLine + "Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. "
 				+ newLine + "Nous espérons vous voir là-bas pour cette journée de rugby! "
 				+ newLine + "Cordialement,"
-				+ newLine + "Le Comité organisateur", null, u15, c1, null, comList2);
+				+ newLine + "Le Comité organisateur", null, u15, c1, aimePost2, comList2,0,0);
 		Post post3 = new Post(null, null,"Chers supporters du club,"
 				+ newLine + "Nous avons le plaisir de vous annoncer l'arrivée de trois nouveaux joueurs de football dans notre équipe. Ces joueurs talentueux apporteront de nouvelles compétences et de l'énergie à notre équipe et nous sommes convaincus qu'ils contribueront à notre succès sur le terrain. "
 				+ newLine + "Les nouveaux joueurs sont : "
@@ -347,7 +355,7 @@ public class SportSocialApplication implements CommandLineRunner{
 				+ newLine + "Nous espérons que vous serez tous présents pour les accueillir lors de notre prochain match à domicile. Nous sommes certains qu'ils feront un excellent travail en portant les couleurs de notre club. "
 				+ newLine + "Nous vous remercions de votre soutien continu et nous espérons vous voir à notre prochaine rencontre. "
 				+ newLine + "Cordialement, "
-				+ newLine + "Le Comité du club", i8, u23, c2, null, null);
+				+ newLine + "Le Comité du club", i8, u23, c2, null, null,0,0);
 		
 		
 		

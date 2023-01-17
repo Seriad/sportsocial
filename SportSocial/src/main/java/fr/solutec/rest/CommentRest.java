@@ -23,15 +23,6 @@ public class CommentRest {
 		return commentRepo.getCommentOfPost(idPost);
 	}
 	
-	@GetMapping("club/posts/comments/count/{idPost}")
-	public int getNumberCommentsOfPost(@PathVariable Long idPost) {
-		int res = commentRepo.countCommentsFromPost(idPost);
-		List<Comment> recup = commentRepo.getCommentOfPost(idPost);
-		for (Comment comment : recup) {
-			res = res + commentRepo.countCommentsOfComment(comment.getIdComment());
-		}
-		return res ;
-	}
 	
 	
 }
