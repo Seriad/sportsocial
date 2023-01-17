@@ -1,5 +1,6 @@
 package fr.solutec.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,11 +50,32 @@ public class PostRest {
 		return Posts;
 	}
 	
+	@GetMapping("club/posts/checkLike/{idPost}/{idUser}")
+	public Boolean checkLike(@PathVariable Long idPost, @PathVariable Long idUser) {
+		Optional<Post> p = postRepo.findById(idPost);
+		List<User> likePost = p.get().getLikePost();
+		Boolean check= false;
+		for (User user : likePost) {
+			if (user.getIdUser() == idUser) {
+				check = true;
+			}
+		}
+		return check;
+		
+	}
+	
 	@PatchMapping("club/posts/like/{idPost}/{idUser}")
 	public Post likePost(@PathVariable Long idPost, @PathVariable Long idUser) {
 		Optional<User> u= userRepo.findById(idUser);
 		Optional<Post> p = postRepo.findById(idPost);
 		p.get().getLikePost().add(u.get());
+		return postRepo.save(p.get());
+	}
+	
+	@PatchMapping("club/posts/unlike/{idPost}/{idUser}")
+	public Post unlikePost(@PathVariable Long idPost, @PathVariable Long idUser){
+		Optional<Post> p = postRepo.findById(idPost);
+		p.get().getLikePost().removeIf(u -> u.getIdUser()==idUser);
 		return postRepo.save(p.get());
 	}
 	
