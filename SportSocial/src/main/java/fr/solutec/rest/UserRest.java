@@ -14,14 +14,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Club;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Sport;
+import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserSport;
 import fr.solutec.repository.AddressRepository;
+import fr.solutec.repository.ClubRepository;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.ImageRepository;
+import fr.solutec.repository.TeamRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
 
@@ -40,6 +44,10 @@ public class UserRest {
 	private ImageRepository imageRepo;
 	@Autowired 
 	AddressRepository addressRepo;
+	@Autowired
+	private ClubRepository clubRepo;
+	@Autowired
+	private TeamRepository teamRepo;
 
 
 	@GetMapping("user")
@@ -168,6 +176,14 @@ public class UserRest {
 		return u;
 
 	}
-
+	
+	//Delete user
+	@PutMapping("user/delete/{idUser}")
+	public User deleteUser(@PathVariable Long idUser) {
+		User u = userRepo.findById(idUser).get();
+		u.setPasswordUser(null);
+		
+		return userRepo.save(u);
+	}
 
 }
