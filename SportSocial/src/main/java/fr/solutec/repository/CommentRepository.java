@@ -18,4 +18,10 @@ public interface CommentRepository extends CrudRepository<Comment, Long> {
 	@Query("SELECT COUNT(*) FROM Comment c INNER JOIN c.comments WHERE c.id = ?1")
 	int countCommentsOfComment (Long idComment);
 	
+	@Query("SELECT cc FROM Comment c INNER JOIN c.comments cc WHERE c.id = ?1")
+	List<Comment> getCommentsOfComment(Long idComment);
+	
+	@Query("SELECT COUNT(*) FROM Comment c INNER JOIN c.likeComments WHERE c.id = ?1")
+	int countLikes (Long idComment);
+	
 }

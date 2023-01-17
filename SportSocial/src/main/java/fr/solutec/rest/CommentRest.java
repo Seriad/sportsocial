@@ -20,9 +20,30 @@ public class CommentRest {
 	
 	@GetMapping("club/posts/comments/{idPost}")
 	public Iterable<Comment> getCommentsInPost(@PathVariable Long idPost){
-		return commentRepo.getCommentOfPost(idPost);
+		Iterable<Comment> Comments = commentRepo.getCommentOfPost(idPost);
+		for (Comment comment : Comments) {
+			int res = commentRepo.countCommentsOfComment(comment.getIdComment());
+			comment.setNumberComments(res);
+			int numberLikes = commentRepo.countLikes(comment.getIdComment());
+			comment.setNumberLikes(numberLikes);
+		}
+		
+		return Comments;
 	}
 	
-	
+	@GetMapping(("club/posts/comments/comments/{idComment}"))
+	public Iterable<Comment> getCommentsInComment(@PathVariable Long idComment){
+		Iterable<Comment> Comments = commentRepo.getCommentsOfComment(idComment);
+		
+		for (Comment comment : Comments) {
+			int res = commentRepo.countCommentsOfComment(comment.getIdComment());
+			comment.setNumberComments(res);
+			int numberLikes = commentRepo.countLikes(comment.getIdComment());
+			comment.setNumberLikes(numberLikes);
+		}
+		
+		
+		return Comments;
+	}
 	
 }

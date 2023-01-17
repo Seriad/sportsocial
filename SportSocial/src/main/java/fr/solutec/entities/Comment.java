@@ -35,5 +35,9 @@ public class Comment {
 	@ManyToOne
 	private User createurComment;
 	@ManyToMany
+	private List<User> likeComments = new ArrayList<User>();
+	@ManyToMany
 	private List<Comment> comments = new ArrayList<Comment>();
+	private int numberLikes = 0;
+	private int numberComments =0;
 }
