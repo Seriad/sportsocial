@@ -40,5 +40,20 @@ public class ActivityRest {
 		return a;
 	}
 	
+	@PostMapping("schedule/modify/{idUser}/{idActivity}")
+	public Activity modifyActivity(@RequestBody Activity newActivity, @PathVariable Long idUser, @PathVariable Long idActivity) {
+		Activity oldActivity = activityRepo.findById(idActivity).get();
+		User user = userRepo.findByIdUser(idUser).get();
+		
+		newActivity.setIdActivity(oldActivity.getIdActivity());
+		newActivity.setSportActivity(oldActivity.getSportActivity());
+		
+		activityRepo.save(newActivity);
+		UserActivity act = new UserActivity(user,newActivity);
+		userActivityRepo.save(act);
+
+		return newActivity;
+	}
+	
 
 }
