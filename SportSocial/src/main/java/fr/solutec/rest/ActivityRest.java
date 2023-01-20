@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +54,18 @@ public class ActivityRest {
 		userActivityRepo.save(act);
 
 		return newActivity;
+	}
+	
+	@DeleteMapping("schedule/delete/{idActivity}")
+	public Activity deleteActivity (@PathVariable Long idActivity) {
+		Activity activity = activityRepo.findById(idActivity).get();
+		
+		UserActivity userAct = activityRepo.findByIdActivity(idActivity);
+	
+		userActivityRepo.delete(userAct);
+		activityRepo.delete(activity);
+		
+		return activity;
 	}
 	
 
