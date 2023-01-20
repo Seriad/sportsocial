@@ -31,5 +31,5 @@ public class Event {
 	private Address addressEvent;
 	@ManyToOne
 	private Sport sportEvent;
-	
+	private Boolean pastDate = false;
 }

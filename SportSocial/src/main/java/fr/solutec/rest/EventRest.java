@@ -1,11 +1,15 @@
 package fr.solutec.rest;
 
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.hibernate.query.criteria.internal.expression.function.CurrentDateFunction;
+import org.hibernate.query.criteria.internal.expression.function.CurrentTimestampFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +63,18 @@ public class EventRest {
 	
 	@GetMapping("event/{idUser}")
 	public List<Event> getEventsOfOneUser(@PathVariable Long idUser){
+		Iterable<Event> events =  eventRepo.eventsOfOneUser(idUser);
+		Timestamp date_now = new Timestamp(System.currentTimeMillis());
+		for (Event event : events) {
+			boolean bool = date_now.after(event.getDateStart());
+			if ((bool)) {
+			event.setPastDate(true);
+			eventRepo.save(event);
+			}
+			
+			
+		}
+		
 		return (List<Event>) eventRepo.eventsOfOneUser(idUser);
 	}
 	
