@@ -8,7 +8,7 @@ import fr.solutec.entities.UserActivity;
 
 public interface ActivityRepository extends CrudRepository<Activity, Long>{
 	
-	@Query("SELECT a FROM Activity a INNER JOIN UserActivity act WHERE a.idActivity =?1")
+	@Query("SELECT a FROM UserActivity a WHERE a.activity.idActivity =?1")
 	public UserActivity findByIdActivity (Long idActivity);
 
 }

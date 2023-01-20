@@ -56,16 +56,14 @@ public class ActivityRest {
 		return newActivity;
 	}
 	
-	@DeleteMapping("schedule/delete/{idActivity}")
-	public Activity deleteActivity (@PathVariable Long idActivity) {
-		Activity activity = activityRepo.findById(idActivity).get();
+	@PostMapping("schedule/delete/{idActivity}")
+	public UserActivity deleteActivity (@PathVariable Long idActivity) {
 		
 		UserActivity userAct = activityRepo.findByIdActivity(idActivity);
-	
-		userActivityRepo.delete(userAct);
-		activityRepo.delete(activity);
 		
-		return activity;
+		userActivityRepo.delete(userAct);
+	
+		return userAct;
 	}
 	
 
