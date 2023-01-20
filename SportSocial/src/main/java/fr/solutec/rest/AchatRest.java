@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Achat;
+import fr.solutec.entities.Exchange;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.User;
 import fr.solutec.repository.AchatRepository;
+import fr.solutec.repository.ExchangeRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -26,6 +28,8 @@ public class AchatRest {
 	private UserRepository userRepo;
 	@Autowired
 	private ProduitRepository produitRepo;
+	@Autowired
+	private ExchangeRepository exchangeRepo;
 
 	
 	
@@ -74,6 +78,7 @@ public class AchatRest {
 	
 	@GetMapping("boutique/echangeToken/{idUser}/{idReceiver}/{montantToken}")
 	private boolean echangeToken(@PathVariable Long idUser, @PathVariable Long idReceiver, @PathVariable int montantToken) {
+		Exchange e = new Exchange();
 		Optional<User> u = userRepo.findById(idUser);
 		Optional<User> receiver = userRepo.findById(idReceiver);
 		if(montantToken>0) {
@@ -82,6 +87,11 @@ public class AchatRest {
 				u.get().setToken(u.get().getToken() - montantToken);
 				userRepo.save(u.get());
 				userRepo.save(receiver.get());
+				e.setApplicant(u.get());
+				e.setReceiver(receiver.get());
+				e.setMontantToken(montantToken);
+				e.setNotification(e.getApplicant().getLoginUser() + " vous a envoyé " + e.getMontantToken() + " Tokens");
+				exchangeRepo.save(e);
 				return true;
 			}
 		}
