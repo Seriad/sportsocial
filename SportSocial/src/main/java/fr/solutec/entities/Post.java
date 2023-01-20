@@ -39,7 +39,7 @@ public class Post {
 	private User createurPost;
 	@ManyToOne
 	private Club clubPost;
-	@ManyToMany
+	@ManyToMany 
 	private List<User> likePost = new ArrayList<User>();
 	@ManyToMany
 	private List<Comment> commentsPost = new ArrayList<Comment>();

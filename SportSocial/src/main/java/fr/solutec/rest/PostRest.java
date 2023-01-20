@@ -75,7 +75,10 @@ public class PostRest {
 	public Post likePost(@PathVariable Long idPost, @PathVariable Long idUser) {
 		Optional<User> u= userRepo.findById(idUser);
 		Optional<Post> p = postRepo.findById(idPost);
-		p.get().getLikePost().add(u.get());
+		boolean check = checkLike(idPost, idUser);
+		if (check == false) {
+			p.get().getLikePost().add(u.get());	
+		}
 		return postRepo.save(p.get());
 	}
 	
