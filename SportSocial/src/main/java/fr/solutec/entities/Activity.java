@@ -17,7 +17,6 @@ public class Activity {
 	
 	@Id @GeneratedValue
 	private Long idActivity;
-	
 	private double distance;
 	private String nameActivity;
 	private Timestamp dateStart;

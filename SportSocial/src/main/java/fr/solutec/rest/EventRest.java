@@ -54,12 +54,12 @@ public class EventRest {
 		return eventRepo.findAll();
 	}
 	
-	
 
 	@GetMapping("event/tocome")
 	public Iterable<Event> getAllEventToCome(){
 		return eventRepo.eventsToCome ();
 	}
+
 	
 	@GetMapping("event/{idUser}")
 	public List<Event> getEventsOfOneUser(@PathVariable Long idUser){
@@ -77,6 +77,24 @@ public class EventRest {
 		
 		return (List<Event>) eventRepo.eventsOfOneUser(idUser);
 	}
+	
+	@GetMapping("event/search/{idUser}/{titleEvent}")
+	public List<Event> getEventsOfOneUser(@PathVariable Long idUser, @PathVariable String titleEvent){
+		Iterable<Event> events =  eventRepo.searchEventsOfOneUser(idUser, titleEvent);
+		Timestamp date_now = new Timestamp(System.currentTimeMillis());
+		for (Event event : events) {
+			boolean bool = date_now.after(event.getDateStart());
+			if ((bool)) {
+			event.setPastDate(true);
+			eventRepo.save(event);
+			}
+			
+			
+		}
+		
+		return (List<Event>) eventRepo.searchEventsOfOneUser(idUser, titleEvent);
+	}
+	
 	
 	@GetMapping("event/friends/{idUser}")//Les events des amis
 	public List<Event> getEventsOfMyFriends(@PathVariable Long idUser){

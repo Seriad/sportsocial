@@ -26,6 +26,10 @@ public List<UserActivity> getUserActivity (@PathVariable Long iduser) {
 	return userActivityRepository.findByUserIdUser(iduser);
 }
 
+@GetMapping("activity/search/{iduser}/{nameActivity}")
+public List<UserActivity> searchActivity (@PathVariable Long iduser, @PathVariable String nameActivity) {
+	return userActivityRepository.searchMyActivity(iduser, nameActivity);
+}
 
 
 }

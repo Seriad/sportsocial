@@ -10,12 +10,14 @@ import fr.solutec.entities.UserActivity;
 
 public interface UserActivityRepository extends CrudRepository<UserActivity, Long>{
 	
-	/*
-	@Query("SELECT a FROM Activity INNER JOIN UserActivity ua INNER JOIN User u WHERE u.idUser=?1")
-	public List<UserActivity> getMyFriendsActivity(Long idUser);
-*/
+	
+	@Query("SELECT ua FROM UserActivity ua INNER JOIN Activity a ON a.idActivity = ua.activity.idActivity WHERE ua.user.idUser=?1 AND a.nameActivity LIKE %?2%")
+	public List<UserActivity> searchMyActivity(Long idUser, String nameActivity);
+
 
 	List<UserActivity>findByUserIdUser(Long iduser);
+	
+	
 	
 
 }

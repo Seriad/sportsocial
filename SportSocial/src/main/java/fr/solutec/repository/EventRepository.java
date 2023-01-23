@@ -17,6 +17,9 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	@Query("SELECT e FROM Event e WHERE e.dateStart > CURRENT_TIMESTAMP order by e.dateStart asc")
     Iterable<Event> eventsToCome ();
 	
+	@Query("SELECT e FROM Event e WHERE e.titleEvent LIKE %?1%  order by e.dateStart asc")
+    Iterable<Event> searchAllEvents (String titleEvent);
+	
 	@Query("SELECT e FROM Event e WHERE e.dateStart > CURRENT_TIMESTAMP AND (e.titleEvent LIKE %?1%) order by e.dateStart asc")
 	Iterable<Event> searchEventsToCome (String titleEvent);
 	
@@ -25,4 +28,7 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	
 	@Query("SELECT e FROM Event e INNER JOIN e.participants ep WHERE ep.idUser = ?1 order by e.dateStart desc")
 	Iterable<Event> eventsOfOneUser(Long idUser);
+	
+	@Query("SELECT e FROM Event e INNER JOIN e.participants ep WHERE ep.idUser = ?1 AND (e.titleEvent LIKE %?2%) order by e.dateStart desc")
+	Iterable<Event> searchEventsOfOneUser(Long idUser, String titleEvent);
 }
