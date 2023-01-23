@@ -186,9 +186,6 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Message m1 = new Message(null,Timestamp.valueOf("2022-12-25 10:00:00"), true,"Salut, comment vas-tu? Je me demandais si ça te dirait d'aller à la Salle à 19h ?",u1);
 	    Messagerie msg1= new Messagerie(u2,m1); // Message jeanval to joline
 	    
-	    
-	    
-	    
 	    Message m2 = new Message(null,Timestamp.valueOf("2022-12-26 10:10:00"), true,"Oui ! Pourquoi pas! Mais tu payes l'entrée :p",u2);
 	    Messagerie msg2= new Messagerie(u1,m2); // Message jolie to jeanval
 	    
@@ -290,10 +287,16 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",a4,s1);
 	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",a5,s2);
 	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",a6,s3);
+	    Activity ac4 = new Activity(null,10,"Tracking mont blanc",Timestamp.valueOf("2023-12-25 10:10:5"),Timestamp.valueOf("2023-12-25 10:30:00"),"On va gravir des sommets",a4,s1);
+	    Activity ac5 = new Activity(null,0.,"Rugby avec les copains",Timestamp.valueOf("2023-05-25 14:23:5"),Timestamp.valueOf("2023-05-25 15:30:00"),"Entrainement à la mélée",a5,s5);
+	    Activity ac6 = new Activity(null,0.,"Concour de tir à 3 points",Timestamp.valueOf("2023-07-10 14:10:0"),Timestamp.valueOf("2023-07-10 18:30:00"),"Séance au square Montparnasse",a6,s4);
 	    
-	    UserActivity uac1= new UserActivity(u1,ac1);
+	    UserActivity uac1= new UserActivity(u2,ac1);
 	    UserActivity uac2= new UserActivity(u1,ac2);
-	    UserActivity uac3= new UserActivity(u2,ac3);
+	    UserActivity uac3= new UserActivity(u1,ac3);
+	    UserActivity uac4= new UserActivity(u2,ac4);
+	    UserActivity uac5= new UserActivity(u3,ac5);
+	    UserActivity uac6= new UserActivity(u5,ac6);
 	    
 	    Comment com1 = new Comment(null, null, "Je suis d'accord avec toi, Joline. C'était vraiment un match incroyable à regarder. Les joueurs ont donné tout ce qu'ils avaient et cela s'est vu dans leur jeu. La défense était impénétrable et l'attaque était superbe. Félicitations à l'équipe pour cette victoire méritée!", u15,null, null,0,0);
 		Comment com2 = new Comment(null, null, "Je suis déçu de l'issue de ce match. Bien que l'équipe ait gagné, je pense qu'ils ont manqué d'agressivité et d'énergie. La défense était trop passive et l'attaque n'a pas réussi à marquer autant de points qu'elle aurait dû. Il y a encore beaucoup de choses à améliorer pour l'équipe si elle veut gagner les prochains matchs.", u20,null, null, 0,0);
@@ -484,10 +487,16 @@ public class SportSocialApplication implements CommandLineRunner{
 		activityRepo.save(ac1);
 		activityRepo.save(ac2);
 		activityRepo.save(ac3);
+		activityRepo.save(ac4);
+		activityRepo.save(ac5);
+		activityRepo.save(ac6);
 		
 		userActivityRepo.save(uac1);
 		userActivityRepo.save(uac2);
 		userActivityRepo.save(uac3);
+		userActivityRepo.save(uac4);
+		userActivityRepo.save(uac5);
+		userActivityRepo.save(uac6);
 		
 		clubRepo.save(c1);
 		clubRepo.save(c2); 
