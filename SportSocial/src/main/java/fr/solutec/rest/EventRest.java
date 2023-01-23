@@ -127,6 +127,39 @@ public class EventRest {
         return eventsOfFriendsWithoutDuplicates;
 	}
 	
+	@GetMapping("event/friends/search/{idUser}/{titleEvent}")//Les events des amis
+	public List<Event> searchEventsOfMyFriends(@PathVariable Long idUser, @PathVariable String titleEvent){
+		
+		//recuperer liste d'amis
+		List<User> friends = new ArrayList <>();
+        List<Friend> recup = friendRepo.getMyFriends(idUser);
+        Optional<User> u = userRepo.findById(idUser);
+        if(u.isPresent()) {
+            for (Friend friend : recup) {
+                if(!friend.getApplicant().equals(u.get())) {
+                    friends.add(friend.getApplicant());
+                }
+                if(!friend.getReceiver().equals(u.get())) {
+                    friends.add(friend.getReceiver());
+                }
+            }
+        }
+        //fin recuperer liste d'amis
+        
+        List<Event> eventsOfFriends = new ArrayList<>();
+        for (User user : friends) {
+        	List<Event> e = eventRepo.searchEventsOfOneUserList(user.getIdUser(), titleEvent);
+        	eventsOfFriends = e;
+
+		}
+        //Retirer les doublons de la liste
+        List<Event> eventsOfFriendsWithoutDuplicates = eventsOfFriends.stream()
+        		 .distinct()
+        		 .collect(Collectors.toList());
+        
+        return eventsOfFriendsWithoutDuplicates;
+	}
+	
 	@PatchMapping("event/participer/{idUser}/{idEvent}")
 	public Event addUserToEvent(@PathVariable Long idUser, @PathVariable Long idEvent) {
 		Optional<User> u= userRepo.findById(idUser);

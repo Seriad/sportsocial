@@ -31,4 +31,7 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	
 	@Query("SELECT e FROM Event e INNER JOIN e.participants ep WHERE ep.idUser = ?1 AND (e.titleEvent LIKE %?2%) order by e.dateStart desc")
 	Iterable<Event> searchEventsOfOneUser(Long idUser, String titleEvent);
+	
+	@Query("SELECT e FROM Event e INNER JOIN e.participants ep WHERE ep.idUser = ?1 AND (e.titleEvent LIKE %?2%) order by e.dateStart desc")
+	List<Event> searchEventsOfOneUserList(Long idUser, String titleEvent);
 }
