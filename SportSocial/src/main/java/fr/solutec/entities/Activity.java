@@ -23,6 +23,7 @@ public class Activity {
 	private Timestamp dateStart;
 	private Timestamp dateEnd;
 	private String descActivity;
+	private Boolean publicActivity = false;
 	@ManyToOne	
 	private Address addressActivity;
 	@ManyToOne

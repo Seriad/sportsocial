@@ -284,12 +284,12 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,membresClub2);
 	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4, membresClub3);
 	    
-	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",a4,s1);
-	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",a5,s2);
-	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",a6,s3);
-	    Activity ac4 = new Activity(null,10,"Tracking mont blanc",Timestamp.valueOf("2023-12-25 10:10:5"),Timestamp.valueOf("2023-12-25 10:30:00"),"On va gravir des sommets",a4,s1);
-	    Activity ac5 = new Activity(null,0.,"Rugby avec les copains",Timestamp.valueOf("2023-05-25 14:23:5"),Timestamp.valueOf("2023-05-25 15:30:00"),"Entrainement à la mélée",a5,s5);
-	    Activity ac6 = new Activity(null,0.,"Concour de tir à 3 points",Timestamp.valueOf("2023-07-10 14:10:0"),Timestamp.valueOf("2023-07-10 18:30:00"),"Séance au square Montparnasse",a6,s4);
+	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",true, a4,s1);
+	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",true,a5,s2);
+	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",true,a6,s3);
+	    Activity ac4 = new Activity(null,10,"Tracking mont blanc",Timestamp.valueOf("2023-12-25 10:10:5"),Timestamp.valueOf("2023-12-25 10:30:00"),"On va gravir des sommets",true,a4,s1);
+	    Activity ac5 = new Activity(null,0.,"Rugby avec les copains",Timestamp.valueOf("2023-05-25 14:23:5"),Timestamp.valueOf("2023-05-25 15:30:00"),"Entrainement à la mélée",false,a5,s5);
+	    Activity ac6 = new Activity(null,0.,"Concour de tir à 3 points",Timestamp.valueOf("2023-07-10 14:10:0"),Timestamp.valueOf("2023-07-10 18:30:00"),"Séance au square Montparnasse",true,a6,s4);
 	    
 	    UserActivity uac1= new UserActivity(u2,ac1);
 	    UserActivity uac2= new UserActivity(u1,ac2);
