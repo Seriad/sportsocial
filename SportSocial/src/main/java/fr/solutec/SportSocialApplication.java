@@ -24,6 +24,7 @@ import fr.solutec.entities.Post;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
 import fr.solutec.entities.Team;
+import fr.solutec.entities.Training;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserActivity;
 import fr.solutec.entities.UserSport;
@@ -40,6 +41,7 @@ import fr.solutec.repository.PostRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
 import fr.solutec.repository.TeamRepository;
+import fr.solutec.repository.TrainingRepository;
 import fr.solutec.repository.UserActivityRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.UserSportRepository;
@@ -79,6 +81,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private PostRepository postRepo;	
 	@Autowired
 	private CommentRepository commentRepo;
+	@Autowired
+	private TrainingRepository trainingRepo;
 
 
 	public static void main(String[] args) {
@@ -315,6 +319,8 @@ public class SportSocialApplication implements CommandLineRunner{
 		List<Comment> comList1 = new ArrayList<Comment>();
 		List<Comment> comList2 = new ArrayList<Comment>();
 		
+		Training train1 = new Training(null, "S'échauffer pendant 10 mins puis courrir 30 mins en fractionné (5mins rapide / 5 minutes lent)", u2, s1);
+		
 		
 		comList1.add(com1);
 		comList1.add(com2);
@@ -518,6 +524,10 @@ public class SportSocialApplication implements CommandLineRunner{
 		postRepo.save(post1);
 		postRepo.save(post2);
 		postRepo.save(post3);
+		
+		trainingRepo.save(train1);
+		
+		
 
 		
 		
