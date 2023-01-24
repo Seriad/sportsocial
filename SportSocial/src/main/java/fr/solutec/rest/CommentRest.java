@@ -78,6 +78,7 @@ public class CommentRest {
 		return commentRepo.save(c);
 	}
 	
+	@GetMapping("comments/checkLike/{idUser}/{idComment}")
 	public Boolean checkLike(@PathVariable Long idComment, @PathVariable Long idUser) {
 		Optional<Comment> c = commentRepo.findById(idComment);
 		List<User> likeComment = c.get().getLikeComments();
