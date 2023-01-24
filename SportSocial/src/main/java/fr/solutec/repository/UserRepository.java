@@ -16,6 +16,9 @@ public interface UserRepository extends CrudRepository<User, Long>{
 	
 	@Query("SELECT u FROM User u INNER JOIN UserSport s ON s.user.idUser=u.idUser WHERE s.sport.nameSport = ?1 AND s.user.coachUser = true")
 	public List<User> searchCoachBySport(String nameSport); 
+	
+	@Query("SELECT u FROM User u WHERE u.idUser = ?1")
+	public User findUserById (Long idUser);
 
 
     @Query ("SELECT u FROM User u WHERE u.lastNameUser = ?1 AND u.firstNameUser = ?2")
