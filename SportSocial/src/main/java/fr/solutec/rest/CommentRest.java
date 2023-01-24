@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -67,4 +68,45 @@ public class CommentRest {
 		post.get().getCommentsPost().add(c);
 		return commentRepo.save(c);
 	}
+	
+	@PostMapping("/comment/comment/{idUser}/{idComment}")
+	public Comment createCommentInComment(@PathVariable Long idUser, @PathVariable Long idComment, @RequestBody String contenu) {
+		Optional<User> user = userRepo.findById(idUser);
+		Optional<Comment> comment = commentRepo.findById(idComment);
+		Comment c = new Comment(null, null, contenu, user.get(), null, null, 0, 0);
+		comment.get().getComments().add(c);
+		return commentRepo.save(c);
+	}
+	
+	public Boolean checkLike(@PathVariable Long idComment, @PathVariable Long idUser) {
+		Optional<Comment> c = commentRepo.findById(idComment);
+		List<User> likeComment = c.get().getLikeComments();
+		Boolean check= false;
+		for (User user : likeComment) {
+			if (user.getIdUser() == idUser) {
+				check = true;
+			}
+		}
+		return check;
+	}
+	
+	
+	@PatchMapping("comment/like/{idUser}/{idComment}")
+	public Comment likeComment(@PathVariable Long idComment, @PathVariable Long idUser) {
+		Optional<User> u = userRepo.findById(idUser);
+		Optional<Comment> c = commentRepo.findById(idComment);
+		boolean check = checkLike(idComment, idUser);
+		if (check == false) {
+			c.get().getLikeComments().add(u.get());	
+		}
+		return commentRepo.save(c.get());
+	}
+	
+	@PatchMapping("comment/unlike/{idUser}/{idComment}")
+	public Comment unlikeComment(@PathVariable Long idComment, @PathVariable Long idUser){
+		Optional<Comment> c = commentRepo.findById(idComment);
+		c.get().getLikeComments().removeIf(u -> u.getIdUser()==idUser);
+		return commentRepo.save(c.get());
+	}
+	
 }
