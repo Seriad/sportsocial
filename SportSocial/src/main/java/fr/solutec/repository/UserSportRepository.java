@@ -15,6 +15,9 @@ public interface UserSportRepository extends CrudRepository<UserSport, Long > {
 	
 	@Query("SELECT u FROM UserSport u JOIN Sport s ON u.sport=s.idSport WHERE u.sport.nameSport = ?1 ORDER BY u.score desc")
 	public List<UserSport>searchScoreBySportDesc(String nameSport);
+	
+	@Query("SELECT u FROM UserSport u JOIN Sport s ON u.sport=s.idSport WHERE u.user.idUser =?1 AND s.nameSport LIKE %?2% ")
+	public List<UserSport> searchMyScore (Long idUser, String nameSport);
 
 	public java.util.Optional<UserSport> findByUserLoginUser(UserSport sport);
 

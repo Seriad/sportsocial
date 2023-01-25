@@ -36,7 +36,6 @@ public class UserSportRest {
 	}
 	@GetMapping("classement/me/{iduser}")
 	public List<UserSport>getUser(@PathVariable Long iduser){
-		
 		return userSportRepo.findByUserIdUser(iduser);
 	}
 	
@@ -57,5 +56,9 @@ public class UserSportRest {
 		return userSportRepo.save(usersport);
 	}
 
+	@GetMapping("classement/search/{idUser}/{nameSport}")
+		public List<UserSport> searchMyScore (@PathVariable Long idUser, @PathVariable String nameSport) {
+		return userSportRepo.searchMyScore(idUser, nameSport);
+	}
 	
 }
