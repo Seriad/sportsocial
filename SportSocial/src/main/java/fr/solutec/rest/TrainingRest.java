@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.solutec.entities.Activity;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
+import fr.solutec.entities.Sport;
 import fr.solutec.entities.Team;
 import fr.solutec.entities.Training;
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserActivity;
 import fr.solutec.repository.TrainingRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -41,15 +44,19 @@ public class TrainingRest {
 	}
 	
 	
+	
 	@PostMapping("training/add/{idUser}")
 	public Training createTraining (@PathVariable Long idUser, @RequestBody Training training) {
 		
+		User newUser = userRepo.findByIdUser(idUser).get();
+		
 		String newMemo = training.getMemo();
+		Sport addSport = training.getTrainingSport();
 
 		Training newTraining = new Training();
 		newTraining.setMemo(newMemo);
+		newTraining.setTrainingSport(addSport);
 		
-		User newUser = userRepo.findUserById(idUser);
 		
 		newTraining.setAuthor(newUser);
 		return trainingRepo.save(newTraining);
