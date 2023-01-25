@@ -265,6 +265,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserSport us11 = new UserSport(u15,s4,300);
 	    UserSport us12 = new UserSport(u16,s6,200);
 	    UserSport us13 = new UserSport(u18,s1,600);
+	    UserSport us14 = new UserSport(u2,s2,400);
+	    UserSport us15 = new UserSport(u2,s3,200);
 	    
 	   
 
@@ -463,6 +465,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	    userSportRepo.save(us11);
 	    userSportRepo.save(us12);
 	    userSportRepo.save(us13);
+	    userSportRepo.save(us14);
+	    userSportRepo.save(us15);
 	    
 	    produitRepo.save(p1);
 	    produitRepo.save(p2);
