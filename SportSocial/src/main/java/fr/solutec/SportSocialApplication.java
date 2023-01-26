@@ -232,6 +232,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		List<User> participantse1 = new ArrayList<>();
 		List<User> participantse2 = new ArrayList<>();
 		List<User> participantse3 = new ArrayList<>();
+		List<User> participantse4 = new ArrayList<>();
+		List<User> participantse5 = new ArrayList<>();
+		List<User> participantse6 = new ArrayList<>();
 		
 		participantse1.add(u1);
 		participantse1.add(u2);
@@ -241,10 +244,16 @@ public class SportSocialApplication implements CommandLineRunner{
 		participantse3.add(u3);
 		participantse3.add(u2);
 		participantse3.add(u5);
+		participantse4.add(u3);
+		participantse5.add(u2);
+		participantse6.add(u5);
 		
 		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,participantse1,a4,s1, false);
 		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,participantse2,a5,s6, false);
 		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,participantse3,a5,s2, false);
+		Event e4 = new Event(null,"Match de rugby","Marcoussis contre Limoge",Timestamp.valueOf("2023-12-25 10:00:00"),Timestamp.valueOf("2023-12-25 12:00:00"),0,participantse4,a4,s5, false);
+		Event e5 = new Event(null,"Entrainement foot : junior","Séance pour profil junior",Timestamp.valueOf("2023-06-10 08:00:00"),Timestamp.valueOf("2023-06-10 16:00:00"),0,participantse5,a5,s3, false);
+		Event e6 = new Event(null,"Semi-marathon Paris","21 km",Timestamp.valueOf("2023-09-15 18:30:00"),Timestamp.valueOf("2023-09-15 20:15:00"),20,participantse6,a5,s1, false);
 		
 		Friend f1 = new Friend(null,u1,u2,true);
 	    Friend f2 = new Friend(null,u1,u3,true);
@@ -445,6 +454,9 @@ public class SportSocialApplication implements CommandLineRunner{
 		eventRepo.save(e1);
 		eventRepo.save(e2);
 		eventRepo.save(e3);
+		eventRepo.save(e4);
+		eventRepo.save(e5);
+		eventRepo.save(e6);
 		
 		friendRepo.save(f1);
 	    friendRepo.save(f2);
