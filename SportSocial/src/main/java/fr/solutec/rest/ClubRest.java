@@ -99,7 +99,13 @@ public class ClubRest {
 	  public List<Club> searchMyClub (@PathVariable Long idUser, @PathVariable String titleClub) {
 	   List<Club> club = clubRepo.searchOtherClubs(idUser, titleClub);
 	    return club;
-	    	}
+	    }
+	  
+	  @GetMapping("club/filter/{idUser}/{nameSport}")
+	  public List<Club> filterBySport (@PathVariable Long idUser, @PathVariable String nameSport){
+		  List<Club> club = clubRepo.filterOtherClubs(idUser, nameSport);
+		  return club;
+	  }
 
 	
 	
