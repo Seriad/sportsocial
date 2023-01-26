@@ -32,6 +32,9 @@ public interface MessagerieRepository extends CrudRepository<Messagerie, Long>{
 	@Query("SELECT m FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) OR (m.destinataire.idUser=?2 AND m.message.expediteurMessage.idUser=?1) Order By m.message.dateSendMessage Desc ")
 	List<Messagerie>LastByDestinataireAndByExpediteurIdUserCombine(Long idDest, Long idExp, PageRequest pageable);
 	
+	@Query("SELECT m FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) OR (m.destinataire.idUser=?2 AND m.message.expediteurMessage.idUser=?1) Order By m.message.dateSendMessage Desc ")
+	Messagerie LastByDestinataireAndByExpediteurIdUserCombine2 (Long idDest, Long idExp, PageRequest pageable);
+	
 	@Query("SELECT m.message FROM Messagerie m Where (m.destinataire.idUser=?1 AND m.message.expediteurMessage.idUser=?2) OR (m.destinataire.idUser=?2 AND m.message.expediteurMessage.idUser=?1) Order By m.message.dateSendMessage Asc ")
 	List<Message>MessageByDestinataireAndByExpediteurIdUserCombine(Long idDest, Long idExp);
 	

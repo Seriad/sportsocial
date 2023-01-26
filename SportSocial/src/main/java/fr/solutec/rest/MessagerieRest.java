@@ -107,11 +107,17 @@ public class MessagerieRest {
 		return messagerieRepo.LastByDestinataireAndByExpediteurIdUserCombine(dest, exp, PageRequest.of(0, 1));
 	}
 
-	@GetMapping("messagetrue/me/{dest}/{exp}/combine")
-	List<Message> trueMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp) {
+	@GetMapping("messagetrue/me/{dest}/{exp}/{idUser}/combine")
+	List<Message> trueMyMessageByExpCombine(@PathVariable Long dest, @PathVariable Long exp, @PathVariable Long idUser) {
 		List<Message> m = messagerieRepo.MessageByDestinataireAndByExpediteurIdUserCombine(dest, exp);
+		Messagerie mess = messagerieRepo.LastByDestinataireAndByExpediteurIdUserCombine2(dest, exp, PageRequest.of(0, 1));
+		
+		Long id = mess.getDestinataire().getIdUser();
+		
+		if (idUser == id) {
 		m.forEach(message -> message.setLu(true));
 		messageRepo.saveAll(m);	
+		}
 		return m;
 	}
 

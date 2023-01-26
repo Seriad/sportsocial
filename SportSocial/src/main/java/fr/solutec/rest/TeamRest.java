@@ -56,12 +56,18 @@ public class TeamRest {
 		
 	}
 	
-	@GetMapping("team/truemessage/{idTeam}")
-	List<Message> MyTeamsMessageTrue(@PathVariable Long idTeam){
+	@GetMapping("team/truemessage/{idTeam}/{idUser}")
+	Message MyTeamsMessageTrue(@PathVariable Long idTeam, @PathVariable Long idUser){
+		Message mess = teamRepo.getMyLastTeamMessage2(idTeam, PageRequest.of(0, 1));
+		
+		Long id = mess.getExpediteurMessage().getIdUser();
+		
+		if (idUser != id) {
 		List<Message> m = teamRepo.getMyTeamMessageTrue(idTeam);
 		m.forEach(message -> message.setLu(true));
 		messageRepo.saveAll(m);
-		return m ;
+		}
+		return mess ;
 		
 	}
 	
