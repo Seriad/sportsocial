@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -179,7 +180,6 @@ public class SportSocialApplication implements CommandLineRunner{
 		Image i19= new Image(null, "https://img.freepik.com/vecteurs-libre/employes-donnant-mains-aidant-leurs-collegues-monter-escaliers_74855-5236.jpg?w=1060&t=st=1672913654~exp=1672914254~hmac=5575146b381963534bad888d4b17ba15718e7fd0cfa859afcc31555559ecfaa0");
 		imageRepo.save(i19);
 		
-		
 		Sport s1 = new Sport(null,"Course à pied",i4);
 		Sport s2 = new Sport(null,"Natation",i16);
 		Sport s3 = new Sport(null,"Football",i8);
@@ -277,12 +277,10 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserSport us14 = new UserSport(u2,s2,400);
 	    UserSport us15 = new UserSport(u2,s3,200);
 	    
-	   
-
 	    Produit p1 = new Produit(null,"Avatar tête de chat",9,i12);
 	    Produit p2 = new Produit(null,"Avatar tête de singe",40,i13);
 	    Produit p3 = new Produit(null,"Avatar casque de moto",15,i14);
-	    
+
 	    List<User> membresClub1 = new ArrayList<>();
 	    List<User> membresClub2 = new ArrayList<>();
 	    List<User> membresClub3 = new ArrayList<>();
@@ -298,13 +296,17 @@ public class SportSocialApplication implements CommandLineRunner{
 	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,membresClub1);
 	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,membresClub2);
 	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4, membresClub3);
+	    Club c4 = new Club(null,"Les as de la course", "Club de course à pied : préparation semi-marathon et marathon", i4, s1,u2,membresClub1);
+	    Club c5 = new Club(null,"Lyon Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u1,membresClub2);
+	    Club c6 = new Club(null,"Fan de grimpette", "On refait le monde en grimpant à des falaises", i15, s6, u4, membresClub3);
 	    
-	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",true, a4,s1);
-	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",true,a5,s2);
-	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",true,a6,s3);
-	    Activity ac4 = new Activity(null,10,"Tracking mont blanc",Timestamp.valueOf("2023-12-25 10:10:5"),Timestamp.valueOf("2023-12-25 10:30:00"),"On va gravir des sommets",true,a4,s1);
-	    Activity ac5 = new Activity(null,0.,"Rugby avec les copains",Timestamp.valueOf("2023-05-25 14:23:5"),Timestamp.valueOf("2023-05-25 15:30:00"),"Entrainement à la mélée",false,a5,s5);
-	    Activity ac6 = new Activity(null,0.,"Concour de tir à 3 points",Timestamp.valueOf("2023-07-10 14:10:0"),Timestamp.valueOf("2023-07-10 18:30:00"),"Séance au square Montparnasse",true,a6,s4);
+	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",true, a4,s1, true, true);
+	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",true,a5,s2, true, true);
+	    Activity ac3 = new Activity(null,0.,"Football",Timestamp.valueOf("2022-12-25 14:10:0"),Timestamp.valueOf("2022-12-25 18:30:00"),"Tournois de football",true,a6,s3, true, true);
+	    Activity ac4 = new Activity(null,10,"Tracking mont blanc",Timestamp.valueOf("2023-12-25 10:10:5"),Timestamp.valueOf("2023-12-25 10:30:00"),"On va gravir des sommets",true,a4,s1, false, false);
+	    Activity ac5 = new Activity(null,0.,"Rugby avec les copains",Timestamp.valueOf("2023-05-25 14:23:5"),Timestamp.valueOf("2023-05-25 15:30:00"),"Entrainement à la mélée",false,a5,s5, false, false);
+	    Activity ac6 = new Activity(null,0.,"Concour de tir à 3 points",Timestamp.valueOf("2023-07-10 14:10:0"),Timestamp.valueOf("2023-07-10 18:30:00"),"Séance au square Montparnasse",true,a6,s4, false, false);
+	    Activity ac7 = new Activity(null,7,"Footing Rambouillet",Timestamp.valueOf("2022-12-30 10:10:5"),Timestamp.valueOf("2022-12-30 10:30:00"),"Découverte de la foret en courant",true, a4,s1, false, true);
 	    
 	    UserActivity uac1= new UserActivity(u2,ac1);
 	    UserActivity uac2= new UserActivity(u1,ac2);
@@ -312,6 +314,7 @@ public class SportSocialApplication implements CommandLineRunner{
 	    UserActivity uac4= new UserActivity(u2,ac4);
 	    UserActivity uac5= new UserActivity(u3,ac5);
 	    UserActivity uac6= new UserActivity(u5,ac6);
+	    UserActivity uac7= new UserActivity(u2,ac7);
 	    
 	    Comment com1 = new Comment(null, null, "Je suis d'accord avec toi, Joline. C'était vraiment un match incroyable à regarder. Les joueurs ont donné tout ce qu'ils avaient et cela s'est vu dans leur jeu. La défense était impénétrable et l'attaque était superbe. Félicitations à l'équipe pour cette victoire méritée!", u15,null, null,0,0);
 		Comment com2 = new Comment(null, null, "Je suis déçu de l'issue de ce match. Bien que l'équipe ait gagné, je pense qu'ils ont manqué d'agressivité et d'énergie. La défense était trop passive et l'attaque n'a pas réussi à marquer autant de points qu'elle aurait dû. Il y a encore beaucoup de choses à améliorer pour l'équipe si elle veut gagner les prochains matchs.", u20,null, null, 0,0);
@@ -359,7 +362,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		String newLine = System.getProperty("line.separator");
 		
-	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i6, u2, c1, aimePost, comList1,0, 0);
+	    Post post1 = new Post(null, null, "Quel match incroyable! Les joueurs ont joué avec passion et détermination, et cela a payé avec une victoire éclatante. La défense était solide et l'attaque a été impressionnante. Félicitations à toute l'équipe pour cette performance incroyable!", i9, u2, c1, aimePost, comList1,0, 0);
 		Post post2 = new Post(null, null, "Chers amateurs de rugby, "
 				+ newLine + "Nous avons le plaisir de vous annoncer que le prochain match de rugby amateur se tiendra au Stade de la ville le samedi suivant à 15 heures. L'équipe locale, les Les lions rugissants se mesureront à l'équipe Les guerriers de la plaine pour un match passionnant qui promet d'être rempli d'actions et d'émotions. "
 				+ newLine + "Nous vous invitons à venir nombreux pour soutenir votre équipe locale et passer un moment agréable en famille ou entre amis. Des boissons et des collations seront disponibles à l'achat. "
@@ -512,6 +515,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		activityRepo.save(ac4);
 		activityRepo.save(ac5);
 		activityRepo.save(ac6);
+		activityRepo.save(ac7);
 		
 		userActivityRepo.save(uac1);
 		userActivityRepo.save(uac2);
@@ -519,10 +523,14 @@ public class SportSocialApplication implements CommandLineRunner{
 		userActivityRepo.save(uac4);
 		userActivityRepo.save(uac5);
 		userActivityRepo.save(uac6);
+		userActivityRepo.save(uac7);
 		
 		clubRepo.save(c1);
 		clubRepo.save(c2); 
 		clubRepo.save(c3); 
+		clubRepo.save(c4);
+		clubRepo.save(c5); 
+		clubRepo.save(c6);
 	
 		teamRepo.save(t1);
 		teamRepo.save(t2);

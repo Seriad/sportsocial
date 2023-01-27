@@ -55,6 +55,18 @@ public class UserSportRest {
 		
 		return userSportRepo.save(usersport);
 	}
+	
+	@GetMapping("classement/total/all")
+	public List<Object> globalRanking() {
+		return userSportRepo.sumScoreByUser();
+		
+	}
+	
+	@GetMapping("classement/total")
+	public List<?> globalRankingScore() {
+		return userSportRepo.sumScore();
+		
+	}
 
 	@GetMapping("classement/search/{idUser}/{nameSport}")
 		public List<UserSport> searchMyScore (@PathVariable Long idUser, @PathVariable String nameSport) {

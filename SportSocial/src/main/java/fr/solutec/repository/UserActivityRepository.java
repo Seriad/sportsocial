@@ -13,6 +13,9 @@ public interface UserActivityRepository extends CrudRepository<UserActivity, Lon
 	
 	@Query("SELECT ua FROM UserActivity ua INNER JOIN Activity a ON a.idActivity = ua.activity.idActivity WHERE ua.user.idUser=?1 AND a.nameActivity LIKE %?2%")
 	public List<UserActivity> searchMyActivity(Long idUser, String nameActivity);
+	
+	@Query("SELECT ua FROM UserActivity ua INNER JOIN Activity a ON a.idActivity = ua.activity.idActivity WHERE ua.user.idUser=?1 ORDER BY a.dateStart desc")
+	public List<UserActivity> findMyActivity(Long idUser);
 
 
 	List<UserActivity>findByUserIdUser(Long iduser);

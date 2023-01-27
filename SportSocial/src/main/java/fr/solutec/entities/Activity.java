@@ -27,6 +27,8 @@ public class Activity {
 	private Address addressActivity;
 	@ManyToOne
 	private Sport sportActivity;
+	private Boolean done = false;
+	private Boolean pastDateActivity = false;
 	
 
 }

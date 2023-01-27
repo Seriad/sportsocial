@@ -89,9 +89,7 @@ public class EventRest {
 			eventRepo.save(event);
 			}
 			
-			
 		}
-		
 		return (List<Event>) eventRepo.searchEventsOfOneUser(idUser, titleEvent);
 	}
 	
