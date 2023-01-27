@@ -23,9 +23,12 @@ import fr.solutec.entities.Event;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
+import fr.solutec.entities.UserActivity;
+import fr.solutec.entities.UserSport;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.UserRepository;
+import fr.solutec.repository.UserSportRepository;
 
 @RestController
 @CrossOrigin("*")
@@ -33,18 +36,20 @@ public class EventRest {
 	
 	@Autowired
 	private EventRepository eventRepo;
-	
 	@Autowired
 	private UserRepository userRepo;
-	
 	@Autowired 
 	private FriendRepository friendRepo;
-	
+	@Autowired
+	private UserSportRepository userSportRepo;
 	
 	//Ajoute un event dans la table event et dans son ID et l'id de l'user l'ayant créé dans la table UserEvent
 	@PostMapping("event/create/{idUser}")
 	public Event createEvent(@PathVariable Long idUser, @RequestBody Event e) {
+		User user = userRepo.findUserById(idUser);
+		
 		Event eventCreated = eventRepo.save(e);
+		eventCreated.setAuthorEvent(user);
 		
 		return addUserToEvent(idUser, eventCreated.getIdEvent());
 	}
@@ -181,6 +186,26 @@ public class EventRest {
     	Iterable<Event> event = eventRepo.searchEventsToCome(titleEvent);
     	return event;
     			}
+    
+    @PostMapping("event/done/{idEvent}/{idUser}")
+    public Event doneEvent (@PathVariable Long idEvent, @PathVariable Long idUser) {
+    	Event event = eventRepo.findByIdEvent(idEvent);
+    	
+		Iterable<UserSport> sport = userSportRepo.findByUserIdUser(idUser);
+		for (UserSport sports : sport) {
+			if (sports.getSport() == event.getSportEvent()) {
+				int oldscore = sports.getScore();
+				int newscore = event.getScore();
+				sports.setScore(oldscore + newscore);
+			}
+		}
+		event.setDone(true);
+		
+		return eventRepo.save(event);
+    }
+    
+
+
 	
 
 }

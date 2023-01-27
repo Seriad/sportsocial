@@ -248,12 +248,12 @@ public class SportSocialApplication implements CommandLineRunner{
 		participantse5.add(u2);
 		participantse6.add(u5);
 		
-		Event e1 = new Event(null,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,participantse1,a4,s1, false);
-		Event e2 = new Event(null,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,participantse2,a5,s6, false);
-		Event e3 = new Event(null,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,participantse3,a5,s2, false);
-		Event e4 = new Event(null,"Match de rugby","Marcoussis contre Limoge",Timestamp.valueOf("2023-12-25 10:00:00"),Timestamp.valueOf("2023-12-25 12:00:00"),0,participantse4,a4,s5, false);
-		Event e5 = new Event(null,"Entrainement foot : junior","Séance pour profil junior",Timestamp.valueOf("2023-06-10 08:00:00"),Timestamp.valueOf("2023-06-10 16:00:00"),0,participantse5,a5,s3, false);
-		Event e6 = new Event(null,"Semi-marathon Paris","21 km",Timestamp.valueOf("2023-09-15 18:30:00"),Timestamp.valueOf("2023-09-15 20:15:00"),20,participantse6,a5,s1, false);
+		Event e1 = new Event(null,u2,"Evènement de course à pied!","10 Km de Paris",Timestamp.valueOf("2022-12-25 10:00:00"),Timestamp.valueOf("2022-12-25 12:00:00"),0,participantse1,a4,s1, false ,false, 300);
+		Event e2 = new Event(null,u4,"Evènement d'escalade","Ascension du MontHugual, Débutants acceptés",Timestamp.valueOf("2023-02-10 08:00:00"),Timestamp.valueOf("2023-02-10 16:00:00"),0,participantse2,a5,s6, false,false, 300);
+		Event e3 = new Event(null,u3,"Compétition Natation","200 et 400m Nage libre",Timestamp.valueOf("2023-05-15 18:30:00"),Timestamp.valueOf("2023-05-15 20:15:00"),20,participantse3,a5,s2, false,false, 400);
+		Event e4 = new Event(null,u3,"Match de rugby","Marcoussis contre Limoge",Timestamp.valueOf("2023-12-25 10:00:00"),Timestamp.valueOf("2023-12-25 12:00:00"),0,participantse4,a4,s5, false,false, 300);
+		Event e5 = new Event(null,u2,"Entrainement foot : junior","Séance pour profil junior",Timestamp.valueOf("2023-06-10 08:00:00"),Timestamp.valueOf("2023-06-10 16:00:00"),0,participantse5,a5,s3, false,false, 200);
+		Event e6 = new Event(null,u5,"Semi-marathon Paris","21 km",Timestamp.valueOf("2023-09-15 18:30:00"),Timestamp.valueOf("2023-09-15 20:15:00"),20,participantse6,a5,s1, false, false, 500);
 		
 		Friend f1 = new Friend(null,u1,u2,true);
 	    Friend f2 = new Friend(null,u1,u3,true);
