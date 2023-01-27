@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Club;
 import fr.solutec.entities.Friend;
+import fr.solutec.entities.Image;
 import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.ClubRepository;
@@ -54,6 +55,8 @@ public class ClubRest {
 		Optional<User> user = this.userRepo.findByIdUser(idUser);
 		Club clubCreated = c;
 		clubCreated.setCreateur(user.get());
+		Image imageSport = clubCreated.getSportClub().getImageSport();
+		clubCreated.setImageClub(imageSport);
 		clubRepo.save(clubCreated);
 		
 		return clubCreated;

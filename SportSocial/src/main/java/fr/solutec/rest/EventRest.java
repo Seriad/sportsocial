@@ -191,16 +191,23 @@ public class EventRest {
     public Event doneEvent (@PathVariable Long idEvent, @PathVariable Long idUser) {
     	Event event = eventRepo.findByIdEvent(idEvent);
     	
-		Iterable<UserSport> sport = userSportRepo.findByUserIdUser(idUser);
-		for (UserSport sports : sport) {
-			if (sports.getSport() == event.getSportEvent()) {
-				int oldscore = sports.getScore();
-				int newscore = event.getScore();
-				sports.setScore(oldscore + newscore);
-			}
-		}
+    	Iterable<User> participant = new ArrayList<>();
+    	
+    	participant = event.getParticipants();
+    	
+    	for (User participants : participant) {
+    		Long id = participants.getIdUser();
+    		
+    		Iterable<UserSport> sport = userSportRepo.findByUserIdUser(id);
+    		for (UserSport sports : sport) {
+    			if (sports.getSport() == event.getSportEvent()) {
+    				int oldscore = sports.getScore();
+    				int newscore = event.getScore();
+    				sports.setScore(oldscore + newscore);
+    			}
+    		}
+    	}
 		event.setDone(true);
-		
 		return eventRepo.save(event);
     }
     
