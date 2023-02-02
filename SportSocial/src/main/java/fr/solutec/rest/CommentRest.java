@@ -64,7 +64,7 @@ public class CommentRest {
 	public Comment createCommentInPost(@PathVariable Long idUser, @PathVariable Long idPost, @RequestBody String contenu) {
 		Optional<User> user = userRepo.findById(idUser);
 		Optional<Post> post = postRepo.findById(idPost);
-		Comment c = new Comment(null, null, contenu, user.get(), null, null, 0, 0);
+		Comment c = new Comment(null, null, contenu, user.get(),null, null, null, 0, 0);
 		post.get().getCommentsPost().add(c);
 		return commentRepo.save(c);
 	}
@@ -73,10 +73,20 @@ public class CommentRest {
 	public Comment createCommentInComment(@PathVariable Long idUser, @PathVariable Long idComment, @RequestBody String contenu) {
 		Optional<User> user = userRepo.findById(idUser);
 		Optional<Comment> comment = commentRepo.findById(idComment);
-		Comment c = new Comment(null, null, contenu, user.get(), null, null, 0, 0);
+		Comment c = new Comment(null, null, contenu, user.get(),null, null, null, 0, 0);
 		comment.get().getComments().add(c);
 		return commentRepo.save(c);
 	}
+	
+	@PostMapping("/comment/Response/{idUser}/{idComment}")
+	public Comment createCommentResponse(@PathVariable Long idUser, @PathVariable Long idComment, @RequestBody String contenu) {
+		Optional<User> user = userRepo.findById(idUser);
+		Optional<Comment> comment = commentRepo.findById(idComment);
+		Comment c = new Comment(null, null, contenu, user.get(),comment.get().getCreateurComment(), null, null, 0, 0);
+		comment.get().getComments().add(c);
+		return commentRepo.save(c);
+	}
+	
 	
 	@GetMapping("comments/checkLike/{idUser}/{idComment}")
 	public Boolean checkLike(@PathVariable Long idComment, @PathVariable Long idUser) {

@@ -34,6 +34,8 @@ public class Comment {
 	private String contentComment;
 	@ManyToOne
 	private User createurComment;
+	@ManyToOne
+	private User destComment;
 	@ManyToMany
 	private List<User> likeComments = new ArrayList<User>();
 	@ManyToMany
