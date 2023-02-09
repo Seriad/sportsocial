@@ -31,5 +31,7 @@ public class Club {
 		@ManyToOne
 		private User createur;
 		@ManyToMany
+		private List<User> admin = new ArrayList<User>();
+		@ManyToMany
 		private List<User> membres = new ArrayList<User>();
 }

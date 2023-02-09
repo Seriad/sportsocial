@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.aspectj.apache.bcel.generic.MULTIANEWARRAY;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Club;
+import fr.solutec.entities.Comment;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
+import fr.solutec.entities.Post;
 import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.ClubRepository;
+import fr.solutec.repository.CommentRepository;
 import fr.solutec.repository.FriendRepository;
+import fr.solutec.repository.PostRepository;
 import fr.solutec.repository.UserRepository;
 
 @RestController
@@ -32,6 +38,12 @@ public class ClubRest {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private PostRepository postRepo;
+	
+	@Autowired
+	private CommentRepository commentRepo;
 	
 	
 	@GetMapping("club")
@@ -55,6 +67,9 @@ public class ClubRest {
 		Optional<User> user = this.userRepo.findByIdUser(idUser);
 		Club clubCreated = c;
 		clubCreated.setCreateur(user.get());
+		List<User> admin = new ArrayList<User>();
+		admin.add(user.get());
+		clubCreated.setAdmin(admin);
 		Image imageSport = clubCreated.getSportClub().getImageSport();
 		clubCreated.setImageClub(imageSport);
 		clubRepo.save(clubCreated);
@@ -110,7 +125,62 @@ public class ClubRest {
 		  return club;
 	  }
 
-	
+	  //supprimer un club
+	  @DeleteMapping("club/delete/{idClub}")
+	  public void deleteClub(@PathVariable Long idClub){
+		  Iterable<Post> posts = new ArrayList<>();
+		  posts= postRepo.findAll();
+		  
+		  List<Post> postsToDelete = new ArrayList<>();
+		  List<Comment> commentsToDelete = new ArrayList<>();
+		  List<Comment> commentsInComments = new ArrayList<>();
+		  
+		  // On récupère les posts du  club à supprimer, et on leur enlève la valeur du club
+		  for (Post post : posts) {
+			if(post.getClubPost().getIdClub()==idClub) {
+				postsToDelete.add(post);
+				post.setClubPost(null);
+			}
+		  }
+		  
+		  // On récupère les commentaires associés aux posts et on les retire des posts
+		  for (Post post : postsToDelete) {
+			  if(post.getCommentsPost()!=null) {
+				  for (Comment comment : post.getCommentsPost()) {
+					  commentsToDelete.add(comment);
+					  post.setCommentsPost(null);				}  
+			  }
+		  }
+		  
+		  // on récupère les réponses aux commentaires et on les retires des commentaires
+		  for (Comment comment : commentsToDelete) {
+			  if(comment.getComments()!=null) {
+				  List<Comment> listComments = new ArrayList<>();
+				  listComments = comment.getComments();
+				  commentsInComments.addAll(listComments);
+				  comment.setComments(null);			  }
+		  }
+		  
+		  // on supprime les réponses aux commentaires
+		  for (Comment comment : commentsInComments) {
+			  System.out.println(comment);
+			  commentRepo.delete(comment);
+		  }
+		  
+		  // on supprime les commentaires
+		  for (Comment comment1 : commentsToDelete) {
+			  commentRepo.delete(comment1);
+		  }
+		  
+		  // on supprime les posts
+		  for (Post post : postsToDelete) {
+			postRepo.delete(post);
+		}
+		  // on supprime le club
+		  Optional<Club> club = clubRepo.findById(idClub);
+		  clubRepo.delete(club.get());		
+	  }
+	  
 	
 }
 

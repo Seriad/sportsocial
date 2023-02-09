@@ -78,11 +78,12 @@ public class CommentRest {
 		return commentRepo.save(c);
 	}
 	
-	@PostMapping("/comment/Response/{idUser}/{idComment}")
-	public Comment createCommentResponse(@PathVariable Long idUser, @PathVariable Long idComment, @RequestBody String contenu) {
+	@PostMapping("/comment/response/{idUser}/{idComment}/{idCommentComment}")
+	public Comment createCommentResponse(@PathVariable Long idUser, @PathVariable Long idComment, @PathVariable Long idCommentComment, @RequestBody String contenu) {
 		Optional<User> user = userRepo.findById(idUser);
 		Optional<Comment> comment = commentRepo.findById(idComment);
-		Comment c = new Comment(null, null, contenu, user.get(),comment.get().getCreateurComment(), null, null, 0, 0);
+		Optional<Comment> commentComment = commentRepo.findById(idCommentComment);
+		Comment c = new Comment(null, null, contenu, user.get(),commentComment.get().getCreateurComment(), null, null, 0, 0);
 		comment.get().getComments().add(c);
 		return commentRepo.save(c);
 	}

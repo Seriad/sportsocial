@@ -293,12 +293,21 @@ public class SportSocialApplication implements CommandLineRunner{
 	    membresClub1.add(u20);
 	    membresClub1.add(u23);
 	    
-	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,membresClub1);
-	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,membresClub2);
-	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4, membresClub3);
-	    Club c4 = new Club(null,"Les as de la course", "Club de course à pied : préparation semi-marathon et marathon", i4, s1,u2,membresClub1);
-	    Club c5 = new Club(null,"Lyon Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u1,membresClub2);
-	    Club c6 = new Club(null,"Fan de grimpette", "On refait le monde en grimpant à des falaises", i15, s6, u4, membresClub3);
+	    List<User> admin1 = new ArrayList<>();
+	    List<User> admin2 = new ArrayList<>();
+	    List<User> admin4 = new ArrayList<>();
+	    
+	    admin1.add(u1);
+	    admin2.add(u2);
+	    admin4.add(u4);
+	    
+	    
+	    Club c1 = new Club(null,"Paris Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u2,admin2,membresClub1);
+	    Club c2 = new Club(null,"Les amoureux du foot", "Les fans du ballon rond vous invitent à les rejoindre dans ce groupe dédié aux amateurs comme aux professionnels qui seraient intéréssé dans le partage de leur passion !", i8, s3,u1,admin1,membresClub2);
+	    Club c3 = new Club(null,"Basket fans", "Vous êtes basketteurs ou simplement fans de ce sport ? Venez nous rejoindre pour discuter des évènements à venir et des matchs (récents comme plus anciens).", i6, s4, u4,admin4, membresClub3);
+	    Club c4 = new Club(null,"Les as de la course", "Club de course à pied : préparation semi-marathon et marathon", i4, s1,u2,admin2,membresClub1);
+	    Club c5 = new Club(null,"Lyon Rugby", "Club de rugby amateur. Vous souhaitez découvrir le ballon oval ? Envoyez nous un message et venez tenter votre chance", i9, s5,u1,admin1,membresClub2);
+	    Club c6 = new Club(null,"Fan de grimpette", "On refait le monde en grimpant à des falaises", i15, s6, u4, admin4, membresClub3);
 	    
 	    Activity ac1 = new Activity(null,10.1,"Footing",Timestamp.valueOf("2022-12-25 10:10:5"),Timestamp.valueOf("2022-12-25 10:30:00"),"Course de remise en forme",true, a4,s1, true, true);
 	    Activity ac2 = new Activity(null,2.,"Natation",Timestamp.valueOf("2022-12-25 14:23:5"),Timestamp.valueOf("2022-12-25 15:30:00"),"Natation, 2km",true,a5,s2, true, true);
