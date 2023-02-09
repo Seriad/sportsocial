@@ -163,7 +163,6 @@ public class ClubRest {
 		  
 		  // on supprime les réponses aux commentaires
 		  for (Comment comment : commentsInComments) {
-			  System.out.println(comment);
 			  commentRepo.delete(comment);
 		  }
 		  

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -95,6 +96,45 @@ public class PostRest {
 		Optional<Club> club = clubRepo.findById(idClub);
 		Post p = new Post(null, null, contenu, null, user.get(), club.get(), null, null, 0, 0);
 		return postRepo.save(p);
+	}
+	
+	@DeleteMapping("club/post/delete/{idPost}")
+	public void deletePost(@PathVariable Long idPost) {
+		
+		Optional<Post> post = postRepo.findById(idPost);
+		
+		List<Comment> commentsToDelete = new ArrayList<>();
+		List<Comment> commentsInComments = new ArrayList<>();
+		
+		// on récupère tous les commentaire du post
+		if(post.get().getCommentsPost()!=null) {
+			commentsToDelete.addAll(post.get().getCommentsPost());
+			post.get().setCommentsPost(null);
+		}
+		
+		// on récupère toutes les réponses aux commentaires
+		for (Comment comment : commentsToDelete) {
+			if(comment.getComments()!=null) {
+				commentsInComments.addAll(comment.getComments());
+				comment.setComments(null);	
+			}
+		}
+		
+		// on supprime les réponses aux commentaires
+		  for (Comment comment : commentsInComments) {
+			  commentRepo.delete(comment);
+		  }
+		  
+		  // on supprime les commentaires
+		  for (Comment comment1 : commentsToDelete) {
+			  commentRepo.delete(comment1);
+		  }
+		
+		// on supprime le post
+			postRepo.delete(post.get());
+		
+		
+		
 	}
 	
 }
