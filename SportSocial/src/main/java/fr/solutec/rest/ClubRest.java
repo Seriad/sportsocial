@@ -181,5 +181,22 @@ public class ClubRest {
 	  }
 	  
 	
+	  @PatchMapping("club/admin/add/{idUser}/{idClub}")
+	  public void addAdmin(@PathVariable Long idUser, @PathVariable Long idClub) {
+		Optional<Club> club = clubRepo.findById(idClub);
+		Optional<User> user = userRepo.findById(idUser);
+		club.get().getAdmin().add(user.get());
+		clubRepo.save(club.get());
+	  }
+	  
+	  @PatchMapping("club/admin/delete/{idUser}/{idClub}")
+	  public void deleteAdmin(@PathVariable Long idUser, @PathVariable Long idClub) {
+		Optional<Club> club = clubRepo.findById(idClub);
+		club.get().getAdmin().removeIf(u -> u.getIdUser()==idUser);
+		clubRepo.save(club.get());
+	  }
+	  
+	  
+	
 }
 
