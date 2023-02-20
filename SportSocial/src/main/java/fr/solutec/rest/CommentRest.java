@@ -1,10 +1,12 @@
 package fr.solutec.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -120,5 +122,40 @@ public class CommentRest {
 		c.get().getLikeComments().removeIf(u -> u.getIdUser()==idUser);
 		return commentRepo.save(c.get());
 	}
+	
+	
+	@DeleteMapping("comment/delete/{idPost}/{idComment}")
+	public void deleteComment(@PathVariable Long idPost, @PathVariable Long idComment) {
+		Optional<Post> post = postRepo.findById(idPost);
+		Optional<Comment> comment = commentRepo.findById(idComment);
+		
+		post.get().getCommentsPost().removeIf(c -> c.getIdComment()==idComment);
+		
+		List<Comment> commentsInComments = new ArrayList<>();
+		
+		if(comment.get().getComments()!=null) {
+			commentsInComments.addAll(comment.get().getComments());
+			comment.get().setComments(null);
+			
+			for (Comment comment2 : commentsInComments) {
+				commentRepo.delete(comment2);
+			}
+		}
+		
+		commentRepo.delete(comment.get());
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
