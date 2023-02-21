@@ -196,6 +196,18 @@ public class ClubRest {
 		clubRepo.save(club.get());
 	  }
 	  
+	  @GetMapping("club/admin/get/{idClub}")
+	  public List<User> getListAdmin(@PathVariable Long idClub) {
+		List<User> admin = clubRepo.getAdmin(idClub);
+		return admin;
+	  }
+	  
+	  
+	  @GetMapping("club/membres/get/{idClub}")
+	  public List<User> getListMembres(@PathVariable Long idClub) {
+		List<User> membres = clubRepo.getMembresWithoutAdmin(idClub);
+		return membres;
+	  }
 	  
 	
 }
