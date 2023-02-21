@@ -147,6 +147,14 @@ public class CommentRest {
 	}
 	
 	
+	@DeleteMapping("comment/comment/delete/{idCommentSource}/{idComment}")
+	public void deleteCommentInComment(@PathVariable Long idCommentSource, @PathVariable Long idComment) {
+		Optional<Comment> commentSource = commentRepo.findById(idCommentSource);
+		Optional<Comment> comment = commentRepo.findById(idComment);
+		
+		commentSource.get().getComments().removeIf(c -> c.getIdComment()==idComment);
+		commentRepo.delete(comment.get());
+	}
 	
 	
 	
