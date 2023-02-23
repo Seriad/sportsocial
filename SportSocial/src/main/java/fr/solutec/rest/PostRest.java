@@ -132,9 +132,11 @@ public class PostRest {
 		
 		// on supprime le post
 			postRepo.delete(post.get());
-		
-		
-		
 	}
+	
+	
+	
+	
+	
 	
 }
