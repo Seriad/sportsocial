@@ -209,6 +209,19 @@ public class ClubRest {
 		return membres;
 	  }
 	  
+	  @GetMapping("club/checkAdmin/{idClub}/{idUser}")
+		public Boolean checkAdmin(@PathVariable Long idClub, @PathVariable Long idUser) {
+			Optional<Club> c = clubRepo.findById(idClub);
+			List<User> admins = c.get().getAdmin();
+			Boolean check= false;
+			for (User user : admins) {
+				if (user.getIdUser() == idUser) {
+					check = true;
+				}
+			}
+			return check;
+			
+		}
 	
 }
 
