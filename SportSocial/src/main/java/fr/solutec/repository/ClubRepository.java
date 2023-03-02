@@ -28,4 +28,4 @@ public interface ClubRepository extends CrudRepository<Club, Long>{
 	@Query("SELECT cm FROM Club c INNER JOIN c.membres cm WHERE cm.idUser NOT IN (SELECT ca.idUser FROM Club c INNER JOIN c.admin ca WHERE c.idClub = ?1) AND c.idClub = ?1")
 	List<User> getMembresWithoutAdmin(Long idClub);
 
-}
+} 

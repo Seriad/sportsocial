@@ -39,7 +39,7 @@ public class NotificationsRest {
 		Optional<User> user = userRepo.findById(idUser);
 		Optional<Club> club = clubRepo.findById(idClub);
 		String contenu = admin.get().getLoginUser()+" vous a ajouté comme administrateur du club " + club.get().getTitleClub();
-		Notifications notif = new Notifications(null,contenu, admin.get(), user.get(), false);
+		Notifications notif = new Notifications(null,contenu, null, admin.get(), user.get(), false);
 		return notifRepo.save(notif);
 	}
 	
@@ -48,7 +48,7 @@ public class NotificationsRest {
 		Optional<User> user = userRepo.findById(idUser);
 		Optional<Club> club = clubRepo.findById(idClub);
 		String contenu = "Vous avez été destitué de votre rôle d'administrateur du club " + club.get().getTitleClub();
-		Notifications notif = new Notifications(null,contenu, null, user.get(), false);
+		Notifications notif = new Notifications(null,contenu, null, null, user.get(), false);
 		return notifRepo.save(notif);
 	}
 	
@@ -57,13 +57,13 @@ public class NotificationsRest {
 		Optional<User> sender = userRepo.findById(idSender);
 		Optional<User> receiver = userRepo.findById(idReceiver);
 		String contenu = sender.get().getLoginUser()+" a répondu à l'un de vos commentaires";
-		Notifications notif = new Notifications(null,contenu, sender.get(), receiver.get(), false);
+		Notifications notif = new Notifications(null,contenu, null, sender.get(), receiver.get(), false);
 		return notifRepo.save(notif);
 	}
 	
 	@GetMapping("notifications/liste/{idUser}")
 	public List<Notifications> getNotifications(@PathVariable Long idUser){
-		List<Notifications> notifs = notifRepo.findByDestinataireIdUser(idUser);
+		List<Notifications> notifs = notifRepo.findByDestinataireIdUserOrdererByDate(idUser);
 		return notifs;
 	}
 	
