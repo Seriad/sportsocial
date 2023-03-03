@@ -21,6 +21,7 @@ import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
 import fr.solutec.entities.Message;
 import fr.solutec.entities.Messagerie;
+import fr.solutec.entities.Notifications;
 import fr.solutec.entities.Post;
 import fr.solutec.entities.Produit;
 import fr.solutec.entities.Sport;
@@ -38,6 +39,7 @@ import fr.solutec.repository.FriendRepository;
 import fr.solutec.repository.ImageRepository;
 import fr.solutec.repository.MessageRepository;
 import fr.solutec.repository.MessagerieRepository;
+import fr.solutec.repository.NotificationsRepository;
 import fr.solutec.repository.PostRepository;
 import fr.solutec.repository.ProduitRepository;
 import fr.solutec.repository.SportRepository;
@@ -84,7 +86,8 @@ public class SportSocialApplication implements CommandLineRunner{
 	private CommentRepository commentRepo;
 	@Autowired
 	private TrainingRepository trainingRepo;
-
+	@Autowired
+	private NotificationsRepository notifRepo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SportSocialApplication.class, args);
@@ -389,6 +392,7 @@ public class SportSocialApplication implements CommandLineRunner{
 				+ newLine + "Cordialement, "
 				+ newLine + "Le Comité du club", i8, u23, c2, null, null,0,0);
 		
+		Notifications notif1 = new Notifications(null, u1.getLoginUser() +" a répondu à l'un de vos commentaires", null, u1, u2, false);
 		
 		
 		addressRepo.save(a1);
@@ -560,7 +564,7 @@ public class SportSocialApplication implements CommandLineRunner{
 		
 		trainingRepo.save(train1);
 		
-		
+		notifRepo.save(notif1);
 
 		
 		
