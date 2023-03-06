@@ -392,7 +392,7 @@ public class SportSocialApplication implements CommandLineRunner{
 				+ newLine + "Cordialement, "
 				+ newLine + "Le Comité du club", i8, u23, c2, null, null,0,0);
 		
-		Notifications notif1 = new Notifications(null, u1.getLoginUser() +" a répondu à l'un de vos commentaires", null, u1, u2, false);
+		Notifications notif1 = new Notifications(null, u1.getLoginUser() +" a répondu à l'un de vos commentaires", null, u15, u2, false, post1, com1,"post");
 		
 		
 		addressRepo.save(a1);

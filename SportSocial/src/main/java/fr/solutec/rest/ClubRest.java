@@ -19,12 +19,14 @@ import fr.solutec.entities.Club;
 import fr.solutec.entities.Comment;
 import fr.solutec.entities.Friend;
 import fr.solutec.entities.Image;
+import fr.solutec.entities.Notifications;
 import fr.solutec.entities.Post;
 import fr.solutec.entities.Team;
 import fr.solutec.entities.User;
 import fr.solutec.repository.ClubRepository;
 import fr.solutec.repository.CommentRepository;
 import fr.solutec.repository.FriendRepository;
+import fr.solutec.repository.NotificationsRepository;
 import fr.solutec.repository.PostRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -44,6 +46,9 @@ public class ClubRest {
 	
 	@Autowired
 	private CommentRepository commentRepo;
+	
+	@Autowired
+	private NotificationsRepository notifRepo;
 	
 	
 	@GetMapping("club")
@@ -181,12 +186,16 @@ public class ClubRest {
 	  }
 	  
 	
-	  @PatchMapping("club/admin/add/{idUser}/{idClub}")
-	  public void addAdmin(@PathVariable Long idUser, @PathVariable Long idClub) {
+	  @PatchMapping("club/admin/add/{idAdmin}/{idUser}/{idClub}")
+	  public void addAdmin(@PathVariable Long idAdmin, @PathVariable Long idUser, @PathVariable Long idClub) {
 		Optional<Club> club = clubRepo.findById(idClub);
+		Optional<User> admin = userRepo.findById(idAdmin);
 		Optional<User> user = userRepo.findById(idUser);
 		club.get().getAdmin().add(user.get());
 		clubRepo.save(club.get());
+		String contenu = admin.get().getLoginUser()+" vous a ajouté comme administrateur du club " + club.get().getTitleClub();
+		Notifications notif = new Notifications(null,contenu, null, admin.get(), user.get(), false, null, null, "club");
+		notifRepo.save(notif);
 	  }
 	  
 	  @PatchMapping("club/admin/delete/{idUser}/{idClub}")
@@ -194,7 +203,14 @@ public class ClubRest {
 		Optional<Club> club = clubRepo.findById(idClub);
 		club.get().getAdmin().removeIf(u -> u.getIdUser()==idUser);
 		clubRepo.save(club.get());
+		Optional<User> user = userRepo.findById(idUser);
+		String contenu = "Vous avez été destitué de votre rôle d'administrateur du club " + club.get().getTitleClub();
+		Notifications notif = new Notifications(null,contenu, null, null, user.get(), false, null, null,"club");
+		notifRepo.save(notif);
+		
 	  }
+	  
+	  
 	  
 	  @GetMapping("club/admin/get/{idClub}")
 	  public List<User> getListAdmin(@PathVariable Long idClub) {

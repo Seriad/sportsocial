@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Comment;
+import fr.solutec.entities.Notifications;
 import fr.solutec.entities.Post;
 import fr.solutec.entities.User;
 import fr.solutec.repository.CommentRepository;
+import fr.solutec.repository.NotificationsRepository;
 import fr.solutec.repository.PostRepository;
 import fr.solutec.repository.UserRepository;
 
@@ -33,6 +35,9 @@ public class CommentRest {
 	
 	@Autowired
 	private PostRepository postRepo;
+	
+	@Autowired
+	private NotificationsRepository notifRepo;
 	
 	@GetMapping("club/posts/comments/{idPost}")
 	public Iterable<Comment> getCommentsInPost(@PathVariable Long idPost){
@@ -68,26 +73,40 @@ public class CommentRest {
 		Optional<Post> post = postRepo.findById(idPost);
 		Comment c = new Comment(null, null, contenu, user.get(),null, null, null, 0, 0);
 		post.get().getCommentsPost().add(c);
-		return commentRepo.save(c);
+		commentRepo.save(c);
+		String contenuNotif = user.get().getLoginUser()+" a répondu à l'un de vos posts";
+		Notifications notif = new Notifications(null,contenuNotif, null, user.get(), post.get().getCreateurPost(), false, post.get(), c, "post");
+		notifRepo.save(notif);
+		return c;
 	}
 	
-	@PostMapping("/comment/comment/{idUser}/{idComment}")
-	public Comment createCommentInComment(@PathVariable Long idUser, @PathVariable Long idComment, @RequestBody String contenu) {
+	@PostMapping("/comment/comment/{idUser}/{idPost}/{idComment}")
+	public Comment createCommentInComment(@PathVariable Long idUser, @PathVariable Long idPost, @PathVariable Long idComment, @RequestBody String contenu) {
 		Optional<User> user = userRepo.findById(idUser);
+		Optional<Post> post = postRepo.findById(idPost);
 		Optional<Comment> comment = commentRepo.findById(idComment);
 		Comment c = new Comment(null, null, contenu, user.get(),null, null, null, 0, 0);
 		comment.get().getComments().add(c);
-		return commentRepo.save(c);
+		commentRepo.save(c);
+		String contenuNotif = user.get().getLoginUser()+" a répondu à l'un de vos commentaires";
+		Notifications notif = new Notifications(null,contenuNotif, null, user.get(), comment.get().getCreateurComment(), false, post.get(), c, "post");
+		notifRepo.save(notif);
+		return c;
 	}
 	
-	@PostMapping("/comment/response/{idUser}/{idComment}/{idCommentComment}")
-	public Comment createCommentResponse(@PathVariable Long idUser, @PathVariable Long idComment, @PathVariable Long idCommentComment, @RequestBody String contenu) {
+	@PostMapping("/comment/response/{idUser}/{idPost}/{idComment}/{idCommentComment}")
+	public Comment createCommentResponse(@PathVariable Long idUser, @PathVariable Long idPost, @PathVariable Long idComment, @PathVariable Long idCommentComment, @RequestBody String contenu) {
 		Optional<User> user = userRepo.findById(idUser);
+		Optional<Post> post = postRepo.findById(idPost);
 		Optional<Comment> comment = commentRepo.findById(idComment);
 		Optional<Comment> commentComment = commentRepo.findById(idCommentComment);
 		Comment c = new Comment(null, null, contenu, user.get(),commentComment.get().getCreateurComment(), null, null, 0, 0);
 		comment.get().getComments().add(c);
-		return commentRepo.save(c);
+		commentRepo.save(c);
+		String contenuNotif = user.get().getLoginUser()+" a répondu à l'un de vos commentaires";
+		Notifications notif = new Notifications(null,contenuNotif, null, user.get(), commentComment.get().getCreateurComment(), false, post.get(), c, "post");
+		notifRepo.save(notif);
+		return c;
 	}
 	
 	

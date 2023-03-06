@@ -29,4 +29,9 @@ public class Notifications {
 	@ManyToOne
 	private User destinataire;
 	private Boolean lu;
+	@ManyToOne
+	private Post post ;
+	@ManyToOne
+	private Comment commentaire;
+	private String type;
 }
